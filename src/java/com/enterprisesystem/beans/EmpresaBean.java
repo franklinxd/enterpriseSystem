@@ -23,8 +23,8 @@ public class EmpresaBean {
         listaEmpresa = empresaDAO.buscarTodo();
     }
     
-    public void borrar(Integer idempresa){
-        empresaDAO.borrar(idempresa);
+    public void borrar(Empresa empresa){
+        empresaDAO.borrar(empresa.getIdempresa());
     }
 
     public EmpresaBean() {
