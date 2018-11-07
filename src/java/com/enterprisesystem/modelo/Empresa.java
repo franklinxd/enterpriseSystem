@@ -20,6 +20,7 @@ public class Empresa implements Serializable{
 
     @Id
     private Integer idempresa;
+    private String nombre;
     private String nit;
     private String direccion;
     private String telefono;
@@ -34,9 +35,10 @@ public class Empresa implements Serializable{
         this.idempresa = idempresa;
     }
 
-    public Empresa(Integer idempresa, String nit, String direccion, String telefono, String email) {
+    public Empresa(Integer idempresa, String nombre, String nit, String direccion, String telefono, String email) {
         super();
         this.idempresa = idempresa;
+        this.nombre = nombre;
         this.nit = nit;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -81,6 +83,14 @@ public class Empresa implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
 }
