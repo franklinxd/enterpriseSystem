@@ -28,7 +28,7 @@
                     <p:outputLabel value="#{e.email}" />
                 </p:column>
                 <p:column headerText="Acciones">
-                    <p:commandLink value="Borrar " actionListener="#{empresaBean.borrar(e)}" update=":frmTabla" />
+                    <p:commandLink value="Borrar " actionListener="#{empresaBean.borrar(e.idempresa)}" update=":frmTabla" />
                 </p:column>
             </p:dataTable>
         </h:form>
