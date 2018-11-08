@@ -15,12 +15,15 @@ and open the template in the editor.
         <h:form id="pTabla">
             <p:dataTable value="#{planillaBean.listaPlanilla}" var="p">
                 <p:column headerText="ID">
+                    <p:outputLabel value="#{p.idplanillas}" />
+                </p:column>
+                <p:column headerText="Fecha Inicio">
                     <p:outputLabel value="#{p.fechaInicio}" />
                 </p:column>
-                <p:column headerText="fechaInicio">
+                <p:column headerText="Fecha Fin">
                     <p:outputLabel value="#{p.fechaFin}" />
                 </p:column>
-                <p:column headerText="fechaFin">
+                <p:column headerText="Estado">
                     <p:outputLabel value="#{p.estado}" />
                 </p:column>
                 <p:column headerText="Acciones">
