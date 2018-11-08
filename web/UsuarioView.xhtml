@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel header="Registrar Usuario" style="margin: 35px">
+            <h:form id="frm" style="margin: 10px">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Nombres" />
+                    <p:inputText />
+                    
+                    <p:outputLabel value="Apellidos" />
+                    <p:inputText />
+                    
+                    <p:outputLabel value="Nombre de Usuario" />
+                    <p:inputText />
+                    
+                    <p:outputLabel value="Contraseña" />
+                    <p:password />
+                    
+                    <p:outputLabel value="Confirmar Contraseña" />
+                    <p:password />
+                    
+                    <p:outputLabel value="Empresa" />
+                    <p:inputText />
+                    
+                    <f:facet name="footer">
+                        <p:commandButton value="Registrar" />
+                        <p:commandButton value="Cancelar" />
+                    </f:facet>
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+        
+        <p:panel header="Lista de Usuarios" style="margin: 35px">
+            <h:form id="frmTabla"  style="margin: 10px">
+                <p:dataTable>
+                    <p:column headerText="ID">
+
+                    </p:column>
+                    <p:column headerText="Nombres">
+
+                    </p:column>
+                    <p:column headerText="Apellidos">
+
+                    </p:column>
+                    <p:column headerText="Username">
+
+                    </p:column>
+                    <p:column headerText="Password">
+
+                    </p:column>
+                    <p:column headerText="Empresa">
+
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
