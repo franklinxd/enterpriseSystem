@@ -56,7 +56,10 @@
                         <p:outputLabel value="#{u.password}" />
                     </p:column>
                     <p:column headerText="Empresa">
-                        <p:outputLabel value="#{u.idempresa.idempresa}" />
+                        <p:outputLabel value="#{u.idempresa.nombre}" />
+                    </p:column>
+                    <p:column headerText="Acciones">
+                        <p:commandLink value="Borrar" actionListener="#{usuarioBean.borrar(u)}" />
                     </p:column>
                 </p:dataTable>
             </h:form>

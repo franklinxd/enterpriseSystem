@@ -24,8 +24,9 @@ public class UsuarioBean {
         listaUsuario = usuarioDAO.buscarTodo();
     }
     
-    public void borrar(Integer idusuario){
-        usuarioDAO.borrar(idusuario);
+    public void borrar(Usuario usuario){
+        System.out.println("entra a borrar en el bean");
+        usuarioDAO.borrar(usuario);
     }
 
     public UsuarioBean() {

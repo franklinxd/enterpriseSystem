@@ -22,10 +22,13 @@ public class UsuarioDAO {
         return listaUsuario;
     }
     
-    public void borrar(Integer idempresa){
+    public void borrar(Usuario usuario){
+        System.out.println("entra a borrar en el dao");
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.remove(new Empresa(idempresa));
+        em.getTransaction().begin();
+        em.remove(em.merge(usuario));
+        em.getTransaction().commit();
     }
     
 }
