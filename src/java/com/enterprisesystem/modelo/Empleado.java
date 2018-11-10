@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Empleado implements Serializable {
 
     @Id
-    private Integer ide;
+    private Integer idempleado;
     @ManyToOne
     @JoinColumn(name = "idsucursal")
     private Sucursal idsucursal;
@@ -32,7 +32,7 @@ public class Empleado implements Serializable {
     private String apellidos;
     private String direccion;
     private String telefono;
-    private String emal;
+    private String email;
     private Date fechaNacimiento;
     private String cargo;
     private float salario;
@@ -43,12 +43,12 @@ public class Empleado implements Serializable {
 
     public Empleado(Integer ide) {
         super();
-        this.ide = ide;
+        this.idempleado = ide;
     }
 
-    public Empleado(Integer ide, Sucursal idsucursal, String estado, String codigoEmpleado, String nombres, String apellidos, String direccion, String telefono, String emal, Date fechaNacimiento, String cargo, float salario) {
+    public Empleado(Integer idempleado, Sucursal idsucursal, String estado, String codigoEmpleado, String nombres, String apellidos, String direccion, String telefono, String email, Date fechaNacimiento, String cargo, float salario) {
         super();
-        this.ide = ide;
+        this.idempleado = idempleado;
         this.idsucursal = idsucursal;
         this.estado = estado;
         this.codigoEmpleado = codigoEmpleado;
@@ -56,18 +56,18 @@ public class Empleado implements Serializable {
         this.apellidos = apellidos;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.emal = emal;
+        this.email = email;
         this.fechaNacimiento = fechaNacimiento;
         this.cargo = cargo;
         this.salario = salario;
     }
 
-    public Integer getIde() {
-        return ide;
+    public Integer getIdempleado() {
+        return idempleado;
     }
 
-    public void setIde(Integer ide) {
-        this.ide = ide;
+    public void setIdempleado(Integer idempleado) {
+        this.idempleado = idempleado;
     }
 
     public Sucursal getIdsucursal() {
@@ -126,12 +126,12 @@ public class Empleado implements Serializable {
         this.telefono = telefono;
     }
 
-    public String getEmal() {
-        return emal;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmal(String emal) {
-        this.emal = emal;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getFechaNacimiento() {

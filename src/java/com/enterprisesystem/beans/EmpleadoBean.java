@@ -27,8 +27,8 @@ public class EmpleadoBean {
         empleadoDAO = new EmpleadoDAO();
         listaEmpleado = empleadoDAO.buscarTodo();
     }
-    public void borrar(Integer ide){
-        empleadoDAO.borrar(ide);
+    public void borrar(Empleado empleado){
+        empleadoDAO.borrar(empleado);
     }
 
     public EmpleadoBean() {
