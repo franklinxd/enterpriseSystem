@@ -11,6 +11,4 @@ package com.enterprisesystem.dao;
  */
 public class DetalleDAO {
     
-   public
-    
 }
