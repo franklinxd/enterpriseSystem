@@ -23,11 +23,26 @@ public class UsuarioDAO {
     }
     
     public void borrar(Usuario usuario){
-        System.out.println("entra a borrar en el dao");
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.remove(em.merge(usuario));
+        em.getTransaction().commit();
+    }
+    
+    public void insertar(Usuario usuario){
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(em.merge(usuario));
+        em.getTransaction().commit();
+    }
+    
+    public void actualizar(Usuario usuario){
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.merge(em.merge(usuario));
         em.getTransaction().commit();
     }
     

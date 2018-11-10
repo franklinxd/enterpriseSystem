@@ -8,7 +8,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:panel header="Registrar Usuario" style="margin: 35px">
+        <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px">
             <h:form id="frm" style="margin: 10px">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Nombres" />
@@ -30,7 +30,7 @@
                     <p:inputText />
                     
                     <f:facet name="footer">
-                        <p:commandButton value="Registrar" />
+                        <p:commandButton value="Guardar" />
                         <p:commandButton value="Cancelar" />
                     </f:facet>
                 </h:panelGrid>

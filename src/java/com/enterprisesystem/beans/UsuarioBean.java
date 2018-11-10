@@ -1,6 +1,7 @@
 package com.enterprisesystem.beans;
 
 import com.enterprisesystem.dao.UsuarioDAO;
+import com.enterprisesystem.modelo.Empresa;
 import com.enterprisesystem.modelo.Usuario;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -17,19 +18,52 @@ import javax.faces.bean.ViewScoped;
 public class UsuarioBean {
     private List<Usuario> listaUsuario;
     private UsuarioDAO usuarioDAO;
+    private Usuario usuario;
+    private String accion;
     
     @PostConstruct
     public void init(){
         usuarioDAO = new UsuarioDAO();
         listaUsuario = usuarioDAO.buscarTodo();
+        accion = "Registrar";
+    }
+    
+    public void limpiarFormulario(){
+        this.usuario = new Usuario();
+        usuario.setIdempresa(new Empresa());
+        accion = "Registrar";
+        
+    }
+    
+    public void accionFormulario(){
+        if(accion.equals("Actualizar")){
+            usuarioDAO.actualizar(this.usuario);
+        } else if(accion.equals("Editar")){
+            usuarioDAO.actualizar(this.usuario);
+        }
+        
+        limpiarFormulario();
+    }
+    
+    public void editar(Usuario usuario){
+        this.usuario = usuario;
+        accion = "Editar";
     }
     
     public void borrar(Usuario usuario){
-        System.out.println("entra a borrar en el bean");
         usuarioDAO.borrar(usuario);
+    }
+    
+    private void insertar(){
+        usuarioDAO.insertar(this.usuario);
+    }
+    
+    private void actualizar(){
+        usuarioDAO.actualizar(this.usuario);
     }
 
     public UsuarioBean() {
+        super();
     }
 
     public List<Usuario> getListaUsuario() {
@@ -47,5 +81,20 @@ public class UsuarioBean {
     public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
-    
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
+    }
 }
