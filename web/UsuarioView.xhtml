@@ -39,24 +39,24 @@
         
         <p:panel header="Lista de Usuarios" style="margin: 35px">
             <h:form id="frmTabla"  style="margin: 10px">
-                <p:dataTable>
+                <p:dataTable value="#{usuarioBean.listaUsuario}" var="u">
                     <p:column headerText="ID">
-
+                        <p:outputLabel value="#{u.idusuario}" />
                     </p:column>
                     <p:column headerText="Nombres">
-
+                        <p:outputLabel value="#{u.nombres}" />
                     </p:column>
                     <p:column headerText="Apellidos">
-
+                        <p:outputLabel value="#{u.apellidos}" />
                     </p:column>
                     <p:column headerText="Username">
-
+                        <p:outputLabel value="#{u.username}" />
                     </p:column>
                     <p:column headerText="Password">
-
+                        <p:outputLabel value="#{u.password}" />
                     </p:column>
                     <p:column headerText="Empresa">
-
+                        <p:outputLabel value="#{u.idempresa.idempresa}" />
                     </p:column>
                 </p:dataTable>
             </h:form>

@@ -1,14 +1,50 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.enterprisesystem.beans;
+
+import com.enterprisesystem.dao.UsuarioDAO;
+import com.enterprisesystem.modelo.Usuario;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author franklin.ramosusam
+ * @author franklin.ramos
  */
+
+@ManagedBean
+@ViewScoped
 public class UsuarioBean {
+    private List<Usuario> listaUsuario;
+    private UsuarioDAO usuarioDAO;
+    
+    @PostConstruct
+    public void init(){
+        usuarioDAO = new UsuarioDAO();
+        listaUsuario = usuarioDAO.buscarTodo();
+    }
+    
+    public void borrar(Integer idusuario){
+        usuarioDAO.borrar(idusuario);
+    }
+
+    public UsuarioBean() {
+    }
+
+    public List<Usuario> getListaUsuario() {
+        return listaUsuario;
+    }
+
+    public void setListaUsuario(List<Usuario> listaUsuario) {
+        this.listaUsuario = listaUsuario;
+    }
+
+    public UsuarioDAO getUsuarioDAO() {
+        return usuarioDAO;
+    }
+
+    public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
+        this.usuarioDAO = usuarioDAO;
+    }
     
 }
