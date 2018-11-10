@@ -21,13 +21,15 @@ public class EmpleadoDAO {
     public List<Empleado> buscarTodo() {
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        TypedQuery consulta = em.createQuery("Select e from Empresa e", Empleado.class);
+        TypedQuery consulta = em.createQuery("Select e from Empleado e", Empleado.class);
         List<Empleado> listaEmpleado = consulta.getResultList();
         return listaEmpleado;
     }
-    public void borrar(Integer ide){
+    public void borrar(Empleado empleado){
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em= emf.createEntityManager();
-        em.remove(new Empleado(ide));
+        em.getTransaction().begin();
+        em.remove(em.merge(empleado));
+        em.getTransaction().commit();
     } 
 }
