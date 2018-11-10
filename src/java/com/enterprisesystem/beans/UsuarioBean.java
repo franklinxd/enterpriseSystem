@@ -46,6 +46,7 @@ public class UsuarioBean {
     }
     
     public void editar(Usuario usuario){
+        System.out.println("Editando...");
         this.usuario = usuario;
         accion = "Editar";
     }
