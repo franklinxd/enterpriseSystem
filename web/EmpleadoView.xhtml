@@ -13,55 +13,51 @@ and open the template in the editor.
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:panel header="Registrar Empleado" style="margin: 35px">
-            <h:form id="Gr" style="margin: 10px">
+        <h:form style="margin: 10px" id="form">
+            <p:panel header="#{empleadoBean.accion} Empleado" style="margin: 35px">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Sucursal" />
-                    <p:inputText />
-                    
+
                     <p:outputLabel value="Estado" />
-                    <p:inputText />
-                    
+                    <p:inputText value="#{empleadoBean.empleado.estado}"/>
+
                     <p:outputLabel value="Codigo de Empleado" />
-                    <p:inputText />
-                    
+                    <p:inputText value="#{empleadoBean.empleado.codigoEmpleado}" />
+
                     <p:outputLabel value="Nombres" />
-                    <p:password />
-                    
+                    <p:password value="#{empleadoBean.empleado.nombres}"/>
+
                     <p:outputLabel value="Direccion" />
-                    <p:password />
-                    
+                    <p:password  value="#{empleadoBean.empleado.direccion}"/>
+
                     <p:outputLabel value="Telefono" />
-                    <p:inputText />
-                    
+                    <p:inputText value="#{empleadoBean.empleado.telefono}"/>
+
                     <p:outputLabel value="Email" />
-                    <p:inputText />
-                    
+                    <p:inputText value="#{empleadoBean.empleado.email}"/>
+
                     <p:outputLabel value="Fecha de Nacimiento" />
-                    <p:inputText />
-                    
+                    <p:inputText  value="#{empleadoBean.empleado.fechaNacimiento}"/>
+
                     <p:outputLabel value="Cargo" />
-                    <p:inputText />
-                    
+                    <p:inputText  value="#{empleadoBean.empleado.cargo}"/>
+
+                    <p:outputLabel value="Sucursal" />
+                    <p:inputText value="#{empleadoBean.empleado.idsucursal.idsucursal}"/>
+
                     <p:outputLabel value="Salario" />
-                    <p:inputText />
-                    
+                    <p:inputText  value="#{empleadoBean.empleado.salario}"/>
+
                     <f:facet name="footer">
-                        <p:commandButton value="Registrar" />
+                        <p:commandButton value="Guardar" actionListener="#{empleadoBean.accionFormulario()}" update="form" />
                         <p:commandButton value="Cancelar" />
                     </f:facet>
                 </h:panelGrid>
-            </h:form>
-        </p:panel>
-        
-        <p:panel header="Lista de Empleados" style="margin: 35px">
-            <h:form id="GrTabla"  style="margin: 10px">
+            </p:panel>
+
+            <p:panel header="Lista de Empleados" style="margin: 35px">
                 <p:dataTable value="#{empleadoBean.listaEmpleado}" var="e">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{e.idempleado}" />
-                    </p:column>
-                    <p:column headerText="Sucursal">
-                        <p:outputLabel value="#{e.idsucursal.nombre}" />
                     </p:column>
                     <p:column headerText="Estado">
                         <p:outputLabel value="#{e.estado}" />
@@ -90,14 +86,18 @@ and open the template in the editor.
                     <p:column headerText="Cargo">
                         <p:outputLabel value="#{e.cargo}" />
                     </p:column>
+                    <p:column headerText="Sucursal">
+                        <p:outputLabel value="#{e.idsucursal.nombre}" />
+                    </p:column>
                     <p:column headerText="Salario">
                         <p:outputLabel value="#{e.salario}" />
                     </p:column>
                     <p:column headerText="Acciones">
-                        <p:commandLink value="Borrar" actionListener="#{usuarioBean.borrar(u)}" />
+                        <p:commandLink value="Editar" actionListener="#{empleadoBean.editar(e)}" update=":form" />
+                        <p:commandLink value="Borrar" actionListener="#{empleadoBean.borrar(e)}" update=":form" />
                     </p:column>
                 </p:dataTable>
-            </h:form>
-        </p:panel>
+            </p:panel>
+        </h:form>
     </h:body>
 </html>

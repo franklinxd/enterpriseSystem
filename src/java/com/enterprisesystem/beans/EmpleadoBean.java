@@ -7,6 +7,7 @@ package com.enterprisesystem.beans;
 
 import com.enterprisesystem.dao.EmpleadoDAO;
 import com.enterprisesystem.modelo.Empleado;
+import com.enterprisesystem.modelo.Sucursal;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -21,14 +22,45 @@ import javax.faces.bean.ViewScoped;
 public class EmpleadoBean {
     private List<Empleado> listaEmpleado;
     private EmpleadoDAO empleadoDAO;
+    private Empleado empleado;
+    private String accion;
     
     @PostConstruct
     public void init(){
         empleadoDAO = new EmpleadoDAO();
         listaEmpleado = empleadoDAO.buscarTodo();
+        this.empleado=new Empleado();
+        this.empleado.getIdsucursal(new Sucursal());
+        this.empleado.setIdempleado(0);
+        accion= "Registrar";
+    }
+    public void limpiarFormulario(){
+        this.listaEmpleado = empleadoDAO.buscarTodo();
+        this.empleado=new Empleado();
+        empleado.getIdsucursal(new Sucursal());
+        this.empleado.setIdempleado(0);
+        accion= "Registrar";
+    }
+    public void accionFormulario(){
+        if(accion.equals("Registrar")){
+            empleadoDAO.insertar(this.empleado);
+        }else if(accion.equals("Editar")){
+            empleadoDAO.actualizar(this.empleado);
+        }
+        limpiarFormulario();
+    }
+    public void editar(Empleado empleado){
+        this.empleado=empleado;
+        accion="Editar";
     }
     public void borrar(Empleado empleado){
         empleadoDAO.borrar(empleado);
+    }
+    private void insertar(){
+        empleadoDAO.insertar(this.empleado);
+    }
+    private void actualizar(){
+        empleadoDAO.actualizar(this.empleado);
     }
 
     public EmpleadoBean() {
@@ -49,6 +81,22 @@ public class EmpleadoBean {
 
     public void setEmpleadoDAO(EmpleadoDAO empleadoDAO) {
         this.empleadoDAO = empleadoDAO;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
     }
     
     

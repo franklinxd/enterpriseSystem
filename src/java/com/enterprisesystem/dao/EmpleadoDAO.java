@@ -25,11 +25,30 @@ public class EmpleadoDAO {
         List<Empleado> listaEmpleado = consulta.getResultList();
         return listaEmpleado;
     }
-    public void borrar(Empleado empleado){
+
+    public void borrar(Empleado empleado) {
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
-        EntityManager em= emf.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.remove(em.merge(empleado));
         em.getTransaction().commit();
-    } 
+    }
+
+    public void insertar(Empleado empleado) {
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(em.merge(empleado));
+        em.getTransaction().commit();
+
+    }
+
+    public void actualizar(Empleado empleado) {
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(em.merge(empleado));
+        em.getTransaction().commit();
+
+    }
 }
