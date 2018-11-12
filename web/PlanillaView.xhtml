@@ -7,29 +7,55 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
     </h:head>
-    <h:body>
-        <h:form id="pTabla">
-            <p:dataTable value="#{planillaBean.listaPlanilla}" var="p">
-                <p:column headerText="ID">
-                    <p:outputLabel value="#{p.idplanillas}" />
-                </p:column>
-                <p:column headerText="Fecha Inicio">
-                    <p:outputLabel value="#{p.fechaInicio}" />
-                </p:column>
-                <p:column headerText="Fecha Fin">
-                    <p:outputLabel value="#{p.fechaFin}" />
-                </p:column>
-                <p:column headerText="Estado">
-                    <p:outputLabel value="#{p.estado}" />
-                </p:column>
-                <p:column headerText="Acciones">
-                    <p:commandLink value="Borrar " actionListener="#{planillaBean.borrar(e.idplanillas)}" update=":pTabla" />
-                </p:column>
-            </p:dataTable>
+     <h:body>
+        <h:form style="margin: 10px" id="form">
+            <p:panel header="#{planillaBean.accion} Planilla" style="margin: 35px">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Fecha de Inicio" />
+                    <p:inputText value="#{planillaBean.planilla.fechaInicio}" />
+
+                    <p:outputLabel value="Fecha de Finalizacion" />
+                    <p:inputText  value="#{planillaBean.planilla.fechaFin}" />
+
+                    <p:outputLabel value="Estado" />
+                    <p:inputText  value="#{planillaBean.planilla.estado}" />
+
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update="form" />
+                        <p:commandButton value="Cancelar" />
+                    </f:facet>
+                </h:panelGrid>           
+            </p:panel>
+
+            <p:panel header="Lista de Planilla" style="margin: 35px" >
+                <p:dataTable value="#{planillaBean.listaPlanilla}" var="e" id="Gr">
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{e.idplanillas}" />
+                    </p:column>
+                    <p:column headerText="Fecha de Inicio">
+                        <p:outputLabel value="#{e.fechaInicio}" />
+                    </p:column>
+                    <p:column headerText="Fecha de Finalizacion">
+                        <p:outputLabel value="#{e.fechaFin}" />
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <p:outputLabel value="#{e.estado}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" actionListener="#{planillaBean.editar(e)}" update=":form"  icon="ui-icon-pencil"/>
+                    </p:column>
+                    <p:column headerText="Borrar">
+                        <p:commandButton value="Borrar" actionListener="#{planillaBean.borrar(e)}" update=":form"  icon="ui-icon-trash"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
         </h:form>
     </h:body>
 </html>

@@ -38,7 +38,7 @@
             </p:panel>
 
             <p:panel header="Lista de Usuarios" style="margin: 35px" >
-                <p:dataTable value="#{usuarioBean.listaUsuario}" var="u">
+                <p:dataTable value="#{usuarioBean.listaUsuario}" var="u" id="Gr">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{u.idusuario}" />
                     </p:column>
@@ -57,9 +57,11 @@
                     <p:column headerText="Empresa">
                         <p:outputLabel value="#{u.idempresa.nombre}" />
                     </p:column>
-                    <p:column headerText="Acciones">
-                        <p:commandLink value="Editar " actionListener="#{usuarioBean.editar(u)}" update=":form" />
-                        <p:commandLink value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form" />
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil"/>
+                    </p:column>
+                    <p:column headerText="Borrar">
+                        <p:commandButton value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

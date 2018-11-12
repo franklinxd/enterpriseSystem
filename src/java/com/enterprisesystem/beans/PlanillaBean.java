@@ -21,14 +21,43 @@ import javax.faces.bean.ViewScoped;
 public class PlanillaBean {
     private List<Planilla>listaPlanilla;
     private PlanillaDAO planillaDAO;
+    private Planilla planilla;
+    private String accion;
     
     @PostConstruct
     public void init(){
         planillaDAO=new PlanillaDAO();
         listaPlanilla=planillaDAO.buscarTodo();
+        this.planilla = new Planilla();
+        this.planilla.setIdplanillas(0);
+        accion="Registrar";
     }
-    public void borrar (Integer idplanillas){
-        planillaDAO.borrar(idplanillas);
+    public void limpiarFormulario(){
+        this.listaPlanilla=planillaDAO.buscarTodo();
+        this.planilla=new Planilla();
+        this.planilla.setIdplanillas(0);
+        accion ="Registrar";
+    }
+    public void acctionFormulario(){
+        if(accion.equals("Registrar")){
+            planillaDAO.insertar(this.planilla);
+        }else if(accion.equals("Editar")){
+            planillaDAO.actualizar(this.planilla);
+        }
+        limpiarFormulario();
+    }
+    public void editar(Planilla planilla){
+        this.planilla=planilla;
+        accion="Editar";
+    }
+    public void borrar (Planilla planilla){
+        planillaDAO.borrar(planilla);
+    }
+    private void insertar(){
+        planillaDAO.insertar(this.planilla);
+    }
+    private void actualizar(){
+        planillaDAO.actualizar(this.planilla);
     }
 
     public PlanillaBean() {
@@ -49,6 +78,22 @@ public class PlanillaBean {
 
     public void setPlanillaDAO(PlanillaDAO planillaDAO) {
         this.planillaDAO = planillaDAO;
+    }
+
+    public Planilla getPlanilla() {
+        return planilla;
+    }
+
+    public void setPlanilla(Planilla planilla) {
+        this.planilla = planilla;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
     }
     
     

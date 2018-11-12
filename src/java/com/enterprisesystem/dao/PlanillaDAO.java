@@ -25,9 +25,25 @@ public class PlanillaDAO {
         List<Planilla> listaPlanilla = consulta.getResultList();
         return listaPlanilla;
     }
-    public void borrar(Integer idplanillas){
+    public void borrar(Planilla planilla){
         EntityManagerFactory emf =JPAUtil.getJPAFactory();
         EntityManager em= emf.createEntityManager();
-        em.remove(new Planilla(idplanillas));
+        em.getTransaction().begin();
+        em.remove(em.merge(planilla));
+        em.getTransaction().commit();
+    }
+    public void insertar(Planilla planilla){
+        EntityManagerFactory emf =JPAUtil.getJPAFactory();
+        EntityManager em= emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(em.merge(planilla));
+        em.getTransaction().commit();
+    }
+    public void actualizar(Planilla planilla){
+        EntityManagerFactory emf =JPAUtil.getJPAFactory();
+        EntityManager em= emf.createEntityManager();
+        em.getTransaction().begin();
+        em.merge(em.merge(planilla));
+        em.getTransaction().commit();
     }
 }
