@@ -25,19 +25,23 @@ public class UsuarioBean {
     public void init(){
         usuarioDAO = new UsuarioDAO();
         listaUsuario = usuarioDAO.buscarTodo();
+        this.usuario = new Usuario();
+        this.usuario.setIdempresa(new Empresa());
+        this.usuario.setIdusuario(0);
         accion = "Registrar";
     }
     
     public void limpiarFormulario(){
         this.usuario = new Usuario();
         usuario.setIdempresa(new Empresa());
+        this.usuario.setIdusuario(0);
         accion = "Registrar";
         
     }
     
     public void accionFormulario(){
-        if(accion.equals("Actualizar")){
-            usuarioDAO.actualizar(this.usuario);
+        if(accion.equals("Registrar")){
+            usuarioDAO.insertar(this.usuario);
         } else if(accion.equals("Editar")){
             usuarioDAO.actualizar(this.usuario);
         }

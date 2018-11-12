@@ -8,37 +8,37 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px"  id="panelForm">
-            <h:form style="margin: 10px" id="form">
+        <h:form style="margin: 10px" id="form">
+            <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px">
+            
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Nombres" />
-                    <p:inputText />
+                    <p:inputText value="#{usuarioBean.usuario.nombres}" />
                     
                     <p:outputLabel value="Apellidos" />
-                    <p:inputText />
+                    <p:inputText  value="#{usuarioBean.usuario.apellidos}" />
                     
                     <p:outputLabel value="Nombre de Usuario" />
-                    <p:inputText />
+                    <p:inputText  value="#{usuarioBean.usuario.username}" />
                     
                     <p:outputLabel value="Contraseña" />
-                    <p:password />
+                    <p:password value="#{usuarioBean.usuario.password}" />
                     
                     <p:outputLabel value="Confirmar Contraseña" />
                     <p:password />
                     
                     <p:outputLabel value="Empresa" />
-                    <p:inputText />
+                    <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" />
                     
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" />
+                        <p:commandButton value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update="form" />
                         <p:commandButton value="Cancelar" />
                     </f:facet>
                 </h:panelGrid>
-            </h:form>
-        </p:panel>
+            
+            </p:panel>
         
-        <p:panel header="Lista de Usuarios" style="margin: 35px" id="frmTabla">
-            <h:form style="margin: 10px">
+            <p:panel header="Lista de Usuarios" style="margin: 35px" >
                 <p:dataTable value="#{usuarioBean.listaUsuario}" var="u">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{u.idusuario}" />
@@ -59,12 +59,13 @@
                         <p:outputLabel value="#{u.idempresa.nombre}" />
                     </p:column>
                     <p:column headerText="Acciones">
-                        <p:commandLink value="Editar " actionListener="#{usuarioBean.editar(u)}" update=":panelForm" />
-                        <p:commandLink value="Borrar" actionListener="#{usuarioBean.borrar(u)}"/>
+                        <p:commandLink value="Editar " actionListener="#{usuarioBean.editar(u)}" update=":form" />
+                        <p:commandLink value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form" />
                     </p:column>
                 </p:dataTable>
-            </h:form>
-        </p:panel>
+            
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 
