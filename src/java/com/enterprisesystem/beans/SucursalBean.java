@@ -6,6 +6,7 @@
 package com.enterprisesystem.beans;
 
 import com.enterprisesystem.dao.SucursalDAO;
+import com.enterprisesystem.modelo.Empresa;
 import com.enterprisesystem.modelo.Sucursal;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -22,15 +23,54 @@ public class SucursalBean {
 
     private List<Sucursal> listaSucursal;
     private SucursalDAO sucursalDAO;
+    private Sucursal sucursal;
+    private String accion;
 
     @PostConstruct
     public void init() {
         sucursalDAO = new SucursalDAO();
         listaSucursal = sucursalDAO.buscarTodo();
+        this.sucursal = new Sucursal();
+        this.sucursal.setIdempresa(new Empresa());
+        this.sucursal.setIdsucursal(0);
+        accion = "Registrar";
+        
     }
+    
+    public void limpiarFormulario(){
+        this.listaSucursal = sucursalDAO.buscarTodo();
+        this.sucursal = new Sucursal();
+        sucursal.setIdempresa(new Empresa());
+        this.sucursal.setIdsucursal(0);
+        accion = "Registrar";
+    }
+    
+    public void accionFormulario(){
+        if(accion.equals("Registrar")){
+            sucursalDAO.insertar(this.sucursal);
+        }else if(accion.equals("Editar")){
+            sucursalDAO.actualizar(this.sucursal);
+        }
+        limpiarFormulario();
+    }
+    
+    public void editar(Sucursal sucursal){
+        System.out.println("Editando..");
+        this.sucursal = sucursal;
+        accion = "Editar";
+    }
+    
 
-    public void borrar(Integer idSucursal) {
-        sucursalDAO.borrar(idSucursal);
+    public void borrar(Sucursal sucursal) {
+        sucursalDAO.borrar(sucursal);
+    }
+    
+    private void insertar(){
+        sucursalDAO.insertar(this.sucursal);
+    }
+    
+    private void actualñizar(){
+        sucursalDAO.actualizar(this.sucursal);
     }
 
     public SucursalBean() {
@@ -51,6 +91,14 @@ public class SucursalBean {
 
     public void setSucursalDAO(SucursalDAO sucursalDAO) {
         this.sucursalDAO = sucursalDAO;
+    }
+    
+    public String getAccion(){
+        return accion;
+    }
+    
+    public void setAccion(String accion){
+        this.accion = accion;
     }
 
 }
