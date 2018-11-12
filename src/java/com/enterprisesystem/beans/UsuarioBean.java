@@ -32,6 +32,7 @@ public class UsuarioBean {
     }
     
     public void limpiarFormulario(){
+        this.listaUsuario = usuarioDAO.buscarTodo();
         this.usuario = new Usuario();
         usuario.setIdempresa(new Empresa());
         this.usuario.setIdusuario(0);
