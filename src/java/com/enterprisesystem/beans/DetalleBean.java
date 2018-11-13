@@ -7,7 +7,7 @@ package com.enterprisesystem.beans;
 
 import com.enterprisesystem.dao.DetalleDAO;
 import com.enterprisesystem.modelo.DetallePlanilla;
-import com.enterprisesystem.modelo.Empresa;
+import com.enterprisesystem.modelo.Empleado;
 import com.enterprisesystem.modelo.Planilla;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -33,7 +33,7 @@ public class DetalleBean {
         listaDetalle = detalleDAO.buscarTodo();
         this.Detalle = new DetallePlanilla();
         this.Detalle.setIdplanilla(new Planilla());
-        this.Detalle.setIdempresa(new Empresa());
+        this.Detalle.setIdempleado(new Empleado());
         this.Detalle.setIddetalle(0);
         accion = "Registrar";
     }
@@ -42,7 +42,7 @@ public class DetalleBean {
         listaDetalle = detalleDAO.buscarTodo();
         this.Detalle = new DetallePlanilla();
         Detalle.setIdplanilla(new Planilla());
-        Detalle.setIdempresa(new Empresa());
+        Detalle.setIdempleado(new Empleado());
         this.Detalle.setIddetalle(0);
         accion = "Registrar";
     }
@@ -61,7 +61,7 @@ public class DetalleBean {
         accion = "Editar";
     }
 
-    private void borrar(DetallePlanilla Detalle) {
+    public void borrar(DetallePlanilla Detalle) {
         detalleDAO.borrar(Detalle);
         listaDetalle = detalleDAO.buscarTodo();
     }

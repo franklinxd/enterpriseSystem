@@ -9,8 +9,6 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <title>TODO supply a title</title>
      <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -19,56 +17,80 @@ and open the template in the editor.
             <p:panel header="#{detalleBean.accion} Detalle" style="margin: 35px">
 
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Nombres" />
-                    <p:inputText value="#{detalleBean.detalle.nombres}" />
+                    <p:outputLabel value="Planilla" />
+                    <p:inputText value="#{detalleBean.detalle.idplanilla.idplanillas}" />
 
-                    <p:outputLabel value="Apellidos" />
-                    <p:inputText  value="#{usuarioBean.usuario.apellidos}" />
+                    <p:outputLabel value="Empleado" />
+                    <p:inputText  value="#{detalleBean.detalle.idempleado.idempleado}" />
 
-                    <p:outputLabel value="Nombre de Usuario" />
-                    <p:inputText  value="#{usuarioBean.usuario.username}" />
+                    <p:outputLabel value="Salario Neto" />
+                    <p:inputText  value="#{detalleBean.detalle.salarioBase}" />
 
-                    <p:outputLabel value="Contraseña" />
-                    <p:password value="#{usuarioBean.usuario.password}" />
+                    <p:outputLabel value="Bono" />
+                    <p:inputText value="#{detalleBean.detalle.bono}" />
 
-                    <p:outputLabel value="Confirmar Contraseña" />
-                    <p:password />
+                    <p:outputLabel value="Isss" />
+                    <p:inputText value="#{detalleBean.detalle.isss}"/>
 
-                    <p:outputLabel value="Empresa" />
-                    <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" />
+                    <p:outputLabel value="Renta" />
+                    <p:inputText  value="#{detalleBean.detalle.renta}" />
+                    
+                    <p:outputLabel value="AFP" />
+                    <p:inputText  value="#{detalleBean.detalle.afp}" />
+                    
+                    <p:outputLabel value="Salario Neto" />
+                    <p:inputText  value="#{detalleBean.detalle.salarioNeto}" />
+                    
+                    <p:outputLabel value="Aguinaldo" />
+                    <p:inputText  value="#{detalleBean.detalle.aguinaldo}" />
+                    
+                    <p:outputLabel value="Horas Extras" />
+                    <p:inputText  value="#{detalleBean.detalle.horasExtras}" />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update="form" />
+                        <p:commandButton value="Guardar" actionListener="#{detalleBean.accionFormulario()}" update="form" />
                         <p:commandButton value="Cancelar" />
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
 
-            <p:panel header="Lista de Usuarios" style="margin: 35px" >
-                <p:dataTable value="#{usuarioBean.listaUsuario}" var="u">
-                    <p:column headerText="ID">
-                        <p:outputLabel value="#{u.idusuario}" />
+            <p:panel header="Lista de Detalle Planilla" style="margin: 35px" >
+                <p:dataTable value="#{detalleBean.listaDetalle}" var="d">
+                    <p:column headerText="Planilla">
+                        <p:outputLabel value="#{d.idplanilla.estado}" />
                     </p:column>
-                    <p:column headerText="Nombres">
-                        <p:outputLabel value="#{u.nombres}" />
+                     <p:column headerText="Empleado">
+                         <p:outputLabel value="#{d.idempleado.nombres}" />
                     </p:column>
-                    <p:column headerText="Apellidos">
-                        <p:outputLabel value="#{u.apellidos}" />
+                    <p:column headerText="Salario Base">
+                        <p:outputLabel value="#{d.salarioBase}" />
                     </p:column>
-                    <p:column headerText="Username">
-                        <p:outputLabel value="#{u.username}" />
+                    <p:column headerText="Bonos">
+                        <p:outputLabel value="#{d.bono}" />
                     </p:column>
-                    <p:column headerText="Password">
-                        <p:outputLabel value="#{u.password}" />
+                    <p:column headerText="Isss">
+                        <p:outputLabel value="#{d.isss}" />
                     </p:column>
-                    <p:column headerText="Empresa">
-                        <p:outputLabel value="#{u.idempresa.nombre}" />
+                    <p:column headerText="Renta">
+                        <p:outputLabel value="#{d.renta}" />
+                    </p:column>
+                    <p:column headerText="AFP">
+                        <p:outputLabel value="#{d.afp}" />
+                    </p:column>
+                    <p:column headerText="Salario Neto">
+                        <p:outputLabel value="#{d.salarioNeto}" />
+                    </p:column>
+                    <p:column headerText="Aguinaldo">
+                        <p:outputLabel value="#{d.aguinaldo}" />
+                    </p:column>
+                    <p:column headerText="Horas Extras">
+                        <p:outputLabel value="#{d.horasExtras}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <p:commandButton value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil"/>
+                        <p:commandButton value="" actionListener="#{detalleBean.editar(d)}" update=":form"  icon="ui-icon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <p:commandButton value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash"/>
+                        <p:commandButton value="" actionListener="#{detalleBean.borrar(d)}" update=":form"  icon="ui-icon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

@@ -26,8 +26,8 @@ public class DetallePlanilla implements Serializable {
     @JoinColumn(name = "idplanilla")
     private Planilla idplanilla;
     @ManyToOne
-    @JoinColumn(name = "idempresa")
-    private Empresa idempresa;
+    @JoinColumn(name = "idempleado")
+    private Empleado idempleado;
     private float salarioBase;
     private float bono;
     private float isss;
@@ -46,11 +46,11 @@ public class DetallePlanilla implements Serializable {
         this.iddetalle = iddetalle;
     }
 
-    public DetallePlanilla(Integer iddetalle, Planilla idplanilla, Empresa idempresa, float salarioBase, float bono, float isss, float renta, float afp, float salarioNeto, float aguinaldo, float horasExtras) {
+    public DetallePlanilla(Integer iddetalle, Planilla idplanilla, Empleado idempleado, float salarioBase, float bono, float isss, float renta, float afp, float salarioNeto, float aguinaldo, float horasExtras) {
         super();
         this.iddetalle = iddetalle;
         this.idplanilla = idplanilla;
-        this.idempresa = idempresa;
+        this.idempleado = idempleado;
         this.salarioBase = salarioBase;
         this.bono = bono;
         this.isss = isss;
@@ -76,13 +76,13 @@ public class DetallePlanilla implements Serializable {
     public void setIdplanilla(Planilla idplanilla) {
         this.idplanilla = idplanilla;
     }
-
-    public Empresa getIdempresa() {
-        return idempresa;
+    
+    public Empleado getIdempleado() {
+        return idempleado;
     }
 
-    public void setIdempresa(Empresa idempresa) {
-        this.idempresa = idempresa;
+    public void setIdempleado(Empleado idempleado) {
+        this.idempleado = idempleado;
     }
 
     public float getSalarioBase() {
