@@ -21,9 +21,27 @@ public class EmpresaDAO {
         return listaEmpresa;
     }
     
-    public void borrar(Integer idempresa){
+    public void borrar(Empresa empresa){
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.remove(new Empresa(idempresa));
+        em.getTransaction().begin();
+        em.remove(em.merge(empresa));
+        em.getTransaction().commit();
+    }
+    
+    public void insertar(Empresa empresa){
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(em.merge(empresa));
+        em.getTransaction().commit();
+    }
+    
+    public void actualizar(Empresa empresa){
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.merge(em.merge(empresa));
+        em.getTransaction().commit();
     }
 }

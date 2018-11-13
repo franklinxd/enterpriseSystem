@@ -16,15 +16,48 @@ import javax.faces.bean.ViewScoped;
 public class EmpresaBean {
     private List<Empresa> listaEmpresa;
     private EmpresaDAO empresaDAO;
+    private Empresa empresa;
+    private String accion;
     
     @PostConstruct
     public void init(){
         empresaDAO = new EmpresaDAO();
         listaEmpresa = empresaDAO.buscarTodo();
+        this.empresa = new Empresa();
+        this.empresa.setIdempresa(0);
+        accion="Registrar";
     }
     
-    public void borrar(Integer idempresa){
-        empresaDAO.borrar(idempresa);
+    public void limpiarFormulario(){
+        this.listaEmpresa = empresaDAO.buscarTodo();
+        this.empresa = new Empresa();
+        this.empresa.setIdempresa(0);
+        accion = "Registrar";
+    }
+    
+    public void accionFormulario(){
+        if(accion.equals("Registrar")){
+            empresaDAO.insertar(this.empresa);
+        }else if(accion.equals("Editar")){
+            empresaDAO.actualizar(this.empresa);
+        }
+    }
+    
+    public void editar(Empresa empresa){
+        this.empresa = empresa;
+        accion = "Editar";
+    }
+    public void borrar(Empresa empresa){
+        empresaDAO.borrar(empresa);
+        listaEmpresa = empresaDAO.buscarTodo();
+    }
+    
+    private void insertar(){
+        empresaDAO.insertar(this.empresa);
+    }
+    
+    private void actualizar(){
+        empresaDAO.actualizar(this.empresa);
     }
 
     public EmpresaBean() {
@@ -45,6 +78,22 @@ public class EmpresaBean {
 
     public void setEmpresaDAO(EmpresaDAO empresaDAO) {
         this.empresaDAO = empresaDAO;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
     }
     
     

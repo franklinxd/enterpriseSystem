@@ -41,5 +41,5 @@ public class DetalleDAO {
         em.merge(em.merge(Detalle));
         em.getTransaction().commit();
     }
+      //Error
 }
-
