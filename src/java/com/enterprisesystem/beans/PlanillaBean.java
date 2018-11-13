@@ -52,6 +52,7 @@ public class PlanillaBean {
     }
     public void borrar (Planilla planilla){
         planillaDAO.borrar(planilla);
+        listaPlanilla=planillaDAO.buscarTodo();
     }
     private void insertar(){
         planillaDAO.insertar(this.planilla);

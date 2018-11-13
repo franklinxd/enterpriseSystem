@@ -158,8 +158,4 @@ public class Empleado implements Serializable {
         this.salario = salario;
     }
 
-    public void getIdsucursal(Sucursal sucursal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

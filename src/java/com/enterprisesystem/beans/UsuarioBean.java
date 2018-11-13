@@ -58,6 +58,7 @@ public class UsuarioBean {
     
     public void borrar(Usuario usuario){
         usuarioDAO.borrar(usuario);
+        this.listaUsuario = usuarioDAO.buscarTodo();
     }
     
     private void insertar(){

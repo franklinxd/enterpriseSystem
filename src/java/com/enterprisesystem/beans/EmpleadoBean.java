@@ -30,14 +30,14 @@ public class EmpleadoBean {
         empleadoDAO = new EmpleadoDAO();
         listaEmpleado = empleadoDAO.buscarTodo();
         this.empleado=new Empleado();
-        this.empleado.getIdsucursal(new Sucursal());
+        this.empleado.setIdsucursal(new Sucursal());
         this.empleado.setIdempleado(0);
         accion= "Registrar";
     }
     public void limpiarFormulario(){
         this.listaEmpleado = empleadoDAO.buscarTodo();
         this.empleado=new Empleado();
-        empleado.getIdsucursal(new Sucursal());
+        empleado.setIdsucursal(new Sucursal());
         this.empleado.setIdempleado(0);
         accion= "Registrar";
     }
@@ -55,6 +55,7 @@ public class EmpleadoBean {
     }
     public void borrar(Empleado empleado){
         empleadoDAO.borrar(empleado);
+        listaEmpleado = empleadoDAO.buscarTodo();
     }
     private void insertar(){
         empleadoDAO.insertar(this.empleado);
