@@ -42,4 +42,5 @@ public class DetalleDAO {
         em.getTransaction().commit();
     }
       //Error
+      //error
 }
