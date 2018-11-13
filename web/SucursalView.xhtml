@@ -40,7 +40,7 @@
                         <p:outputLabel value="#{s.idsucursal}" />
                     </p:column>
                     <p:column headerText="Nombre">
-                        <p:outputLabel value="#{s.nombres}" />
+                        <p:outputLabel value="#{s.nombre}" />
                     </p:column>
                     <p:column headerText="Direccion">
                         <p:outputLabel value="#{s.direccion}" />
@@ -55,10 +55,10 @@
                         <p:outputLabel value="#{s.idempresa.nombre}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <p:commandButton value="Editar" actionListener="#{sucursalBean.editar(u)}" update=":form"  icon="ui-icon-pencil"/>
+                        <p:commandButton value="Editar" actionListener="#{sucursalBean.editar(s)}" update=":form"  icon="ui-icon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <p:commandButton value="Borrar" actionListener="#{sucursalBean.borrar(u)}" update=":form"  icon="ui-icon-trash"/>
+                        <p:commandButton value="Borrar" actionListener="#{sucursalBean.borrar(s)}" update=":form"  icon="ui-icon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

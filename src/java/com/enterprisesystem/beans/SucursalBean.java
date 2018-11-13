@@ -63,6 +63,7 @@ public class SucursalBean {
 
     public void borrar(Sucursal sucursal) {
         sucursalDAO.borrar(sucursal);
+        listaSucursal = sucursalDAO.buscarTodo();
     }
     
     private void insertar(){
