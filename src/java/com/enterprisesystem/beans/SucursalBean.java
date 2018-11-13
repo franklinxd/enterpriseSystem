@@ -101,4 +101,13 @@ public class SucursalBean {
         this.accion = accion;
     }
 
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
+    
+    
 }
