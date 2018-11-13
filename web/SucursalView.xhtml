@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form style="margin: 10px" id="form">
+            <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Nombre" />
+                    <p:inputText value="#{sucursalBean.sucursal.nombre}" />
+
+                    <p:outputLabel value="Direccion" />
+                    <p:inputText  value="#{sucursalBean.sucursal.direccion}" />
+
+                    <p:outputLabel value="Telefono" />
+                    <p:inputText  value="#{sucursalBean.sucursal.telefono}" />
+
+                    <p:outputLabel value="Encargado" />
+                    <p:inputText value="#{sucursalBean.sucursal.encargado}" />
+
+                    <p:outputLabel value="Empresa" />
+                    <p:inputText  value="#{sucursalBean.sucursal.idempresa.idempresa}" />
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update="form" />
+                        <p:commandButton value="Cancelar" />
+                    </f:facet>
+                </h:panelGrid>           
+            </p:panel>
+
+            <p:panel header="Lista de Sucursales" style="margin: 35px" >
+                <p:dataTable value="#{sucursalBean.listaSucursal}" var="s">
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{s.idsucursal}" />
+                    </p:column>
+                    <p:column headerText="Nombre">
+                        <p:outputLabel value="#{s.nombres}" />
+                    </p:column>
+                    <p:column headerText="Direccion">
+                        <p:outputLabel value="#{s.direccion}" />
+                    </p:column>
+                    <p:column headerText="Telefono">
+                        <p:outputLabel value="#{s.telefono}" />
+                    </p:column>
+                    <p:column headerText="Encargado">
+                        <p:outputLabel value="#{s.encargado}" />
+                    </p:column>
+                    <p:column headerText="Empresa">
+                        <p:outputLabel value="#{s.idempresa.nombre}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" actionListener="#{sucursalBean.editar(u)}" update=":form"  icon="ui-icon-pencil"/>
+                    </p:column>
+                    <p:column headerText="Borrar">
+                        <p:commandButton value="Borrar" actionListener="#{sucursalBean.borrar(u)}" update=":form"  icon="ui-icon-trash"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
