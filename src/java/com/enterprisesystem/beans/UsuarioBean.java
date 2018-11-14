@@ -5,8 +5,11 @@ import com.enterprisesystem.modelo.Empresa;
 import com.enterprisesystem.modelo.Usuario;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import static org.apache.tomcat.jni.User.username;
 
 /**
  *
@@ -104,4 +107,19 @@ public class UsuarioBean {
     public void setAccion(String accion) {
         this.accion = accion;
     }
+        public void login(String username, Object password) {
+        FacesMessage message = null;
+        boolean loggedIn = false;
+         
+        if(username != null && username.equals("admin") && password != null && password.equals("admin")) {
+            loggedIn = true;
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+        } else {
+            loggedIn = false;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+        }
+         
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
+    }   
 }
