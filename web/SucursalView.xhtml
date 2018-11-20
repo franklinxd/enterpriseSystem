@@ -6,8 +6,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script> 
     </h:head>
     <h:body>
+        <div id="incluirPagina"></div> 
         <h:form style="margin: 10px" id="form">
             <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px">
 

@@ -11,8 +11,15 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script> 
     </h:head>
     <h:body>
+        <div id="incluirPagina"></div> 
         <h:form style="margin: 10px" id="form">
             <p:panel header="#{empleadoBean.accion} Empleado" style="margin: 35px">
                 <h:panelGrid columns="2" cellpadding="5">
@@ -24,10 +31,10 @@ and open the template in the editor.
                     <p:inputText value="#{empleadoBean.empleado.codigoEmpleado}" />
 
                     <p:outputLabel value="Nombres" />
-                    <p:password value="#{empleadoBean.empleado.nombres}"/>
+                    <p:inputText value="#{empleadoBean.empleado.nombres}"/>
 
                     <p:outputLabel value="Direccion" />
-                    <p:password  value="#{empleadoBean.empleado.direccion}"/>
+                    <p:inputText  value="#{empleadoBean.empleado.direccion}"/>
 
                     <p:outputLabel value="Telefono" />
                     <p:inputText value="#{empleadoBean.empleado.telefono}"/>

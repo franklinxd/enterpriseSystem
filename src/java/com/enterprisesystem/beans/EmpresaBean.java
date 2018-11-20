@@ -41,6 +41,7 @@ public class EmpresaBean {
         }else if(accion.equals("Editar")){
             empresaDAO.actualizar(this.empresa);
         }
+        limpiarFormulario();
     }
     
     public void editar(Empresa empresa){
@@ -54,6 +55,7 @@ public class EmpresaBean {
     
     private void insertar(){
         empresaDAO.insertar(this.empresa);
+        this.listaEmpresa = empresaDAO.buscarTodo();
     }
     
     private void actualizar(){

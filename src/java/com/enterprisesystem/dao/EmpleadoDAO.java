@@ -40,7 +40,6 @@ public class EmpleadoDAO {
         em.getTransaction().begin();
         em.persist(em.merge(empleado));
         em.getTransaction().commit();
-
     }
 
     public void actualizar(Empleado empleado) {
