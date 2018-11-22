@@ -24,6 +24,7 @@ public class Planilla implements Serializable{
     private Date fechaInicio;
     private Date fechaFin;
     private String estado;
+    private String tipoPlanilla;
 
     public Planilla() {
         super();
@@ -34,12 +35,12 @@ public class Planilla implements Serializable{
         this.idplanillas = idplanillas;
     }
 
-    public Planilla(Integer idplanillas, Date fechaInicio, Date fechaFin, String estado) {
-        super();
+    public Planilla(Integer idplanillas, Date fechaInicio, Date fechaFin, String estado, String tipoPlanilla) {
         this.idplanillas = idplanillas;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.estado = estado;
+        this.tipoPlanilla = tipoPlanilla;
     }
 
     public Integer getIdplanillas() {
@@ -72,6 +73,14 @@ public class Planilla implements Serializable{
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getTipoPlanilla() {
+        return tipoPlanilla;
+    }
+
+    public void setTipoPlanilla(String tipoPlanilla) {
+        this.tipoPlanilla = tipoPlanilla;
     }
 
 }

@@ -36,6 +36,12 @@ public class Empleado implements Serializable {
     private Date fechaNacimiento;
     private String cargo;
     private float salario;
+    private String sexo;
+    private String EstadoCivil;
+    private String DUI;
+    private String NIT;
+    private String NUP;
+    private String afiliacionISSS;
 
     public Empleado() {
         super();
@@ -46,8 +52,7 @@ public class Empleado implements Serializable {
         this.idempleado = ide;
     }
 
-    public Empleado(Integer idempleado, Sucursal idsucursal, String estado, String codigoEmpleado, String nombres, String apellidos, String direccion, String telefono, String email, Date fechaNacimiento, String cargo, float salario) {
-        super();
+    public Empleado(Integer idempleado, Sucursal idsucursal, String estado, String codigoEmpleado, String nombres, String apellidos, String direccion, String telefono, String email, Date fechaNacimiento, String cargo, float salario, String sexo, String EstadoCivil, String DUI, String NIT, String NUP, String afiliacionISSS) {
         this.idempleado = idempleado;
         this.idsucursal = idsucursal;
         this.estado = estado;
@@ -60,7 +65,15 @@ public class Empleado implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.cargo = cargo;
         this.salario = salario;
+        this.sexo = sexo;
+        this.EstadoCivil = EstadoCivil;
+        this.DUI = DUI;
+        this.NIT = NIT;
+        this.NUP = NUP;
+        this.afiliacionISSS = afiliacionISSS;
     }
+
+
 
     public Integer getIdempleado() {
         return idempleado;
@@ -156,6 +169,54 @@ public class Empleado implements Serializable {
 
     public void setSalario(float salario) {
         this.salario = salario;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getEstadoCivil() {
+        return EstadoCivil;
+    }
+
+    public void setEstadoCivil(String EstadoCivil) {
+        this.EstadoCivil = EstadoCivil;
+    }
+
+    public String getDUI() {
+        return DUI;
+    }
+
+    public void setDUI(String DUI) {
+        this.DUI = DUI;
+    }
+
+    public String getNIT() {
+        return NIT;
+    }
+
+    public void setNIT(String NIT) {
+        this.NIT = NIT;
+    }
+
+    public String getNUP() {
+        return NUP;
+    }
+
+    public void setNUP(String NUP) {
+        this.NUP = NUP;
+    }
+
+    public String getAfiliacionISSS() {
+        return afiliacionISSS;
+    }
+
+    public void setAfiliacionISSS(String afiliacionISSS) {
+        this.afiliacionISSS = afiliacionISSS;
     }
 
 }

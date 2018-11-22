@@ -53,6 +53,9 @@ and open the template in the editor.
                     
                     <p:outputLabel value="Horas Extras" />
                     <p:inputText  value="#{detalleBean.detalle.horasExtras}" />
+                    
+                    <p:outputLabel value="Anticipos" />
+                    <p:inputText  value="#{detalleBean.detalle.anticipos}" />
 
                     <f:facet name="footer">
                         <p:commandButton value="Guardar" actionListener="#{detalleBean.accionFormulario()}" update="form" />
@@ -92,6 +95,9 @@ and open the template in the editor.
                     </p:column>
                     <p:column headerText="Horas Extras">
                         <p:outputLabel value="#{d.horasExtras}" />
+                    </p:column>
+                    <p:column headerText="Anticipos">
+                        <p:outputLabel value="#{d.anticipos}" />
                     </p:column>
                     <p:column headerText="Editar">
                         <p:commandButton value="" actionListener="#{detalleBean.editar(d)}" update=":form"  icon="ui-icon-pencil"/>

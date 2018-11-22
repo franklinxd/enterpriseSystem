@@ -43,7 +43,7 @@ and open the template in the editor.
                     <p:inputText value="#{empleadoBean.empleado.email}"/>
 
                     <p:outputLabel value="Fecha de Nacimiento" />
-                    <p:calendar  value="#{empleadoBean.empleado.fechaNacimiento}"/>
+                    <p:calendar value="#{empleadoBean.empleado.fechaNacimiento}"/>
 
                     <p:outputLabel value="Cargo" />
                     <p:inputText  value="#{empleadoBean.empleado.cargo}"/>
@@ -53,6 +53,24 @@ and open the template in the editor.
 
                     <p:outputLabel value="Salario" />
                     <p:inputText  value="#{empleadoBean.empleado.salario}"/>
+                    
+                    <p:outputLabel value="Sexo" />
+                    <p:inputText  value="#{empleadoBean.empleado.sexo}"/>
+                    
+                    <p:outputLabel value="Estado Civil" />
+                    <p:inputText  value="#{empleadoBean.empleado.estadoCivil}"/>
+                    
+                    <p:outputLabel value="DUI" />
+                    <p:inputText  value="#{empleadoBean.empleado.DUI}"/>
+                    
+                    <p:outputLabel value="NIT" />
+                    <p:inputText  value="#{empleadoBean.empleado.NIT}"/>
+                    
+                    <p:outputLabel value="NUP" />
+                    <p:inputText  value="#{empleadoBean.empleado.NUP}"/>
+                    
+                    <p:outputLabel value="Afiliacion ISSS" />
+                    <p:inputText  value="#{empleadoBean.empleado.afiliacionISSS}"/>
 
                     <f:facet name="footer">
                         <p:commandButton value="Guardar" actionListener="#{empleadoBean.accionFormulario()}" update="form" />
@@ -98,6 +116,24 @@ and open the template in the editor.
                     </p:column>
                     <p:column headerText="Salario">
                         <p:outputLabel value="#{e.salario}" />
+                    </p:column>
+                    <p:column headerText="Sexo">
+                        <p:outputLabel value="#{e.sexo}" />
+                    </p:column>
+                    <p:column headerText="Estado Civil">
+                        <p:outputLabel value="#{e.estadoCivil}" />
+                    </p:column>
+                    <p:column headerText="Dui">
+                        <p:outputLabel value="#{e.DUI}" />
+                    </p:column>
+                    <p:column headerText="Nit">
+                        <p:outputLabel value="#{e.NIT}" />
+                    </p:column>
+                    <p:column headerText="Nup">
+                        <p:outputLabel value="#{e.NUP}" />
+                    </p:column>
+                    <p:column headerText="Afiliacion isss">
+                        <p:outputLabel value="#{e.afiliacionISSS}" />
                     </p:column>
                     <p:column headerText="Acciones">
                         <p:commandLink value="Editar" actionListener="#{empleadoBean.editar(e)}" update=":form" />

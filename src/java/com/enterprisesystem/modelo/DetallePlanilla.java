@@ -36,6 +36,7 @@ public class DetallePlanilla implements Serializable {
     private float salarioNeto;
     private float aguinaldo;
     private float horasExtras;
+    private float anticipos;
 
     public DetallePlanilla() {
         super();
@@ -46,8 +47,7 @@ public class DetallePlanilla implements Serializable {
         this.iddetalle = iddetalle;
     }
 
-    public DetallePlanilla(Integer iddetalle, Planilla idplanilla, Empleado idempleado, float salarioBase, float bono, float isss, float renta, float afp, float salarioNeto, float aguinaldo, float horasExtras) {
-        super();
+    public DetallePlanilla(Integer iddetalle, Planilla idplanilla, Empleado idempleado, float salarioBase, float bono, float isss, float renta, float afp, float salarioNeto, float aguinaldo, float horasExtras, float anticipos) {
         this.iddetalle = iddetalle;
         this.idplanilla = idplanilla;
         this.idempleado = idempleado;
@@ -59,6 +59,15 @@ public class DetallePlanilla implements Serializable {
         this.salarioNeto = salarioNeto;
         this.aguinaldo = aguinaldo;
         this.horasExtras = horasExtras;
+        this.anticipos = anticipos;
+    }
+
+    public float getAnticipos() {
+        return anticipos;
+    }
+
+    public void setAnticipos(float anticipos) {
+        this.anticipos = anticipos;
     }
 
     public Integer getIddetalle() {

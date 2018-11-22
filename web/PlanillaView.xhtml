@@ -28,10 +28,13 @@ and open the template in the editor.
                     <p:calendar value="#{planillaBean.planilla.fechaInicio}" />
 
                     <p:outputLabel value="Fecha de Finalizacion" />
-                    <p:calendar  value="#{planillaBean.planilla.fechaFin}" />
+                    <p:calendar value="#{planillaBean.planilla.fechaFin}" />
 
                     <p:outputLabel value="Estado" />
                     <p:inputText  value="#{planillaBean.planilla.estado}" />
+                    
+                    <p:outputLabel value="Tipo de Planilla" />
+                    <p:inputText  value="#{planillaBean.planilla.tipoPlanilla}" />
 
 
                     <f:facet name="footer">
@@ -54,6 +57,9 @@ and open the template in the editor.
                     </p:column>
                     <p:column headerText="Estado">
                         <p:outputLabel value="#{e.estado}" />
+                    </p:column>    
+                    <p:column headerText="Tipo De Planilla">
+                        <p:outputLabel value="#{e.tipoPlanilla}" />
                     </p:column>
                     <p:column headerText="Editar">
                         <p:commandButton value="Editar" actionListener="#{planillaBean.editar(e)}" update=":form"  icon="ui-icon-pencil"/>
