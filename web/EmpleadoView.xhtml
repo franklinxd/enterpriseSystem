@@ -12,10 +12,12 @@ and open the template in the editor.
     <h:head>
         <title>Facelet Title</title>
         <script type="text/javascript">
-            $(function () {
-                // menu.html
-                $("#incluirPagina").load("Menu.xhtml");
-            });
+           $(document).ready(funcion(){
+                $(function () {
+                    // menu.html
+                    $("#incluirPagina").load("Menu.xhtml");
+                });
+           );
         </script> 
     </h:head>
     <h:body>
@@ -142,5 +144,13 @@ and open the template in the editor.
                 </p:dataTable>
             </p:panel>
         </h:form>
+        <script type="text/javascript">
+          
+              
+                    // menu.html
+                    $("#incluirPagina").load("Menu.xhtml");
+                
+         
+        </script> 
     </h:body>
 </html>

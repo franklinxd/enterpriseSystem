@@ -7,11 +7,13 @@
     <h:head>
         <title>Facelet Title</title>
         <script type="text/javascript">
-            $(function () {
+           $(document).ready(funcion(){
+                $(function () {
                 // menu.html
                 $("#incluirPagina").load("Menu.xhtml");
             });
-        </script> 
+           });
+        </script>  
     </h:head>
     <h:body>
         <div id="incluirPagina"></div> 
