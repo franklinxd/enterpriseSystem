@@ -30,7 +30,11 @@ and open the template in the editor.
                 background: deepskyblue000000 !important;
             }
             .Main{
-                background-color: #3366ff;
+                background-color: white;
+                border-color: deepskyblue000000 !important;
+            }
+            .ui-icon-home{
+                transform: scale(1.5);
             }
         </style>
     </h:head>
@@ -45,6 +49,6 @@ and open the template in the editor.
             <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%" value="Sucursal" icon=" ui-icon-folder-open" />
             <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%" value="Empresa" icon=" ui-icon-folder-open" />
         </p:sidebar>
-        <p:commandButton id="menu" icon="ui-icon-circle-plus" styleClass="Main" oncomplete="PF('sidebar1').show()" />
+        <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
     </h:body>
 </html>
