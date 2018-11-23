@@ -15,47 +15,47 @@
     </h:head>
     <h:body>
         <div id="incluirPagina"></div>
-        <h:form style="margin: 10px" id="form">
-            <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px">
-
+        <h:form style="margin: 20px" id="form">
+            <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Nombres" />
+                    <p:outputLabel value="Nombres:" />
                     <p:inputText value="#{usuarioBean.usuario.nombres}" />
 
-                    <p:outputLabel value="Apellidos" />
+                    <p:outputLabel value="Apellidos:" />
                     <p:inputText  value="#{usuarioBean.usuario.apellidos}" />
 
-                    <p:outputLabel value="Nombre de Usuario" />
+                    <p:outputLabel value="Username:" />
                     <p:inputText  value="#{usuarioBean.usuario.username}" />
 
-                    <p:outputLabel value="Contraseña" />
+                    <p:outputLabel value="Contraseña:" />
                     <p:password value="#{usuarioBean.usuario.password}"/>
 
-                    <p:outputLabel value="Confirmar Contraseña" />
+                    <p:outputLabel value="Confirmar Contraseña:" />
                     <p:password />
 
-                    <p:outputLabel value="Empresa" />
+                    <p:outputLabel value="Empresa:" />
                     <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update="form" />
-                        <p:commandButton value="Cancelar" />
+                        <p:commandButton value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update="form" style="margin: 15px 15px;"/>
+                        <p:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
 
-            <p:panel header="Lista de Usuarios" style="margin: 35px" >
-                <p:dataTable value="#{usuarioBean.listaUsuario}" var="u">
+            <p:panel header="Lista de Usuarios" style="margin: 35px; padding: 10px 10px; text-align: center;" >
+                <p:dataTable value="#{usuarioBean.listaUsuario}" var="u" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{u.idusuario}" />
                     </p:column>
-                    <p:column headerText="Nombres">
+                    <p:column headerText="Nombres" filterBy="#{u.nombres}" filterMatchMode="contains">
                         <p:outputLabel value="#{u.nombres}" />
                     </p:column>
-                    <p:column headerText="Apellidos">
+                    <p:column headerText="Apellidos" filterBy="#{u.apellidos}" filterMatchMode="contains">
                         <p:outputLabel value="#{u.apellidos}" />
                     </p:column>
-                    <p:column headerText="Username">
+                    <p:column headerText="Username" filterBy="#{u.username}" filterMatchMode="contains">
                         <p:outputLabel value="#{u.username}" />
                     </p:column>
                     <p:column headerText="Password">
