@@ -23,6 +23,34 @@ public class UsuarioBean {
     private UsuarioDAO usuarioDAO;
     private Usuario usuario;
     private String accion;
+    private String username;
+    private String password;
+    private String nombre;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     
     @PostConstruct
     public void init(){
@@ -107,6 +135,8 @@ public class UsuarioBean {
     public void setAccion(String accion) {
         this.accion = accion;
     }
+    
+  
 //        public void login(String username, Object password) {
 //        FacesMessage message = null;
 //        boolean loggedIn = false;

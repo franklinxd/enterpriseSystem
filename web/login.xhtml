@@ -17,7 +17,7 @@
                     
                     <h:outputText value="Usuario"/>
                     
-                    <p:inputText id="username" value="#{loginBean.uname}"></p:inputText>
+                    <p:inputText id="username" value="#{loginBean.username}"></p:inputText>
                     
                     <p:spacer></p:spacer>
                     
@@ -33,7 +33,7 @@
                     
                     <p:spacer></p:spacer>
                     
-                    <p:commandButton action="#{loginBean.loginProject}" value="Login" update="loginform" ajax="true"></p:commandButton>
+                    <p:commandButton action="#{loginBean.validaLogin()}" value="Login" update="loginform" ajax="true"></p:commandButton>
                 </h:panelGrid>
             </p:panel>
         </h:form>
