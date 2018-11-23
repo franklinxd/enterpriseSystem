@@ -12,47 +12,105 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <script type="text/javascript">
-           $(document).ready(funcion(){
-                $(function () {
-                // menu.html
-                $("#incluirPagina").load("Menu.xhtml");
-            });
-           });
-        </script> 
+           PrimeFaces.locales['es'] = {
+            closeText: 'Cerrar',
+                    prevText: 'Anterior',
+                    nextText: 'Siguiente',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                    weekHeader: 'Semana',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText: 'Todo el día'
+            };
+        </script>
+        <style>
+            .ui-sidebar{
+                color: black !important;
+                background-color: white;
+                font-family: 'Castellar' !important;
+                text-align: center;
+                font-size: 20px;
+            }
+             .contenido{
+                background-image: url(https://cie.com.es/images/banners/company.jpg);
+                background-size: cover;
+            }
+            .Btn{
+                color:black !important;
+                font-family: 'Sedgwick Ave' !important;
+                font-size: 20px;
+                background: deepskyblue000000 !important;
+            }
+            .Main{
+                background-color: white;
+                border-color: deepskyblue000000 !important;
+            }
+            .ui-icon-home{
+                transform: scale(1.5);
+            }
+        </style>
     </h:head>
      <h:body>
-         <div id="incluirPagina"></div> 
-        <h:form style="margin: 10px" id="form">
-            <p:panel header="#{planillaBean.accion} Planilla" style="margin: 35px">
+          <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+            <h1 style="text-align: center">Tablas</h1>
+            <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon=" ui-icon-folder-open" />     
+            <br/>
+            <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%" value="Empleado" icon=" ui-icon-folder-open" />
+            <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%" value="Detalle" icon=" ui-icon-folder-open" />
+            <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%" value="Planilla" icon=" ui-icon-folder-open" />
+            <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%" value="Sucursal" icon=" ui-icon-folder-open" />
+            <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%" value="Empresa" icon=" ui-icon-folder-open" />
+        </p:sidebar>
+        <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
+         
+        <h:form style="margin: 20px" id="form">
+            <p:panel header="#{planillaBean.accion} Planilla" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Fecha de Inicio" />
-                    <p:calendar value="#{planillaBean.planilla.fechaInicio}" />
+                    <p:outputLabel value="Fecha de Inicio:" />
+                    <p:calendar value="#{planillaBean.planilla.fechaInicio}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold"/>
 
-                    <p:outputLabel value="Fecha de Finalizacion" />
-                    <p:calendar value="#{planillaBean.planilla.fechaFin}" />
+                    <p:outputLabel value="Fecha de Finalizacion:" />
+                    <p:calendar value="#{planillaBean.planilla.fechaFin}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold"/>
 
-                    <p:outputLabel value="Estado" />
+                    <p:outputLabel value="Estado de Planilla:" />
                     <p:inputText  value="#{planillaBean.planilla.estado}" />
                     
-                    <p:outputLabel value="Tipo de Planilla" />
+                    <p:outputLabel value="Tipo de Planilla:" />
                     <p:inputText  value="#{planillaBean.planilla.tipoPlanilla}" />
 
 
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update="form" />
-                        <p:commandButton value="Cancelar" />
+                        <p:commandButton value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <p:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
 
-            <p:panel header="Lista de Planilla" style="margin: 35px" >
-                <p:dataTable value="#{planillaBean.listaPlanilla}" var="e" id="Gr">
+            <p:panel header="Lista de Planilla" style="margin: 35px; padding: 10px 10px; text-align: center;" >
+                <p:dataTable value="#{planillaBean.listaPlanilla}" var="e" id="Gr" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{e.idplanillas}" />
                     </p:column>
-                    <p:column headerText="Fecha de Inicio">
-                        <p:outputLabel value="#{e.fechaInicio}" />
+                    <p:column headerText="Fecha de Inicio" filterBy="#{e.fechaInicio}" filterMatchMode="contains">
+                        <p:outputLabel value="#{e.fechaInicio}"/>
                     </p:column>
                     <p:column headerText="Fecha de Finalizacion">
                         <p:outputLabel value="#{e.fechaFin}" />
@@ -60,7 +118,7 @@ and open the template in the editor.
                     <p:column headerText="Estado">
                         <p:outputLabel value="#{e.estado}" />
                     </p:column>    
-                    <p:column headerText="Tipo De Planilla">
+                    <p:column headerText="Tipo De Planilla" filterBy="#{e.tipoPlanilla}" filterMatchMode="contains">
                         <p:outputLabel value="#{e.tipoPlanilla}" />
                     </p:column>
                     <p:column headerText="Editar">
