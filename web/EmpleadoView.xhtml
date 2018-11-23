@@ -11,78 +11,135 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
-        <script type="text/javascript">
-           $(document).ready(funcion(){
-                $(function () {
-                    // menu.html
-                    $("#incluirPagina").load("Menu.xhtml");
-                });
-           );
-        </script> 
+        <script type="text/javascript">          
+           PrimeFaces.locales['es'] = {
+            closeText: 'Cerrar',
+                    prevText: 'Anterior',
+                    nextText: 'Siguiente',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                    weekHeader: 'Semana',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText: 'Todo el día'
+            };
+        </script>
+         <style>
+            .ui-sidebar{
+                color: black !important;
+                background-color: white;
+                font-family: 'Castellar' !important;
+                text-align: center;
+                font-size: 20px;
+            }
+             .contenido{
+                background-image: url(https://cie.com.es/images/banners/company.jpg);
+                background-size: cover;
+            }
+            .Btn{
+                color:black !important;
+                font-family: 'Sedgwick Ave' !important;
+                font-size: 20px;
+                background: deepskyblue000000 !important;
+            }
+            .Main{
+                background-color: white;
+                border-color: deepskyblue000000 !important;
+            }
+            .ui-icon-home{
+                transform: scale(1.5);
+            }
+        </style>
     </h:head>
     <h:body>
-        <div id="incluirPagina"></div> 
-        <h:form style="margin: 10px" id="form">
-            <p:panel header="#{empleadoBean.accion} Empleado" style="margin: 35px">
+        <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+            <h1 style="text-align: center">Menú</h1>
+            <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon=" ui-icon-folder-open" />     
+            <br/>
+            <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%" value="Empleado" icon=" ui-icon-folder-open" />
+            <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%" value="Detalle" icon=" ui-icon-folder-open" />
+            <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%" value="Planilla" icon=" ui-icon-folder-open" />
+            <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%" value="Sucursal" icon=" ui-icon-folder-open" />
+            <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%" value="Empresa" icon=" ui-icon-folder-open" />
+        </p:sidebar>
+        <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
+                 
+        <h:form style="margin: 20px" id="form">
+            <p:panel header="#{empleadoBean.accion} Empleado" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
-
-                    <p:outputLabel value="Estado" />
+                    <p:outputLabel value="Estado:" />
                     <p:inputText value="#{empleadoBean.empleado.estado}"/>
 
-                    <p:outputLabel value="Codigo de Empleado" />
-                    <p:inputText value="#{empleadoBean.empleado.codigoEmpleado}" />
+                    <p:outputLabel value="Código de Empleado:" />
+                    <p:inputText value="#{empleadoBean.empleado.codigoEmpleado}" placeholder="Ingrese el Código"/>
 
-                    <p:outputLabel value="Nombres" />
-                    <p:inputText value="#{empleadoBean.empleado.nombres}"/>
+                    <p:outputLabel value="Nombre Completo:" />
+                    <p:inputText value="#{empleadoBean.empleado.nombres}" placeholder="Nombre Completo"/>
 
-                    <p:outputLabel value="Direccion" />
-                    <p:inputText  value="#{empleadoBean.empleado.direccion}"/>
+                    <p:outputLabel value="Direccion Completa:" />
+                    <p:inputText  value="#{empleadoBean.empleado.direccion}" placeholder="Dirección Completa"/>
 
-                    <p:outputLabel value="Telefono" />
-                    <p:inputText value="#{empleadoBean.empleado.telefono}"/>
+                    <p:outputLabel value="Telefono:" />
+                    <p:inputMask mask="9999-9999" value="#{empleadoBean.empleado.telefono}" placeholder="0000-0000"/>
 
-                    <p:outputLabel value="Email" />
-                    <p:inputText value="#{empleadoBean.empleado.email}"/>
+                    <p:outputLabel value="Email:" />
+                    <p:inputText value="#{empleadoBean.empleado.email}" placeholder="Email Empresarial"/>
 
-                    <p:outputLabel value="Fecha de Nacimiento" />
-                    <p:calendar value="#{empleadoBean.empleado.fechaNacimiento}"/>
+                    <p:outputLabel value="Fecha de Nacimiento:" />
+                    <p:calendar value="#{empleadoBean.empleado.fechaNacimiento}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold" placeholder="dd/MM/yyyy"/>
 
-                    <p:outputLabel value="Cargo" />
-                    <p:inputText  value="#{empleadoBean.empleado.cargo}"/>
+                    <p:outputLabel value="Cargo:" />
+                    <p:inputText  value="#{empleadoBean.empleado.cargo}" placeholder="Cargo del Empleado"/>
 
-                    <p:outputLabel value="Sucursal" />
-                    <p:inputText value="#{empleadoBean.empleado.idsucursal.idsucursal}"/>
+                    <p:outputLabel value="Sucursal:" />
+                    <p:inputText value="#{empleadoBean.empleado.idsucursal.idsucursal}" placeholder="Sucursal Asignada"/>
 
-                    <p:outputLabel value="Salario" />
-                    <p:inputText  value="#{empleadoBean.empleado.salario}"/>
+                    <p:outputLabel value="Salario:" />
+                    <p:inputMask mask="$999.99"  value="#{empleadoBean.empleado.salario}" placeholder="$000.00"/>
 
-                    <p:outputLabel value="Sexo" />
+                    <p:outputLabel value="Sexo:" />
                     <p:inputText  value="#{empleadoBean.empleado.sexo}"/>
 
-                    <p:outputLabel value="Estado Civil" />
+                    <p:outputLabel value="Estado Civil:" /> 
                     <p:inputText  value="#{empleadoBean.empleado.estadoCivil}"/>
 
-                    <p:outputLabel value="DUI" />
-                    <p:inputText  value="#{empleadoBean.empleado.DUI}"/>
+                    <p:outputLabel value="DUI:" />
+                    <p:inputMask mask="99999999-9" value="#{empleadoBean.empleado.DUI}" placeholder="00000000-0"/>
 
-                    <p:outputLabel value="NIT" />
-                    <p:inputText  value="#{empleadoBean.empleado.NIT}"/>
+                    <p:outputLabel value="NIT:" />
+                    <p:inputMask mask="9999-999999-999-9" value="#{empleadoBean.empleado.NIT}" placeholder="0000-000000-000-0"/>
 
-                    <p:outputLabel value="NUP" />
-                    <p:inputText  value="#{empleadoBean.empleado.NUP}"/>
+                    <p:outputLabel value="NUP:" />
+                    <p:inputMask mask="999999999999" value="#{empleadoBean.empleado.NUP}" placeholder="000000000000"/>
 
-                    <p:outputLabel value="Afiliacion ISSS" />
-                    <p:inputText  value="#{empleadoBean.empleado.afiliacionISSS}"/>
+                    <p:outputLabel value="Afiliacion ISSS:" />
+                    <p:inputText value="#{empleadoBean.empleado.afiliacionISSS}" placeholder="No. de Afiliación del ISSS"/>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" actionListener="#{empleadoBean.accionFormulario()}" update="form" />
-                        <p:commandButton value="Cancelar" />
+                        <p:commandButton value="Guardar" actionListener="#{empleadoBean.accionFormulario()}" update="form" style="margin: 15px 15px;"/>
+                        <p:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>
             </p:panel>
 
-            <p:panel header="Lista de Empleados" style="margin: 35px">
-                <p:dataTable value="#{empleadoBean.listaEmpleado}" var="e">
+            <p:panel header="Lista de Empleados" style="margin: 35px; padding: 10px 10px; text-align: center;">
+                <p:dataTable value="#{empleadoBean.listaEmpleado}" var="e" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{e.idempleado}" />
                     </p:column>

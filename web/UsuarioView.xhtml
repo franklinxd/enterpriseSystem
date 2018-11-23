@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Usuarios</title>
          <script type="text/javascript">
             $(function () {
                 // menu.html
@@ -19,25 +19,25 @@
             <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Nombres:" />
-                    <p:inputText value="#{usuarioBean.usuario.nombres}" />
+                    <p:inputText value="#{usuarioBean.usuario.nombres}" placeholder="1er y 2do Nombre"/>
 
                     <p:outputLabel value="Apellidos:" />
-                    <p:inputText  value="#{usuarioBean.usuario.apellidos}" />
+                    <p:inputText  value="#{usuarioBean.usuario.apellidos}" placeholder="1er y 2do Apellido"/>
 
                     <p:outputLabel value="Username:" />
-                    <p:inputText  value="#{usuarioBean.usuario.username}" />
+                    <p:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>
 
                     <p:outputLabel value="Contraseña:" />
-                    <p:password value="#{usuarioBean.usuario.password}"/>
+                    <p:password value="#{usuarioBean.usuario.password}" placeholder="Ingrese su Contraseña"/>
 
-                    <p:outputLabel value="Confirmar Contraseña:" />
-                    <p:password />
+                    <p:outputLabel value="Confirmar Contraseña:"/>
+                    <p:password placeholder="Confirme su Contraseña"/>
 
                     <p:outputLabel value="Empresa:" />
-                    <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" />
+                    <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update="form" style="margin: 15px 15px;"/>
+                        <p:commandButton value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
                         <p:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           

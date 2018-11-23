@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Planillas</title>
         <script type="text/javascript">
            PrimeFaces.locales['es'] = {
             closeText: 'Cerrar',
@@ -68,7 +68,7 @@ and open the template in the editor.
     </h:head>
      <h:body>
           <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
-            <h1 style="text-align: center">Tablas</h1>
+            <h1 style="text-align: center">Menú</h1>
             <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon=" ui-icon-folder-open" />     
             <br/>
             <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%" value="Empleado" icon=" ui-icon-folder-open" />
@@ -84,17 +84,16 @@ and open the template in the editor.
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Fecha de Inicio:" />
-                    <p:calendar value="#{planillaBean.planilla.fechaInicio}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold"/>
+                    <p:calendar value="#{planillaBean.planilla.fechaInicio}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold" placeholder="dd/MM/yyyy"/>
 
                     <p:outputLabel value="Fecha de Finalizacion:" />
-                    <p:calendar value="#{planillaBean.planilla.fechaFin}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold"/>
+                    <p:calendar value="#{planillaBean.planilla.fechaFin}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold" placeholder="dd/MM/yyyy"/>
 
                     <p:outputLabel value="Estado de Planilla:" />
-                    <p:inputText  value="#{planillaBean.planilla.estado}" />
+                    <p:inputText  value="#{planillaBean.planilla.estado}"/>
                     
                     <p:outputLabel value="Tipo de Planilla:" />
-                    <p:inputText  value="#{planillaBean.planilla.tipoPlanilla}" />
-
+                    <p:inputText  value="#{planillaBean.planilla.tipoPlanilla}"/>
 
                     <f:facet name="footer">
                         <p:commandButton value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>
