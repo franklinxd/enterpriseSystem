@@ -95,7 +95,7 @@ and open the template in the editor.
                     <p:inputText  value="#{empleadoBean.empleado.direccion}" placeholder="Dirección Completa"/>
 
                     <p:outputLabel value="Telefono:" />
-                    <p:inputMask mask="9999-9999" value="#{empleadoBean.empleado.telefono}" placeholder="0000-0000"/>
+                    <p:inputMask mask="9999-9999" value="#{empleadoBean.empleado.telefono}" placeholder="Tel.: 0000-0000"/>
 
                     <p:outputLabel value="Email:" />
                     <p:inputText value="#{empleadoBean.empleado.email}" placeholder="Email Empresarial"/>
@@ -107,10 +107,10 @@ and open the template in the editor.
                     <p:inputText  value="#{empleadoBean.empleado.cargo}" placeholder="Cargo del Empleado"/>
 
                     <p:outputLabel value="Sucursal:" />
-                    <p:inputText value="#{empleadoBean.empleado.idsucursal.idsucursal}" placeholder="Sucursal Asignada"/>
+                    <p:inputText value="#{empleadoBean.empleado.idsucursal.idsucursal}" placeholder="ID SSucursal Asignada"/>
 
                     <p:outputLabel value="Salario:" />
-                    <p:inputMask mask="$999.99"  value="#{empleadoBean.empleado.salario}" placeholder="$000.00"/>
+                    <p:inputMask mask="999.99"  value="#{empleadoBean.empleado.salario}" placeholder="$000.00"/>
 
                     <p:outputLabel value="Sexo:" />
                     <p:inputText  value="#{empleadoBean.empleado.sexo}"/>
