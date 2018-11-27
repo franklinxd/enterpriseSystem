@@ -42,11 +42,15 @@ and open the template in the editor.
         <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <h1 style="text-align: center">Menú</h1>
             <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon=" ui-icon-folder-open" />     
-            <br/>
+            <p:separator />
             <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%" value="Empleado" icon=" ui-icon-folder-open" />
+            <p:separator />
             <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%" value="Detalle" icon=" ui-icon-folder-open" />
+            <p:separator />
             <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%" value="Planilla" icon=" ui-icon-folder-open" />
+            <p:separator />
             <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%" value="Sucursal" icon=" ui-icon-folder-open" />
+            <p:separator />
             <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%" value="Empresa" icon=" ui-icon-folder-open" />
         </p:sidebar>
         <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
