@@ -55,14 +55,14 @@ and open the template in the editor.
 
 
                     <p:outputLabel value="Estado De Planilla:" />
-                    <p:selectOneMenu value="#{planillaBean.planilla.estado}" style="width:190px">
+                    <p:selectOneMenu value="#{planillaBean.planilla.estado}" effect="fold" style="width:190px">
                         <f:selectItem itemLabel="Seleccione un Estado" itemValue="" />
                         <f:selectItem itemLabel="Aperturada" itemValue="Aperturada" />
                         <f:selectItem itemLabel="Cerrada" itemValue="Cerrada" />
                     </p:selectOneMenu>
 
                     <p:outputLabel value="Tipo de Planilla:" />
-                    <p:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}" style="width:190px">
+                    <p:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}" effect="fold" style="width:190px">
                         <f:selectItem itemLabel="Seleccione un Tipo de Planilla" itemValue="" />
                         <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
                         <f:selectItem itemLabel="Quinsenal" itemValue="Quinsenal" />

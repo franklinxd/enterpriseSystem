@@ -47,7 +47,7 @@ and open the template in the editor.
             <p:panel header="#{empleadoBean.accion} Empleado" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Estado:" />
-                    <p:selectOneMenu value="#{empleadoBean.empleado.estado}" style="width:190px" >
+                    <p:selectOneMenu value="#{empleadoBean.empleado.estado}" effect="fold" style="width:190px" >
                         <f:selectItem itemLabel="Seleccione un Estado" itemValue=""/>
                         <f:selectItem itemLabel="Activo" itemValue="Activo" />
                         <f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
@@ -84,14 +84,14 @@ and open the template in the editor.
                     <p:inputMask mask="999.99"  value="#{empleadoBean.empleado.salario}" placeholder="$000.00"/>
 
                     <p:outputLabel value="Sexo:" />      
-                    <p:selectOneMenu value="#{empleadoBean.empleado.sexo}" style="width:190px" >
+                    <p:selectOneMenu value="#{empleadoBean.empleado.sexo}" effect="fold" style="width:190px" >
                         <f:selectItem itemLabel="Seleccione su Sexo" itemValue=""/>
                         <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
                         <f:selectItem itemLabel="Mujer" itemValue="Mujer" />
                     </p:selectOneMenu>
 
                     <p:outputLabel value="Estado Civil:" /> 
-                    <p:selectOneMenu value="#{empleadoBean.empleado.estadoCivil}" style="width:190px" >
+                    <p:selectOneMenu value="#{empleadoBean.empleado.estadoCivil}" effect="fold" style="width:190px" >
                         <f:selectItem itemLabel="Seleccione un Estado Civil" itemValue=""/>
                         <f:selectItem itemLabel="Solter@" itemValue="Solter@" />
                         <f:selectItem itemLabel="Casad@" itemValue="Casad@" />
