@@ -80,6 +80,12 @@ public class LoginBean {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+     public void saveMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+         
+        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
+        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
+    }
 
     public String validaLogin() throws Exception {
 
