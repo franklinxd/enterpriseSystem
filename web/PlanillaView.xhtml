@@ -12,31 +12,31 @@ and open the template in the editor.
     <h:head>
         <title>Planillas</title>
         <script type="text/javascript">
-           PrimeFaces.locales['es'] = {
-            closeText: 'Cerrar',
-                    prevText: 'Anterior',
-                    nextText: 'Siguiente',
-                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-                    dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-                    weekHeader: 'Semana',
-                    firstDay: 1,
-                    isRTL: false,
-                    showMonthAfterYear: false,
-                    yearSuffix: '',
-                    timeOnlyTitle: 'Sólo hora',
-                    timeText: 'Tiempo',
-                    hourText: 'Hora',
-                    minuteText: 'Minuto',
-                    secondText: 'Segundo',
-                    currentText: 'Fecha actual',
-                    ampm: false,
-                    month: 'Mes',
-                    week: 'Semana',
-                    day: 'Día',
-                    allDayText: 'Todo el día'
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
             };
         </script>
         <style>
@@ -47,7 +47,7 @@ and open the template in the editor.
                 text-align: center;
                 font-size: 20px;
             }
-             .contenido{
+            .contenido{
                 background-image: url(https://cie.com.es/images/banners/company.jpg);
                 background-size: cover;
             }
@@ -66,8 +66,8 @@ and open the template in the editor.
             }
         </style>
     </h:head>
-     <h:body>
-          <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+    <h:body>
+        <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <h1 style="text-align: center">Menú</h1>
             <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon=" ui-icon-folder-open" />     
             <br/>
@@ -78,7 +78,7 @@ and open the template in the editor.
             <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%" value="Empresa" icon=" ui-icon-folder-open" />
         </p:sidebar>
         <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
-         
+
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{planillaBean.accion} Planilla" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
@@ -89,11 +89,22 @@ and open the template in the editor.
                     <p:outputLabel value="Fecha de Finalizacion:" />
                     <p:calendar value="#{planillaBean.planilla.fechaFin}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold" placeholder="dd/MM/yyyy"/>
 
-                    <p:outputLabel value="Estado de Planilla:" />
-                    <p:inputText  value="#{planillaBean.planilla.estado}"/>
-                    
+
+                    <p:outputLabel value="Estado De Planilla:" />
+                    <p:selectOneMenu value="#{planillaBean.planilla.estado}" style="width:190px">
+                        <f:selectItem itemLabel="Seleccione el estado" itemValue="" />
+                        <f:selectItem itemLabel="Aperturada" itemValue="Aperturada" />
+                        <f:selectItem itemLabel="Cerrada" itemValue="Cerrada" />
+                    </p:selectOneMenu>
+
                     <p:outputLabel value="Tipo de Planilla:" />
-                    <p:inputText  value="#{planillaBean.planilla.tipoPlanilla}"/>
+                    <p:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}" style="width:190px">
+                        <f:selectItem itemLabel="Seleccione el tipo de planilla" itemValue="" />
+                        <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
+                        <f:selectItem itemLabel="Quinsenal" itemValue="Quinsenal" />
+                        <f:selectItem itemLabel="Mensual" itemValue="Mensual" />
+                        <f:selectItem itemLabel="Anual" itemValue="Anual" />
+                    </p:selectOneMenu>
 
                     <f:facet name="footer">
                         <p:commandButton value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>

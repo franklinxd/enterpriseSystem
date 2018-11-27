@@ -83,13 +83,22 @@ and open the template in the editor.
             <p:panel header="#{empleadoBean.accion} Empleado" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Estado:" />
-                    <p:inputText value="#{empleadoBean.empleado.estado}"/>
+                    <p:selectOneMenu value="#{empleadoBean.empleado.estado}" style="width:190px" >
+                        <f:selectItem itemLabel="Seleccione el Estado" itemValue=""/>
+                        <f:selectItem itemLabel="Estado" itemValue="Estado"/>
+                        <f:selectItem itemLabel="Activo" itemValue="Activo" />
+                        <f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+                    </p:selectOneMenu>
+                    
 
                     <p:outputLabel value="Código de Empleado:" />
                     <p:inputText value="#{empleadoBean.empleado.codigoEmpleado}" placeholder="Ingrese el Código"/>
 
-                    <p:outputLabel value="Nombre Completo:" />
-                    <p:inputText value="#{empleadoBean.empleado.nombres}" placeholder="Nombre Completo"/>
+                    <p:outputLabel value="Nombres:" />
+                    <p:inputText value="#{empleadoBean.empleado.nombres}" placeholder="1er y 2do nombre"/>
+                    
+                    <p:outputLabel value="Apellidos:" />
+                    <p:inputText value="#{empleadoBean.empleado.apellidos}" placeholder="1er y 2do apellido"/>
 
                     <p:outputLabel value="Direccion Completa:" />
                     <p:inputText  value="#{empleadoBean.empleado.direccion}" placeholder="Dirección Completa"/>
@@ -112,11 +121,21 @@ and open the template in the editor.
                     <p:outputLabel value="Salario:" />
                     <p:inputMask mask="999.99"  value="#{empleadoBean.empleado.salario}" placeholder="$000.00"/>
 
-                    <p:outputLabel value="Sexo:" />
-                    <p:inputText  value="#{empleadoBean.empleado.sexo}"/>
+                    <p:outputLabel value="Sexo:" />      
+                    <p:selectOneMenu value="#{empleadoBean.empleado.sexo}" style="width:190px" >
+                        <f:selectItem itemLabel="Seleccione el sexo" itemValue=""/>
+                        <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
+                        <f:selectItem itemLabel="Mujer" itemValue="Mujer" />
+                        <f:selectItem itemLabel="Indefinido" itemValue="Indefinido" />
+                    </p:selectOneMenu>
 
                     <p:outputLabel value="Estado Civil:" /> 
-                    <p:inputText  value="#{empleadoBean.empleado.estadoCivil}"/>
+                    <p:selectOneMenu value="#{empleadoBean.empleado.estadoCivil}" style="width:190px" >
+                        <f:selectItem itemLabel="Seleccione el Estado Civil" itemValue=""/>
+                        <f:selectItem itemLabel="Solter@" itemValue="Solter@" />
+                        <f:selectItem itemLabel="Casad@" itemValue="Casad@" />
+                        <f:selectItem itemLabel="Acompañad@" itemValue="Acompañad@" />
+                    </p:selectOneMenu>
 
                     <p:outputLabel value="DUI:" />
                     <p:inputMask mask="99999999-9" value="#{empleadoBean.empleado.DUI}" placeholder="00000000-0"/>
