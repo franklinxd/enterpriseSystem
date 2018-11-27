@@ -25,6 +25,7 @@ public class UsuarioBean {
     private String accion;
     private String username;
     private String password;
+    private String password2;
     private String nombre;
 
     public String getUsername() {
@@ -50,6 +51,15 @@ public class UsuarioBean {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
+    
     
     
     @PostConstruct

@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Usuarios</title>
-         <script type="text/javascript">
+        <script type="text/javascript">
             $(function () {
                 // menu.html
                 $("#incluirPagina").load("Menu.xhtml");
@@ -25,13 +25,13 @@
                     <p:inputText  value="#{usuarioBean.usuario.apellidos}" placeholder="1er y 2do Apellido"/>
 
                     <p:outputLabel value="Username:" />
-                    <p:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>
+                    <p:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>             
 
-                    <p:outputLabel value="Contraseña:" />
-                    <p:password value="#{usuarioBean.usuario.password}" placeholder="Ingrese su Contraseña"/>
+                    <h:outputLabel for="pwd1" value="Contraseña: *" />
+                    <p:password id="pwd1" value="#{usuarioBean.usuario.password}" match="pwd2" label="Ingrese su Contraseña" required="true" placeholder="Ruiz" />
 
-                    <p:outputLabel value="Confirmar Contraseña:"/>
-                    <p:password placeholder="Confirme su Contraseña"/>
+                    <h:outputLabel for="pwd2" value="Confirme su Contraseña: *" />
+                    <p:password id="pwd2" value="#{usuarioBean.usuario.password2}" label="Confirme su Contraseña" required="true" placeholder="Ruiz"/>
 
                     <p:outputLabel value="Empresa:" />
                     <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>

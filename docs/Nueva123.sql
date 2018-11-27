@@ -40,7 +40,7 @@ CREATE TABLE `detalleplanillas` (
   KEY `kf1_idx` (`idplanilla`),
   CONSTRAINT `kf1` FOREIGN KEY (`idplanilla`) REFERENCES `planillas` (`idplanillas`),
   CONSTRAINT `kf2` FOREIGN KEY (`idempleado`) REFERENCES `empleados` (`idempleado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +49,7 @@ CREATE TABLE `detalleplanillas` (
 
 LOCK TABLES `detalleplanillas` WRITE;
 /*!40000 ALTER TABLE `detalleplanillas` DISABLE KEYS */;
+INSERT INTO `detalleplanillas` VALUES (1,1,1,0.10,0.10,0.10,0.10,0.10,0.10,0.10,0.10,0.20),(3,1,1,0.03,0.02,0.04,0.05,0.01,0.01,0.01,0.01,0.01),(5,1,1,999.99,999.99,999.99,999.99,999.99,999.99,999.99,999.99,999.99);
 /*!40000 ALTER TABLE `detalleplanillas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +82,7 @@ CREATE TABLE `empleados` (
   PRIMARY KEY (`idempleado`),
   KEY `fk5_idx` (`idsucursal`),
   CONSTRAINT `fk5` FOREIGN KEY (`idsucursal`) REFERENCES `sucursales` (`idsucursal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,6 +91,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
+INSERT INTO `empleados` VALUES (1,1,'fdh','dfg','dfg','df','dg','dgf','dfg','2018-11-04','rgf','gfd','bg','gf','fg','fg','bf',0.80),(3,1,'gfds','fds','vfs',NULL,'fd','vf','fv',NULL,'bd','fdbs','v','vf','fd','fd','fd',0.01),(4,1,'ryt','rey','ert',NULL,'rt','','ert','2018-11-08','hola','hj','55555555-5','5555-555555-555-5','555555555555','55555555555','1',323.23),(5,1,'Hombre','sp16001','Manuel Enrique ','Suarez Palacios','San Salvador, Soyapango','2222-8888','manuel@gmail.com','1996-10-17','Hombre','Solter@','78787878-7','8582-558585-858-5','969696969696','325564145414','Programador',900.00);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +110,7 @@ CREATE TABLE `empresas` (
   `telefono` varchar(20) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idempresa`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +119,7 @@ CREATE TABLE `empresas` (
 
 LOCK TABLES `empresas` WRITE;
 /*!40000 ALTER TABLE `empresas` DISABLE KEYS */;
-INSERT INTO `empresas` VALUES (1,'VHR','1013-091189-101-7','San Marcos, San Salvador','2222-2222','vhr@vhr.com.sv'),(2,'dsf','fdsf','fsdf','dfsf','fds');
+INSERT INTO `empresas` VALUES (1,'VHR','1013-091189-101-7','San Marcos, San Salvador','2222-2222','vhr@vhr.com.sv'),(2,'dsf','fdsf','fsdf','dfsf','fds'),(3,'El quesito','0125-314201-542-1','San Salvador','7585-4565','@QuesitoBuengusto.com'),(4,'Miguelito','0151-054456-015-4','Soya','2484-2564','@Soya.Migel.123.com');
 /*!40000 ALTER TABLE `empresas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +165,7 @@ CREATE TABLE `planillas` (
   `estado` varchar(10) DEFAULT NULL,
   `tipoPlanilla` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idplanillas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,6 +174,7 @@ CREATE TABLE `planillas` (
 
 LOCK TABLES `planillas` WRITE;
 /*!40000 ALTER TABLE `planillas` DISABLE KEYS */;
+INSERT INTO `planillas` VALUES (1,'2018-11-03','2018-11-03','abierto','sc'),(2,NULL,NULL,'fdgn','nh'),(3,'2018-11-09','2018-11-16','ñ-liuh','ñluhb'),(4,'2018-11-08','2018-11-30','Activa','Remesa'),(6,'2018-11-08','2018-11-07','Xbox One','Wii U'),(7,'2018-11-23','2018-11-28','hola','Xbox One'),(8,'2018-11-07','2018-11-15','PS4','hola'),(9,'2018-11-23','2018-11-28','PS4','Wii U'),(13,'2018-11-15','2018-11-10','Cerrada','Quinsenal'),(14,'2018-11-15','2018-11-15','Aperturada','Quinsenal');
 /*!40000 ALTER TABLE `planillas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,7 +196,7 @@ CREATE TABLE `sucursales` (
   PRIMARY KEY (`idSucursal`),
   KEY `fk4_idx` (`idempresa`),
   CONSTRAINT `fk4` FOREIGN KEY (`idempresa`) REFERENCES `empresas` (`idempresa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,6 +205,7 @@ CREATE TABLE `sucursales` (
 
 LOCK TABLES `sucursales` WRITE;
 /*!40000 ALTER TABLE `sucursales` DISABLE KEYS */;
+INSERT INTO `sucursales` VALUES (1,'fran','kjhga','lnhkj',11,'sdf',1),(2,'fd','vf','af',1,NULL,1),(3,'Las Juaquinas','Apopa','2545-8754',51,NULL,1);
 /*!40000 ALTER TABLE `sucursales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,10 +223,11 @@ CREATE TABLE `usuarios` (
   `username` varchar(10) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `idempresa` int(11) DEFAULT NULL,
+  `password2` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idusuario`),
   KEY `fk3_idx` (`idempresa`),
   CONSTRAINT `fk3` FOREIGN KEY (`idempresa`) REFERENCES `empresas` (`idempresa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,6 +236,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'gdfg','sdf','ñh','sdf',1,NULL),(2,'Gerson','Ruiz','Gruiz','gruiz',1,NULL),(3,'df','svd','dsv','ggg',1,'gss'),(4,'gg','gg','gg','ggg',1,'ggg'),(5,'gg','gg','gg','ggg',1,'ggg'),(6,'gg','gg','gg','gg',1,'gg'),(7,'uu','uu','uu','uuu',1,'uuu'),(8,'gg','gg','gg','tttt',1,'tttt');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -243,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-22 14:29:53
+-- Dump completed on 2018-11-27 14:18:20
