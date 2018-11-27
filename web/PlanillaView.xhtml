@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Planillas</title>
         <script type="text/javascript">
@@ -92,14 +93,14 @@ and open the template in the editor.
 
                     <p:outputLabel value="Estado De Planilla:" />
                     <p:selectOneMenu value="#{planillaBean.planilla.estado}" style="width:190px">
-                        <f:selectItem itemLabel="Seleccione el estado" itemValue="" />
+                        <f:selectItem itemLabel="Seleccione un Estado" itemValue="" />
                         <f:selectItem itemLabel="Aperturada" itemValue="Aperturada" />
                         <f:selectItem itemLabel="Cerrada" itemValue="Cerrada" />
                     </p:selectOneMenu>
 
                     <p:outputLabel value="Tipo de Planilla:" />
                     <p:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}" style="width:190px">
-                        <f:selectItem itemLabel="Seleccione el tipo de planilla" itemValue="" />
+                        <f:selectItem itemLabel="Seleccione un Tipo de Planilla" itemValue="" />
                         <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
                         <f:selectItem itemLabel="Quinsenal" itemValue="Quinsenal" />
                         <f:selectItem itemLabel="Mensual" itemValue="Mensual" />
@@ -107,8 +108,8 @@ and open the template in the editor.
                     </p:selectOneMenu>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>
-                        <p:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
@@ -132,10 +133,10 @@ and open the template in the editor.
                         <p:outputLabel value="#{e.tipoPlanilla}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <p:commandButton value="Editar" actionListener="#{planillaBean.editar(e)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{planillaBean.editar(e)}" update=":form"  icon="ui-icon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <p:commandButton value="Borrar" actionListener="#{planillaBean.borrar(e)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{planillaBean.borrar(e)}" update=":form"  icon="ui-icon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Usuarios</title>
          <script type="text/javascript">
@@ -37,8 +38,8 @@
                     <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
-                        <p:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
@@ -65,10 +66,10 @@
                         <p:outputLabel value="#{u.idempresa.nombre}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <p:commandButton value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <p:commandButton value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
