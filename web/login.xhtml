@@ -10,7 +10,7 @@
     <h:body>
         <h:form id="loginform">
             
-            <p:growl id="msg" showDetail="true" life="3000"/>
+            <p:growl id="growl" showDetail="true" sticky="true" life="3000" />
             <p:panel header="Login" style="width: 360px;">
                 
                 <h:panelGrid id="loginPanel" columns="2">
@@ -32,6 +32,8 @@
                     <p:message for="password"></p:message>
                     
                     <p:spacer></p:spacer>
+                    
+                  
                     
                     <p:commandButton action="#{loginBean.validaLogin()}" value="Login" update="loginform" ajax="true"></p:commandButton>
                 </h:panelGrid>

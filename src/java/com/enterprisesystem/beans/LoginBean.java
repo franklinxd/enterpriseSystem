@@ -1,12 +1,13 @@
-
 package com.enterprisesystem.beans;
 
 import com.enterprisesystem.dao.LoginDAO;
 import com.enterprisesystem.dao.UsuarioDAO;
 import com.enterprisesystem.modelo.Usuario;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -16,12 +17,21 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LoginBean {
 
+    private String message;
     private boolean isLogged;
     private List<Usuario> listaUsuario;
     private UsuarioDAO usuarioDAO;
     private String username;
     private String password;
     private String nombre;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public List<Usuario> getListaUsuario() {
         return listaUsuario;
@@ -79,15 +89,19 @@ public class LoginBean {
         try {
             if (u != null) {
                 isLogged = true;
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Menu.xhtml");
+
                 return "Menu";
             } else {
                 isLogged = false;
                 return "login";
             }
+
         } catch (Exception e) {
             System.out.println("Error" + e.getMessage());
             return null;
         }
 
     }
+
 }
