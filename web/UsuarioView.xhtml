@@ -7,15 +7,9 @@
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Usuarios</title>
-        <script type="text/javascript">
-            $(function () {
-                // menu.html
-                $("#incluirPagina").load("Menu.xhtml");
-            });
-        </script>
     </h:head>
     <h:body>
-        <div id="incluirPagina"></div>
+        <div id="incluirPagina"/>
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
@@ -77,6 +71,12 @@
                 </p:dataTable>
             </p:panel>
         </h:form>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script>
     </h:body>
 </html>
 

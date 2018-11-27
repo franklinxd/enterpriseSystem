@@ -11,36 +11,10 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Detalle de Planilla</title>
-        <style>
-            .ui-sidebar{
-                color: black !important;
-                background-color: white;
-                font-family: 'Castellar' !important;
-                text-align: center;
-                font-size: 20px;
-            }
-            .contenido{
-                background-image: url(https://cie.com.es/images/banners/company.jpg);
-                background-size: cover;
-            }
-            .Btn{
-                color:black !important;
-                font-family: 'Sedgwick Ave' !important;
-                font-size: 20px;
-                background: deepskyblue000000 !important;
-            }
-            .Main{
-                background-color: white;
-                border-color: deepskyblue000000 !important;
-            }
-            .ui-icon-home{
-                transform: scale(1.5);
-            }
-        </style> 
+        <title>Detalle de Planilla</title> 
     </h:head>
     <h:body>
-
+        <div id="incluirPagina"/>
         <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <h1 style="text-align: center">Menú</h1>
             <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon=" ui-icon-folder-open" />     
@@ -142,6 +116,12 @@ and open the template in the editor.
                 </p:dataTable>
             </p:panel>
         </h:form>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script>
     </h:body>
 </html>
 
