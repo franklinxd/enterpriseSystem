@@ -20,7 +20,7 @@ public class Usuario implements Serializable {
     private String apellidos;
     private String username;
     private String password;
-    private String password2;
+
     @ManyToOne
     @JoinColumn(name="idempresa")
     private Empresa idempresa;
@@ -90,14 +90,6 @@ public class Usuario implements Serializable {
 
     public void setIdempresa(Empresa idempresa) {
         this.idempresa = idempresa;
-    }
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
     }
     
 }

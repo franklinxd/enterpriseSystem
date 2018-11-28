@@ -103,5 +103,4 @@ public class IngresosBean {
         this.accion = accion;
     }
     
-    
 }

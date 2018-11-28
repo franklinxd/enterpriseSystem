@@ -26,7 +26,7 @@
                     <p:password id="pwd1" value="#{usuarioBean.usuario.password}" match="pwd2" label="Ingrese su Contraseña" required="true" placeholder="Ruiz" />
 
                     <h:outputLabel for="pwd2" value="Confirme su Contraseña: *" />
-                    <p:password id="pwd2" value="#{usuarioBean.usuario.password2}" label="Confirme su Contraseña" required="true" placeholder="Ruiz"/>
+                    <p:password id="pwd2" value="#{usuarioBean.password2}" label="Confirme su Contraseña" required="true" placeholder="Ruiz"/>
 
                     <p:outputLabel value="Empresa:" />
                     <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>
@@ -56,17 +56,14 @@
                     <p:column headerText="Password">
                         <p:outputLabel value="#{u.password}" />
                     </p:column>
-                    <p:column headerText="Password">
-                        <p:outputLabel value="#{u.password2}" />
-                    </p:column>
                     <p:column headerText="Empresa">
                         <p:outputLabel value="#{u.idempresa.nombre}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil" immediate="true"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash" immediate="true"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
