@@ -43,7 +43,7 @@ public class IngresosBean {
         accion = "Registrar";
     }
     
-    public void accionFomulario(){
+    public void accionFormulario(){
         if(accion.equals("Registrar")){
             ingresoDAO.insertar(this.ingreso);
         }else if(accion.equals("Editar")){
