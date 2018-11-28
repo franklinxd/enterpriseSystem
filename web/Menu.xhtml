@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -43,7 +44,7 @@ and open the template in the editor.
     </h:head>
     <h:body styleClass="contenido">
         <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
-            <h1 style="text-align: center">Menú</h1>
+            <b:link href="Menu.xhtml"><h1 style="text-align: center">Menú</h1></b:link>            
             <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon="ui-icon-folder-open" />     
             <p:separator/>
             <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%" value="Empleado" icon="ui-icon-folder-open" />
