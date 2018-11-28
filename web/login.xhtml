@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <h:head>
         <title>Login</title>
@@ -23,13 +24,11 @@
         </style> 
         <h:body class="padre"> 
             <h:form id="loginform">
-
                 <p:growl id="growl" showDetail="true" sticky="true" life="3000" />
-                <p:panel header="Login" style="width: 360px;">
+                <p:panel header="Login." style="width: 360px; padding: 10px 10px;">
+                    <h:panelGrid id="loginPanel" columns="2" cellpadding="2" style="text-align: center;">
 
-                    <h:panelGrid id="loginPanel" columns="2" cellpadding="2">
-
-                        <h:outputLabel for="username" value="Usuario"/>
+                        <h:outputLabel for="username" value="Usuario: *"/>
 
                         <p:inputText id="username" value="#{loginBean.username}" required="true"></p:inputText>
 
@@ -39,7 +38,7 @@
 
                         </p:message>
 
-                        <h:outputLabel for="password" value="Password"/>
+                        <h:outputLabel for="password" value="Password: *"/>
 
                         <p:password id="password" value="#{loginBean.password}" feedback="false"></p:password>
 
@@ -48,10 +47,8 @@
                         <p:message for="password"></p:message>
 
                         <p:spacer></p:spacer>
-
-
-
-                        <p:commandButton action="#{loginBean.validaLogin()}" value="Login" update="loginform" ajax="true"></p:commandButton>
+                        
+                        <b:commandButton styleClass="btn btn-primary" action="#{loginBean.validaLogin()}" value="Login" update=":loginform" ajax="true"/>
                     </h:panelGrid>
                 </p:panel>
             </h:form>
