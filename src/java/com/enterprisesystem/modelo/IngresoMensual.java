@@ -20,7 +20,7 @@ public class IngresoMensual implements Serializable{
      @ManyToOne
      @JoinColumn(name = "idsucursal")
      private Sucursal idsucursal;
-     private String mes;
+     private Integer mes;
      private Integer anio;
      private float ingreso;
 
@@ -28,7 +28,7 @@ public class IngresoMensual implements Serializable{
         super();
     }
 
-    public IngresoMensual(Integer idingresomensual, Sucursal idsucursal, String mes, Integer anio, float ingreso) {
+    public IngresoMensual(Integer idingresomensual, Sucursal idsucursal, Integer mes, Integer anio, float ingreso) {
         super();
         this.idingresomensual = idingresomensual;
         this.idsucursal = idsucursal;
@@ -53,11 +53,11 @@ public class IngresoMensual implements Serializable{
         this.idsucursal = idsucursal;
     }
 
-    public String getMes() {
+    public Integer getMes() {
         return mes;
     }
 
-    public void setMes(String mes) {
+    public void setMes(Integer mes) {
         this.mes = mes;
     }
 

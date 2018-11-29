@@ -6,7 +6,35 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Sucursales</title>
+        <title>Ingresos</title>
+        <script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>
     </h:head>
     <h:body>
         <div id="incluirPagina"/>
@@ -15,18 +43,17 @@
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="ID Sucursal:" />
-                    <p:inputText  value="#{ingresosBean.ingreso.idsucursal}" placeholder="Id de la sucursal"/>
+                    <p:inputText value="#{ingresosBean.ingreso.idsucursal.idsucursal}" placeholder="ID Sucursal"/>
 
                     <p:outputLabel value="Mes:" />
-                    <p:inputText  value="#{ingresosBean.ingreso.mes}" placeholder="mes"/>
+                    <p:inputMask value="#{ingresosBean.ingreso.mes}" placeholder="Seleccione el Mes" mask="99"/>
 
-                    <p:outputLabel value="Añ0:" />
-                    <p:inputMask mask="9999" value="#{ingresosBean.ingreso.anio}" placeholder="Año"/>
+                    <p:outputLabel value="Año:" />
+                    <p:inputMask value="#{ingresosBean.ingreso.anio}" placeholder="Seleccione el Año" mask="9999"/>
 
-                    <p:outputLabel value="Ingreso del mes" />
-                    <p:inputText value="#{ingresosBean.ingreso.ingreso}" placeholder="ingreso del mes"/>
+                    <p:outputLabel value="Ingreso del mes:" />
+                    <p:inputMask value="#{ingresosBean.ingreso.ingreso}" placeholder="El Ingreso del Mes" mask="999.99"/>
 
-                    
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{ingresosBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
                         <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
@@ -37,12 +64,12 @@
             <p:panel header="Lista de Ingresos" style="margin: 35px; padding: 10px 10px; text-align: center;" >
                 <p:dataTable value="#{ingresosBean.listaIngreso}" var="i" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
-                    
+
                     <p:column headerText="ID Ingreso Mensual">
                         <p:outputLabel value="#{i.idingresomensual}" />
                     </p:column>
                     <p:column headerText="ID Ingreso Mensual">
-                        <p:outputLabel value="#{i.idsucursal}" />
+                        <p:outputLabel value="#{i.idsucursal.idsucursal}" />
                     </p:column>
                     <p:column headerText="Mes" filterBy="#{s.mes}" filterMatchMode="contains">
                         <p:outputLabel value="#{i.mes}" />
@@ -52,24 +79,17 @@
                     </p:column>
                     <p:column headerText="Ingreso">
                         <p:outputLabel value="#{i.ingreso}" />
-                    </p:column>
-                    
-                    
+                    </p:column>                  
+
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{ingresoBean.editar(i)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{ingresosBean.editar(i)}" update=":form"  icon="ui-icon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{ingresoBean.borrar(i)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{ingresosBean.borrar(i)}" update=":form"  icon="ui-icon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
         </h:form>
-        <script type="text/javascript">
-            $(function () {
-                // menu.html
-                $("#incluirPagina").load("Menu.xhtml");
-            });
-        </script>
     </h:body>
 </html>
 
