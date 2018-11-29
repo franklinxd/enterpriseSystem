@@ -15,18 +15,6 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <div id="incluirPagina"/>
-        <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
-            <h1 style="text-align: center">Menú</h1>
-            <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon=" ui-icon-folder-open" />     
-            <br/>
-            <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%" value="Empleado" icon=" ui-icon-folder-open" />
-            <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%" value="Detalle" icon=" ui-icon-folder-open" />
-            <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%" value="Planilla" icon=" ui-icon-folder-open" />
-            <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%" value="Sucursal" icon=" ui-icon-folder-open" />
-            <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%" value="Empresa" icon=" ui-icon-folder-open" />
-        </p:sidebar>
-        <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/> 
-
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{detalleBean.accion} Detalle" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
@@ -108,10 +96,10 @@ and open the template in the editor.
                         <p:outputLabel value="#{d.anticipos}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" actionListener="#{detalleBean.editar(d)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{detalleBean.editar(d)}" update=":form"  icon="ui-icon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" ajax="true" actionListener="#{detalleBean.borrar(d)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{detalleBean.borrar(d)}" update=":form"  icon="ui-icon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
