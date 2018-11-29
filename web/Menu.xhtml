@@ -15,20 +15,23 @@ and open the template in the editor.
         <style>
             .ui-sidebar{
                 color: black !important;
-                background-color: white;
                 font-family: 'Castellar' !important;
                 text-align: center;
                 font-size: 20px;
             }
-             .contenido{
+            .contenido{
                 background-image: url(https://cie.com.es/images/banners/company.jpg);
-                background-size: cover;
+                background-size: cover;              
             }
             .Btn{
                 color:black !important;
                 font-family: 'Sedgwick Ave' !important;
                 font-size: 20px;
                 background: deepskyblue000000 !important;
+                border-radius: 50px 50px 50px 50px;
+                -moz-border-radius: 50px 50px 50px 50px;
+                -webkit-border-radius: 50px 50px 50px 50px;
+                border: 2px solid #000000;
             }
             .Main{
                 background-color: white;
@@ -40,22 +43,21 @@ and open the template in the editor.
             .ui-icon-folder-open {
                 transform: scale(1.5);
             }
+            h1 {
+                color: black;
+            }
         </style>
     </h:head>
     <h:body styleClass="contenido">
         <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <b:link href="Menu.xhtml"><h1 style="text-align: center">Menú</h1></b:link>            
-            <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%" value="Usuario" icon="ui-icon-folder-open" />     
-            <p:separator/>
-            <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%" value="Empleado" icon="ui-icon-folder-open" />
-            <p:separator />
-            <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%" value="Detalle" icon="ui-icon-folder-open" />
-            <p:separator/>
-            <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%" value="Planilla" icon="ui-icon-folder-open" />
-            <p:separator/>
-            <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%" value="Sucursal" icon="ui-icon-folder-open" />
-            <p:separator/>
-            <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%" value="Empresa" icon="ui-icon-folder-open" />
+            <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Detalle"/>
+            <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Empleado"/>
+            <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Empresa"/>
+            <p:button href="IngresosView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Ingresos"/>
+            <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Planilla"/>
+            <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Sucursal"/>
+            <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Usuario"/>
         </p:sidebar>
         <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
     </h:body>
