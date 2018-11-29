@@ -135,17 +135,11 @@ and open the template in the editor.
                     <p:column headerText="Apellido">
                         <p:outputLabel value="#{e.apellidos}" />
                     </p:column>
-                    <p:column headerText="Direccion">
-                        <p:outputLabel value="#{e.direccion}" />
-                    </p:column>
                     <p:column headerText="Telefono">
                         <p:outputLabel value="#{e.telefono}" />
                     </p:column>
                     <p:column headerText="Email">
                         <p:outputLabel value="#{e.email}" />
-                    </p:column>
-                    <p:column headerText="Fecha de Nacimiento">
-                        <p:outputLabel value="#{e.fechaNacimiento}" />
                     </p:column>
                     <p:column headerText="Cargo">
                         <p:outputLabel value="#{e.cargo}" />
@@ -156,23 +150,11 @@ and open the template in the editor.
                     <p:column headerText="Salario">
                         <p:outputLabel value="#{e.salario}" />
                     </p:column>
-                    <p:column headerText="Sexo">
-                        <p:outputLabel value="#{e.sexo}" />
-                    </p:column>
                     <p:column headerText="Estado Civil">
                         <p:outputLabel value="#{e.estadoCivil}" />
                     </p:column>
                     <p:column headerText="Dui">
                         <p:outputLabel value="#{e.DUI}" />
-                    </p:column>
-                    <p:column headerText="Nit">
-                        <p:outputLabel value="#{e.NIT}" />
-                    </p:column>
-                    <p:column headerText="Nup">
-                        <p:outputLabel value="#{e.NUP}" />
-                    </p:column>
-                    <p:column headerText="Afiliacion isss">
-                        <p:outputLabel value="#{e.afiliacionISSS}" />
                     </p:column>
                     <p:column headerText="Acciones">
                         <b:commandLink styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{empleadoBean.editar(e)}" update=":form" />
