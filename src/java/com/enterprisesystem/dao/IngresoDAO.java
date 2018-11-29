@@ -21,7 +21,7 @@ public class IngresoDAO {
     public List<IngresoMensual> buscarTodo(){
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        TypedQuery consulta = em.createQuery("Select i from IngresoMensual i", IngresoMensual.class);
+        TypedQuery consulta = em.createQuery("Select t from IngresoMensual t", IngresoMensual.class);
         List<IngresoMensual> listaIngreso = consulta.getResultList();
         return listaIngreso;
     }

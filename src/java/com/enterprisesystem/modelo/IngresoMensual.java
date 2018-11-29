@@ -12,7 +12,7 @@ import javax.persistence.Table;
  *
  * @author manuel.suarezusam
  */
-@Table(name="ingrosmensuales")
+@Table(name="ingresosmensuales")
 @Entity
 public class IngresoMensual implements Serializable{
      @Id

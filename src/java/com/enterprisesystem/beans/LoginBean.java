@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -24,6 +25,7 @@ public class LoginBean {
     private String username;
     private String password;
     private String nombre;
+    private static int idusuario;
 
     public String getMessage() {
         return message;
@@ -80,10 +82,11 @@ public class LoginBean {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-     public void saveMessage() {
+
+    public void saveMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
-         
-        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
+
+        context.addMessage(null, new FacesMessage("Successful", "Your message: " + message));
         context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
     }
 
@@ -91,20 +94,21 @@ public class LoginBean {
 
         LoginDAO user = new LoginDAO();
         Usuario u = user.validarUsuario(username, password);
-
+        FacesMessage message = null;
+        boolean loggedIn ;
+        idusuario = u.getIdusuario();
         try {
             if (u != null) {
-                isLogged = true;
+                loggedIn = true;
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Menu.xhtml");
-
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombres());
                 return "Menu";
             } else {
                 isLogged = false;
+                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Usuario o contraseña incorrecta");
                 return "login";
             }
-
         } catch (Exception e) {
-            System.out.println("Error" + e.getMessage());
             return null;
         }
 
