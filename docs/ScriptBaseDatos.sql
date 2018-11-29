@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `enterprisesystem` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+USE `enterprisesystem`;
+-- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: enterprisesystem
 -- ------------------------------------------------------
--- Server version	8.0.11
+-- Server version	8.0.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -91,7 +93,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (1,1,'fdh','dfg','dfg','df','dg','dgf','dfg','2018-11-04','rgf','gfd','bg','gf','fg','fg','bf',0.80),(3,1,'gfds','fds','vfs',NULL,'fd','vf','fv',NULL,'bd','fdbs','v','vf','fd','fd','fd',0.01),(4,1,'ryt','rey','ert',NULL,'rt','','ert','2018-11-08','hola','hj','55555555-5','5555-555555-555-5','555555555555','55555555555','1',323.23),(5,1,'Hombre','sp16001','Manuel Enrique ','Suarez Palacios','San Salvador, Soyapango','2222-8888','manuel@gmail.com','1996-10-17','Hombre','Solter@','78787878-7','8582-558585-858-5','969696969696','325564145414','Programador',900.00);
+INSERT INTO `empleados` VALUES (1,1,'fdh','dfg','dfg','df','dg','dgf','dfg','2018-11-04','rgf','gfd','bg','gf','fg','fg','bf',0.80),(5,1,'Hombre','sp16001','Manuel Enrique ','Suarez Palacios','San Salvador, Soyapango','2222-8888','manuel@gmail.com','1996-10-17','Hombre','Solter@','78787878-7','8582-558585-858-5','969696969696','325564145414','Programador',900.00);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,13 +135,13 @@ DROP TABLE IF EXISTS `ingresosmensuales`;
 CREATE TABLE `ingresosmensuales` (
   `idIngresoMensual` int(11) NOT NULL AUTO_INCREMENT,
   `idSucursal` int(11) DEFAULT NULL,
-  `mes` varchar(45) DEFAULT NULL,
-  `anio` int(11) DEFAULT NULL,
+  `mes` int(12) DEFAULT NULL,
+  `anio` int(12) DEFAULT NULL,
   `ingreso` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`idIngresoMensual`),
   KEY `fk_su_idx` (`idSucursal`),
   CONSTRAINT `fk_su` FOREIGN KEY (`idSucursal`) REFERENCES `sucursales` (`idsucursal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,6 +150,7 @@ CREATE TABLE `ingresosmensuales` (
 
 LOCK TABLES `ingresosmensuales` WRITE;
 /*!40000 ALTER TABLE `ingresosmensuales` DISABLE KEYS */;
+INSERT INTO `ingresosmensuales` VALUES (5,2,11,2018,999.99),(6,1,12,2011,999.99),(7,3,12,2018,999.99);
 /*!40000 ALTER TABLE `ingresosmensuales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +230,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`idusuario`),
   KEY `fk3_idx` (`idempresa`),
   CONSTRAINT `fk3` FOREIGN KEY (`idempresa`) REFERENCES `empresas` (`idempresa`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +239,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'gdfg','sdf','ñh','sdf',1,NULL),(2,'Gerson','Ruiz','Gruiz','gruiz',1,NULL),(3,'df','svd','dsv','ggg',1,'gss'),(4,'gg','gg','gg','ggg',1,'ggg'),(5,'gg','gg','gg','ggg',1,'ggg'),(6,'gg','gg','gg','gg',1,'gg'),(7,'uu','uu','uu','uuu',1,'uuu'),(8,'gg','gg','gg','tttt',1,'tttt');
+INSERT INTO `usuarios` VALUES (1,'gdfg','sdf','ñh','sdf',1,NULL),(2,'Gerson','Ruiz','Gruiz','gruiz',1,NULL),(3,'df','svd','dsv','ggg',1,'gss'),(4,'gg','gg','gg','ggg',1,'ggg'),(5,'gg','gg','gg','ggg',1,'ggg'),(6,'gg','gg','gg','gg',1,'gg'),(7,'uu','uu','uu','uuu',1,'uuu'),(8,'gg','gg','gg','tttt',1,'tttt'),(9,'Jeremias','Ramos','jramos','123',1,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -249,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-27 14:18:20
+-- Dump completed on 2018-11-29 16:52:20
