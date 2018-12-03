@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Empleados</title>
+        <script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>        
+    </h:head>
+    <h:body>
+        <div id="incluirPagina"/>
+        <b:form style="margin: 20px" id="form">
+            <p:panel header="#{empleadoBean.accion} Empleado" style="margin: 35px; padding: 10px 10px; text-align: center;">
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <b:row style="padding: 50;">
+                        <b:column span="3">
+                            <b:panel>
+                                
+                                <h:outputLabel value="Estado:" />
+                                <b:selectOneMenu 
+                                                 value="#{empleadoBean.empleado.estado}">
+                                    <f:selectItem itemLabel="- Seleccione uno - " />
+                                    <f:selectItem itemLabel="Activo" itemValue="Activo"/>
+                                    <f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+                                </b:selectOneMenu>
+
+                                <h:outputLabel value="Código de Empleado:" />
+                                <b:inputText value="#{empleadoBean.empleado.codigoEmpleado}" placeholder="Ingrese el Código"/>
+
+                                <h:outputLabel value="Nombres:" />
+                                <b:inputText value="#{empleadoBean.empleado.nombres}" placeholder="1er y 2do nombre"/>
+
+                                <h:outputLabel value="Apellidos:" />
+                                <b:inputText value="#{empleadoBean.empleado.apellidos}" placeholder="1er y 2do apellido"/>
+
+                                <h:outputLabel value="Direccion Completa:" />
+                                <b:inputText  value="#{empleadoBean.empleado.direccion}" placeholder="Dirección Completa"/>
+
+                            </b:panel>
+                        </b:column>
+
+                        <b:column span="3">
+
+                            <b:panel>
+                                
+                                <h:outputLabel value="Telefono:" />
+                                <b:inputText mask="9999-9999" value="#{empleadoBean.empleado.telefono}" placeholder="Tel.: 0000-0000"/>
+                                
+                                <h:outputLabel value="Email:" />
+                                <b:inputText value="#{empleadoBean.empleado.email}" placeholder="Email Empresarial"/>
+
+                                <h:outputLabel value="Fecha de Nacimiento:" />
+                                <b:datepicker value="#{empleadoBean.empleado.fechaNacimiento}" mode="popup-icon"/>
+                                
+                                <h:outputLabel value="Cargo:" />
+                                <b:inputText  value="#{empleadoBean.empleado.cargo}" placeholder="Cargo del Empleado"/>
+
+                                
+
+                            </b:panel>
+                        </b:column>
+                        
+                        <b:column span="3">
+                            <b:panel>
+                                
+                                <h:outputLabel value="Sucursal:" />
+                                <b:inputText value="#{empleadoBean.empleado.idsucursal.idsucursal}" placeholder="ID SSucursal Asignada"/>
+                                
+                                <h:outputLabel value="Salario:" />
+                                <b:inputText value="#{empleadoBean.empleado.salario}" placeholder="$000.00"/>
+
+                                <h:outputLabel value="Sexo:" />      
+                                <b:selectOneMenu 
+                                                 
+                                                 value="#{empleadoBean.empleado.sexo}">
+                                    <f:selectItem itemLabel="- Seleccione uno - " />
+                                    <f:selectItem itemLabel="Hombre" itemValue="Hombre"/>
+                                    <f:selectItem itemLabel="Mujer" itemValue="Mujer"/>
+                                </b:selectOneMenu>
+                                
+                                <h:outputLabel value="Estado Civil:" /> 
+                                <b:selectOneMenu 
+                                                 
+                                                 value="#{empleadoBean.empleado.estadoCivil}">
+                                    <f:selectItem itemLabel="- Seleccione uno - " />
+                                    <f:selectItem itemLabel="Solter@" itemValue="Soltero@"/>
+                                    <f:selectItem itemLabel="Casad@" itemValue="Casad@"/>
+                                    <f:selectItem itemLabel="Acompañad@" itemValue="Acompañad@"/>
+                                </b:selectOneMenu>
+                               
+                            </b:panel>
+                        </b:column>
+                        
+                        <b:column span="3">
+                            <b:panel>
+                                <h:outputLabel value="DUI:" />
+                                <b:inputText mask="99999999-9" value="#{empleadoBean.empleado.DUI}" placeholder="00000000-0"/>
+
+                                <h:outputLabel value="NIT:" />
+                                <b:inputText mask="9999-999999-999-9" value="#{empleadoBean.empleado.NIT}" placeholder="0000-000000-000-0"/>
+
+                                <h:outputLabel value="NUP:" />
+                                <b:inputText mask="999999999999" value="#{empleadoBean.empleado.NUP}" placeholder="000000000000"/>
+
+                                <h:outputLabel value="Afiliacion ISSS:" />
+                                <b:inputText value="#{empleadoBean.empleado.afiliacionISSS}" placeholder="No. de Afiliación del ISSS"/>
+                            </b:panel>
+                        </b:column>
+                    </b:row>
+                    <f:facet name="footer">
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{empleadoBean.accionFormulario()}" update="form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                    </f:facet>
+                </h:panelGrid>
+            </p:panel>
+
+            <p:panel header="Lista de Empleados" style="margin: 35px; padding: 10px 10px; text-align: center;">
+                <p:dataTable value="#{empleadoBean.listaEmpleado}" var="e" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{e.idempleado}" />
+                    </p:column>
+                    <p:column headerText="Estado">
+                        <p:outputLabel value="#{e.estado}" />
+                    </p:column>
+                    <p:column headerText="Codigo de Empleado">
+                        <p:outputLabel value="#{e.codigoEmpleado}" />
+                    </p:column>
+                    <p:column headerText="Nombre">
+                        <p:outputLabel value="#{e.nombres}" />
+                    </p:column>
+                    <p:column headerText="Apellido">
+                        <p:outputLabel value="#{e.apellidos}" />
+                    </p:column>
+                    <p:column headerText="Telefono">
+                        <p:outputLabel value="#{e.telefono}" />
+                    </p:column>
+                    <p:column headerText="Email">
+                        <p:outputLabel value="#{e.email}" />
+                    </p:column>
+                    <p:column headerText="Cargo">
+                        <p:outputLabel value="#{e.cargo}" />
+                    </p:column>
+                    <p:column headerText="Sucursal">
+                        <p:outputLabel value="#{e.idsucursal.nombre}" />
+                    </p:column>
+                    <p:column headerText="Salario">
+                        <p:outputLabel value="#{e.salario}" />
+                    </p:column>
+                    <p:column headerText="Estado Civil">
+                        <p:outputLabel value="#{e.estadoCivil}" />
+                    </p:column>
+                    <p:column headerText="Dui">
+                        <p:outputLabel value="#{e.DUI}" />
+                    </p:column>
+                    <p:column headerText="Acciones">
+                        <b:commandLink styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{empleadoBean.editar(e)}" update=":form" />
+                        <b:commandLink styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{empleadoBean.borrar(e)}" update=":form" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </b:form>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script>
+    </h:body>
+</html>
