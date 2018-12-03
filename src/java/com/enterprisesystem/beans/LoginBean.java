@@ -86,17 +86,18 @@ public class LoginBean {
 
         LoginDAO user = new LoginDAO();
         Usuario u = user.validarUsuario(username, password);
-        FacesMessage message = null;
-        boolean loggedIn ;
+       
+       
         try {
             if (u != null) {
-                loggedIn = true;
+                isLogged = true;
+                
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Menu.xhtml");
-                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombres());
+               
                 return "Menu";
             } else {
                 isLogged = false;
-                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Usuario o contraseña incorrecta");
+                   
                 return "login";
             }
         } catch (Exception e) {
