@@ -26,11 +26,28 @@ public class ReporterBean {
         System.out.println("Inicializado...");
     }
     
-    
-    public void getReport(ActionEvent ev){
+    public void viewReportPdf(){
         System.out.println("Obteniendo Reportes...");
         try{
-            reporter.descargarPdf(listaUsuario);
+            reporter.viewReportPdf(listaUsuario);
+        } catch(IOException | JRException e){
+            System.out.println("Error al Generar Reporte: " + e.getMessage());
+        }
+    }
+    
+    public void downloadReportPdf(){
+        System.out.println("Obteniendo Reportes...");
+        try{
+            reporter.downloadReportPdf(listaUsuario);
+        } catch(IOException | JRException e){
+            System.out.println("Error al Generar Reporte: " + e.getMessage());
+        }
+    }
+    
+    public void downloadReportDocx(){
+        System.out.println("Obteniendo Reportes...");
+        try{
+            reporter.downloadReportDocx(listaUsuario);
         } catch(IOException | JRException e){
             System.out.println("Error al Generar Reporte: " + e.getMessage());
         }
