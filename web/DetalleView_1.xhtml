@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Detalle de Planilla</title> 
+    </h:head>
+    <h:body>
+        <div id="incluirPagina"/>
+        <h:form style="margin: 20px" id="form">
+            <p:panel header="#{detalleBean.accion} Detalle" style="margin: 35px; padding: 10px 10px; text-align: center;">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="Planilla:" />
+                    <b:inputText value="#{detalleBean.detalle.idplanilla.idplanillas}" placeholder="ID Planilla"/>
+
+                    <h:outputLabel value="Empleado:" />
+                    <b:inputText  value="#{detalleBean.detalle.idempleado.idempleado}" placeholder="ID Empleado"/>
+
+                    <h:outputLabel value="Salario Base:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.salarioBase}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="Bono:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.bono}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="ISSS:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.isss}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="Renta:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.renta}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="AFP:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.afp}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="Salario Neto:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.salarioNeto}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="Aguinaldo:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.aguinaldo}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="Horas Extras:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.horasExtras}" placeholder="$000.00"/>
+
+                    <h:outputLabel value="Anticipos:" />
+                    <b:inputText mask="999.99" value="#{detalleBean.detalle.anticipos}" placeholder="$000.00"/>
+
+                    <f:facet name="footer">
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{detalleBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" ajax="true" style="margin: 15px 15px;"/>
+                    </f:facet>
+                </h:panelGrid>           
+            </p:panel>
+
+            <p:panel header="Lista de Detalle Planilla" style="margin: 35px; padding: 10px 10px; text-align: center;" >
+                <p:dataTable value="#{detalleBean.listaDetalle}" var="d"  paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
+                    <p:column headerText="Estado de Planilla: ">
+                        <p:outputLabel value="#{d.idplanilla.estado}" />
+                    </p:column>
+                    <p:column headerText="ID Empleado" filterBy="#{d.idempleado.nombres}" filterMatchMode="contains">
+                        <p:outputLabel value="#{d.idempleado.nombres}" />
+                    </p:column>
+                    <p:column headerText="Salario Base">
+                        <p:outputLabel value="#{d.salarioBase}" />
+                    </p:column>
+                    <p:column headerText="Bonos">
+                        <p:outputLabel value="#{d.bono}" />
+                    </p:column>
+                    <p:column headerText="Isss">
+                        <p:outputLabel value="#{d.isss}" />
+                    </p:column>
+                    <p:column headerText="Renta">
+                        <p:outputLabel value="#{d.renta}" />
+                    </p:column>
+                    <p:column headerText="AFP">
+                        <p:outputLabel value="#{d.afp}" />
+                    </p:column>
+                    <p:column headerText="Salario Neto">
+                        <p:outputLabel value="#{d.salarioNeto}" />
+                    </p:column>
+                    <p:column headerText="Aguinaldo">
+                        <p:outputLabel value="#{d.aguinaldo}" />
+                    </p:column>
+                    <p:column headerText="Horas Extras">
+                        <p:outputLabel value="#{d.horasExtras}" />
+                    </p:column>
+                    <p:column headerText="Anticipos">
+                        <p:outputLabel value="#{d.anticipos}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{detalleBean.editar(d)}" update=":form"  icon="ui-icon-pencil"/>
+                    </p:column>
+                    <p:column headerText="Borrar">
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{detalleBean.borrar(d)}" update=":form"  icon="ui-icon-trash"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script>
+    </h:body>
+</html>
+

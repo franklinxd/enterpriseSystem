@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Usuarios</title>
+    </h:head>
+    <h:body>
+        <div id="incluirPagina"/>
+        <h:form style="margin: 20px" id="form">
+            <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px; padding: 10px 10px; text-align: center;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="Nombres:" />
+                    <b:inputText value="#{usuarioBean.usuario.nombres}" placeholder="1er y 2do Nombre"/>
+
+                    <h:outputLabel value="Apellidos:" />
+                    <b:inputText  value="#{usuarioBean.usuario.apellidos}" placeholder="1er y 2do Apellido"/>
+
+                    <h:outputLabel value="Username:" />
+                    <b:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>             
+
+                    <h:outputLabel for="pwd1" value="Contraseña: *" />
+                    <b:inputSecret id="pwd1" value="#{usuarioBean.usuario.password}" match="pwd2" label="Ingrese su Contraseña" required="true" placeholder="Ruiz" />
+
+                    <h:outputLabel for="pwd2" value="Confirme su Contraseña: *" />
+                    <b:inputSecret id="pwd2" value="#{usuarioBean.password2}" label="Confirme su Contraseña" required="true" placeholder="Ruiz"/>
+
+                    <h:outputLabel value="Empresa:" />
+                    <b:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>
+
+                    <f:facet name="footer">
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                    </f:facet>
+                </h:panelGrid>           
+            </p:panel>
+
+            <p:panel header="Lista de Usuarios" style="margin: 35px; padding: 10px 10px; text-align: center;" >
+                <p:dataTable value="#{usuarioBean.listaUsuario}" var="u" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{u.idusuario}" />
+                    </p:column>
+                    <p:column headerText="Nombres" filterBy="#{u.nombres}" filterMatchMode="contains">
+                        <p:outputLabel value="#{u.nombres}" />
+                    </p:column>
+                    <p:column headerText="Apellidos" filterBy="#{u.apellidos}" filterMatchMode="contains">
+                        <p:outputLabel value="#{u.apellidos}" />
+                    </p:column>
+                    <p:column headerText="Username" filterBy="#{u.username}" filterMatchMode="contains">
+                        <p:outputLabel value="#{u.username}" />
+                    </p:column>
+                    <p:column headerText="Password">
+                        <p:outputLabel value="#{u.password}" />
+                    </p:column>
+                    <p:column headerText="Empresa">
+                        <p:outputLabel value="#{u.idempresa.nombre}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil" immediate="true"/>
+                    </p:column>
+                    <p:column headerText="Borrar">
+                        <b:commandButton styleClass="btn btn-danger" value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash" immediate="true"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script>
+    </h:body>
+</html>
+
