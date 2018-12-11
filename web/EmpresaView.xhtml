@@ -18,25 +18,29 @@ and open the template in the editor.
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{empresaBean.accion} Empresa" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Nombre" />
-                    <p:inputText value="#{empresaBean.empresa.nombre}" placeholder="Nombre de la Empresa"/>
+                    
+                    <b:panel style="border: 0">
+                    <h:outputLabel value="Nombre" />
+                    <b:inputText value="#{empresaBean.empresa.nombre}" placeholder="Nombre de la Empresa"/>
 
-                    <p:outputLabel value="Nit Empresarial" />
-                    <p:inputMask mask="9999-999999-999-9" value="#{empresaBean.empresa.nit}" placeholder="0000-000000-000-0"/>
+                    <h:outputLabel value="Nit Empresarial" />
+                    <b:inputText mask="9999-999999-999-9" value="#{empresaBean.empresa.nit}" placeholder="0000-000000-000-0"/>
 
-                    <p:outputLabel value="Direccion" />
-                    <p:inputText  value="#{empresaBean.empresa.direccion}" placeholder="Dirección Completa"/>
+                    <h:outputLabel value="Direccion" />
+                    <b:inputText  value="#{empresaBean.empresa.direccion}" placeholder="Dirección Completa"/>
 
-                    <p:outputLabel value="Telefono" />
-                    <p:inputMask mask="9999-9999" value="#{empresaBean.empresa.telefono}" placeholder="Tel.: 0000-0000"/>
+                    <h:outputLabel value="Telefono" />
+                    <b:inputText mask="9999-9999" value="#{empresaBean.empresa.telefono}" placeholder="Tel.: 0000-0000"/>
 
-                    <p:outputLabel value="Email" />
-                    <p:inputText  value="#{empresaBean.empresa.email}" placeholder="Email Empresarial"/>
+                    <h:outputLabel value="Email" />
+                    <b:inputText  value="#{empresaBean.empresa.email}" placeholder="Email Empresarial"/>
 
                     <f:facet name="footer">
-                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{empresaBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{empresaBean.accionFormulario()}" update=":form" style="margin: 15px 15px;" icon="glyphicon glyphicon-floppy-disk"/>
                         <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
+                    
+                    </b:panel>
                 </h:panelGrid>           
             </p:panel>
 
@@ -62,10 +66,10 @@ and open the template in the editor.
                         <p:outputLabel value="#{e.email}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{empresaBean.editar(e)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{empresaBean.editar(e)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{empresaBean.borrar(e)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{empresaBean.borrar(e)}" update=":form"  icon="glyphicon glyphicon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

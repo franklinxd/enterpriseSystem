@@ -14,22 +14,24 @@
             <p:panel header="#{ingresosBean.accion} IngresoMensual" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="ID Sucursal:" />
-                    <p:inputText value="#{ingresosBean.ingreso.idsucursal.idsucursal}" placeholder="ID Sucursal"/>
+                    <b:panel style="border: 0">
+                    <h:outputLabel value="ID Sucursal:" />
+                    <b:inputText value="#{ingresosBean.ingreso.idsucursal.idsucursal}" placeholder="ID Sucursal"/>
 
-                    <p:outputLabel value="Mes:" />
-                    <p:inputMask value="#{ingresosBean.ingreso.mes}" placeholder="Seleccione el Mes" mask="99"/>
+                    <h:outputLabel value="Mes:" />
+                    <b:inputText value="#{ingresosBean.ingreso.mes}" placeholder="Seleccione el Mes" />
 
-                    <p:outputLabel value="Año:" />
-                    <p:inputMask value="#{ingresosBean.ingreso.anio}" placeholder="Seleccione el Año" mask="9999"/>
+                    <h:outputLabel value="Año:" />
+                    <b:inputText value="#{ingresosBean.ingreso.anio}" placeholder="Seleccione el Año" />
 
-                    <p:outputLabel value="Ingreso del mes:" />
-                    <p:inputMask value="#{ingresosBean.ingreso.ingreso}" placeholder="El Ingreso del Mes" mask="999.99"/>
+                    <h:outputLabel value="Ingreso del mes:" />
+                    <b:inputText value="#{ingresosBean.ingreso.ingreso}" placeholder="El Ingreso del Mes" />
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{ingresosBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
                         <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
+                    </b:panel>
                 </h:panelGrid>           
             </p:panel>
 
@@ -40,7 +42,7 @@
                     <p:column headerText="ID Ingreso Mensual">
                         <p:outputLabel value="#{i.idingresomensual}" />
                     </p:column>
-                    <p:column headerText="ID Ingreso Mensual">
+                    <p:column headerText="ID Sucursal">
                         <p:outputLabel value="#{i.idsucursal.idsucursal}" />
                     </p:column>
                     <p:column headerText="Mes" filterBy="#{s.mes}" filterMatchMode="contains">
@@ -54,10 +56,10 @@
                     </p:column>                  
 
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{ingresosBean.editar(i)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{ingresosBean.editar(i)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{ingresosBean.borrar(i)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{ingresosBean.borrar(i)}" update=":form"  icon="glyphicon glyphicon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
