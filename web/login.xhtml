@@ -12,9 +12,11 @@
         <style>
             .padre {
                 height: 720px;
-                background-image: url(http://iconbug.com/data/b4/256/7b1a7b153622e6cd3285db4ff61a8c44.png);                 
+                                
                 /*IMPORTANTE*/
                 display: flex;
+                background-size:cover;
+                background:url(https://www.desktophut.com/wp-content/uploads/2018/02/4K-Moving-Stars-Live-Wallpaper-1.jpg);
                 justify-content: center;
                 align-items: center;
             }
@@ -22,14 +24,18 @@
         <h:body class="padre"> 
             <h:form id="loginform">
                 <p:growl id="growl" showDetail="true" sticky="true" life="3000" />
-                <p:panel header="Login." style="width: 360px; padding: 10px 10px;">
-                    <h:panelGrid id="loginPanel" columns="2" cellpadding="2" style="text-align: center;">
-
+                <h1 style=" text-align: center; padding: 30px; color: white">CORPORATION S.A. de C.V.</h1>
+                <p:panel  style="width: 360px; padding: 10px 10px;background:  rgba(255,255,255,0.6);">
+                    <h3 style=" text-align: center; padding: 20PX;">Inicio de Sesión</h3>
+                    <b:image name="user" value="https://images.vexels.com/media/users/3/135246/isolated/preview/df491bf444acfa945630c22389140d4a-icono-de-la-sombra-de-usuario-by-vexels.png"  tooltip="Iniciar Sesión" tooltipPosition="center" style="width:80%; padding: 20px;"/>
+                    
+                        
+                        <b:panel style="border: 0; background:  rgba(255,255,255,0.1);">
                         <h:outputLabel for="username" value="Usuario: *"/>
 
-                        <p:inputText id="username" value="#{loginBean.username}" required="true"></p:inputText>
+                        <b:inputText id="username" value="#{loginBean.username}" required="true" required-message="¡EL CAMPO USUARIO NO DEBE IR VACIO!"></b:inputText>
 
-                        <p:spacer></p:spacer>
+                        
 
                         <p:message for="username">
 
@@ -37,16 +43,16 @@
 
                         <h:outputLabel for="password" value="Password: *"/>
 
-                        <p:password id="password" value="#{loginBean.password}" feedback="false"></p:password>
+                        <b:inputSecret id="password" value="#{loginBean.password}" required="true" required-message="¡EL CAMPO CONTRASEÑA NO DEBE IR VACIO!" ></b:inputSecret>
 
-                        <p:spacer></p:spacer>
+                        
 
                         <p:message for="password"></p:message>
 
-                        <p:spacer></p:spacer>
+                        <b:commandButton styleClass="btn btn-primary" action="#{loginBean.validaLogin()}" value="Login" update=":loginform" ajax="true" icon="glyphicon glyphicon-log-in"/>
+                        </b:panel>
                         
-                        <b:commandButton styleClass="btn btn-primary" action="#{loginBean.validaLogin()}" value="Login" update=":loginform" ajax="true"/>
-                    </h:panelGrid>
+                    
                 </p:panel>
             </h:form>
         </h:body>
