@@ -8,7 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.PrimeFaces;
+
 
 /**
  *
@@ -82,25 +82,29 @@ public class LoginBean {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String validaLogin() throws Exception {
 
         LoginDAO user = new LoginDAO();
         Usuario u = user.validarUsuario(username, password);
-       
-       
+         String adv = "";
         try {
             if (u != null) {
                 isLogged = true;
-                
+
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Menu.xhtml");
-               
+                
                 return "Menu";
             } else {
                 isLogged = false;
-                   
+                adv="¡Los datos no son correctos!";
+                FacesMessage msg = new FacesMessage(adv); 
+                FacesContext.getCurrentInstance().addMessage(null, msg);
                 return "login";
+
             }
         } catch (Exception e) {
+            System.out.println("Error"+e);
             return null;
         }
 
