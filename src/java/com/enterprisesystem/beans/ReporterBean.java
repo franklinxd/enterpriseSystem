@@ -4,7 +4,9 @@ import com.enterprisesystem.dao.UsuarioDAO;
 import com.enterprisesystem.modelo.Usuario;
 import com.enterprisesystem.util.Reporter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -17,42 +19,44 @@ public class ReporterBean {
     private List<Usuario> listaUsuario;
     private UsuarioDAO usuarioDAO;
     private Reporter reporter;
+    Map<String, Object> parametros;
 
     @PostConstruct
     public void init(){
         usuarioDAO = new UsuarioDAO();
         listaUsuario = usuarioDAO.buscarTodo();
         reporter = new Reporter();
+        
+        parametros = new HashMap<>();
+        parametros.put("username", "Franklin");
+        
         System.out.println("Inicializado...");
+    } 
+    
+    public void getReport(){
+        reporter.getReport(listaUsuario, parametros, "/reportes/usuario.jasper","Reporte_de_Usuarios", Reporter.VIEW_PDF);
     }
     
     public void viewReportPdf(){
-        System.out.println("Obteniendo Reportes...");
-        try{
-            reporter.viewReportPdf(listaUsuario);
-        } catch(IOException | JRException e){
-            System.out.println("Error al Generar Reporte: " + e.getMessage());
-        }
+        reporter.getReport(listaUsuario, parametros, "/reportes/usuario.jasper","Reporte_de_Usuarios", Reporter.VIEW_PDF);
     }
     
     public void downloadReportPdf(){
-        System.out.println("Obteniendo Reportes...");
-        try{
-            reporter.downloadReportPdf(listaUsuario);
-        } catch(IOException | JRException e){
-            System.out.println("Error al Generar Reporte: " + e.getMessage());
-        }
+        reporter.getReport(listaUsuario, parametros, "/reportes/usuario.jasper","Reporte_de_Usuarios", Reporter.DOWNLOAD_PDF);
     }
     
     public void downloadReportDocx(){
-        System.out.println("Obteniendo Reportes...");
-        try{
-            reporter.downloadReportDocx(listaUsuario);
-        } catch(IOException | JRException e){
-            System.out.println("Error al Generar Reporte: " + e.getMessage());
-        }
+        reporter.getReport(listaUsuario, parametros, "/reportes/usuario.jasper","Reporte_de_Usuarios", Reporter.DOWNLOAD_DOCX);
     }
-
+    
+    public void downloadReportXlsx(){
+        reporter.getReport(listaUsuario, parametros, "/reportes/usuario.jasper","Reporte_de_Usuarios", Reporter.DOWNLOAD_XLSX);
+    }
+    
+    public void downloadReportPptx(){
+        reporter.getReport(listaUsuario, parametros, "/reportes/usuario.jasper","Reporte_de_Usuarios", Reporter.DOWNLOAD_PPTX);
+    }
+    
     public List<Usuario> getListaUsuario() {
         return listaUsuario;
     }

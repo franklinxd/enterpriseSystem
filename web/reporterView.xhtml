@@ -8,9 +8,11 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:commandButton value="Ver PDF" actionListener="#{reporterBean.viewReportPdf()}" ajax="false" />  
-            <p:commandButton value="Descargar PDF" actionListener="#{reporterBean.downloadReportPdf()}" ajax="false" />  
-            <p:commandButton value="Descargar DOCX" actionListener="#{reporterBean.downloadReportDocx()}" ajax="false" />  
+            <p:commandButton value="Ver PDF" actionListener="#{reporterBean.viewReportPdf()}" ajax="false" />
+            <p:commandButton value="Descargar PDF" actionListener="#{reporterBean.downloadReportPdf()}" ajax="false" />
+            <p:commandButton value="Descargar Word" actionListener="#{reporterBean.downloadReportDocx()}" ajax="false" />
+            <p:commandButton value="Descargar Excel" actionListener="#{reporterBean.downloadReportXlsx()}" ajax="false" />
+            <p:commandButton value="Descargar Powerpoint" actionListener="#{reporterBean.downloadReportPptx()}" ajax="false" />
         </h:form>
     </h:body>
 </html>
