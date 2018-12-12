@@ -13,14 +13,14 @@
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Nombres:" />
-                    <p:inputText value="#{usuarioBean.usuario.nombres}" placeholder="1er y 2do Nombre"/>
+                    <h:outputLabel value="Nombres:" />
+                    <b:inputText value="#{usuarioBean.usuario.nombres}" placeholder="1er y 2do Nombre"/>
 
-                    <p:outputLabel value="Apellidos:" />
-                    <p:inputText  value="#{usuarioBean.usuario.apellidos}" placeholder="1er y 2do Apellido"/>
+                    <h:outputLabel value="Apellidos:" />
+                    <b:inputText  value="#{usuarioBean.usuario.apellidos}" placeholder="1er y 2do Apellido"/>
 
-                    <p:outputLabel value="Username:" />
-                    <p:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>             
+                    <h:outputLabel value="Username:" />
+                    <b:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>             
 
                     <h:outputLabel for="pwd1" value="Contraseña: *" />
                     <p:password id="pwd1" value="#{usuarioBean.usuario.password}" match="pwd2" label="Ingrese su Contraseña" required="true" placeholder="Ruiz" />
@@ -28,8 +28,8 @@
                     <h:outputLabel for="pwd2" value="Confirme su Contraseña: *" />
                     <p:password id="pwd2" value="#{usuarioBean.password2}" label="Confirme su Contraseña" required="true" placeholder="Ruiz"/>
 
-                    <p:outputLabel value="Empresa:" />
-                    <p:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>
+                    <h:outputLabel value="Empresa:" />
+                    <b:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
