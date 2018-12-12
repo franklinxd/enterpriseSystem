@@ -19,48 +19,51 @@ and open the template in the editor.
             <p:panel header="#{detalleBean.accion} Detalle" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
                 <h:panelGrid columns="2" cellpadding="5">
-                    <b:panel style="border: 0">
-                    <h:outputLabel value="Planilla:" />
-                    <b:inputText value="#{detalleBean.detalle.idplanilla.idplanillas}" placeholder="ID Planilla"/>
+                    <b:container fluid="true">
+                        <b:column span="3" style="border: 0">
+                            <h:outputLabel value="Planilla:" />
+                            <b:inputText value="#{detalleBean.detalle.idplanilla.idplanillas}" placeholder="ID Planilla"/>
 
-                    <h:outputLabel value="Empleado:" />
-                    <b:inputText  value="#{detalleBean.detalle.idempleado.idempleado}" placeholder="ID Empleado"/>
+                            <h:outputLabel value="Empleado:" />
+                            <b:inputText  value="#{detalleBean.detalle.idempleado.idempleado}" placeholder="ID Empleado"/>
 
-                    <h:outputLabel value="Salario Base:" />
-                    <b:inputText  value="#{detalleBean.detalle.salarioBase}" placeholder="$000.00"/>
+                            <h:outputLabel value="Salario Base:" />
+                            <b:inputText id="salarioBase" value="#{detalleBean.detalle.salarioBase}" placeholder="$000.00"/>                            
+                        </b:column>
 
-                    <h:outputLabel value="Bono:" />
-                    <b:inputText  value="#{detalleBean.detalle.bono}" placeholder="$000.00"/>
+                        <b:column span="3">                         
+                            <h:outputLabel value="ISSS:" />
+                            <b:inputText id="isss" value="#{detalleBean.detalle.isss}" placeholder="$000.00"/>
 
-                    <h:outputLabel value="ISSS:" />
-                    <b:inputText  value="#{detalleBean.detalle.isss}" placeholder="$000.00"/>
-                    
-                    <h:outputLabel value="Renta:" />
-                    <b:inputText  value="#{detalleBean.detalle.renta}" placeholder="$000.00"/>
-                    </b:panel>
-                    
-                    <b:panel style="border: 0">
-                    <h:outputLabel value="AFP:" />
-                    <b:inputText  value="#{detalleBean.detalle.afp}" placeholder="$000.00"/>
+                            <h:outputLabel value="Renta:" />
+                            <b:inputText id="renta" value="#{detalleBean.detalle.renta}" placeholder="$000.00"/>
 
-                    <h:outputLabel value="Salario Neto:" />
-                    <b:inputText  value="#{detalleBean.detalle.salarioNeto}" placeholder="$000.00"/>
+                            <h:outputLabel value="AFP:" />
+                            <b:inputText id="afp" value="#{detalleBean.detalle.afp}" placeholder="$000.00"/>
+                        </b:column>
 
-                    <h:outputLabel value="Aguinaldo:" />
-                    <b:inputText  value="#{detalleBean.detalle.aguinaldo}" placeholder="$000.00"/>
+                        <b:column span="3" style="border: 0">
+                            <h:outputLabel value="Bono:" />
+                            <b:inputText id="bono" value="#{detalleBean.detalle.bono}" placeholder="$000.00"/>
 
-                    <h:outputLabel value="Horas Extras:" />
-                    <b:inputText  value="#{detalleBean.detalle.horasExtras}" placeholder="$000.00"/>
+                            <h:outputLabel value="Aguinaldo:" />
+                            <b:inputText id="aguinaldo" value="#{detalleBean.detalle.aguinaldo}" placeholder="$000.00"/>
 
-                    <h:outputLabel value="Anticipos:" />
-                    <b:inputText  value="#{detalleBean.detalle.anticipos}" placeholder="$000.00"/>
-                    </b:panel>
-                    
+                            <h:outputLabel value="Horas Extras:" />
+                            <b:inputText id="extras" value="#{detalleBean.detalle.horasExtras}" placeholder="$000.00"/>
 
-                    
+                            <h:outputLabel value="Anticipos:" />
+                            <b:inputText id="anticipo" value="#{detalleBean.detalle.anticipos}" placeholder="$000.00"/>
+                        </b:column>                   
+
+                        <b:column span="3"> 
+                            <h:outputLabel value="Salario Neto:" />
+                            <b:inputText id="salarioNeto" value="#{detalleBean.detalle.salarioNeto}" placeholder="$000.00" disabled="true"/>
+                        </b:column>
+                    </b:container>
 
                     <f:facet name="footer">
-                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{detalleBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{detalleBean.accionFormulario()}" update=":form" style="margin: 15px 15px;" icon="glyphicon glyphicon-floppy-disk"/>
                         <b:commandButton value="Cancelar" ajax="true" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
@@ -75,7 +78,7 @@ and open the template in the editor.
                     <p:column headerText="ID Empleado" filterBy="#{d.idempleado.nombres}" filterMatchMode="contains">
                         <p:outputLabel value="#{d.idempleado.nombres}" />
                     </p:column>
-                    
+
                     <p:column headerText="Bonos">
                         <p:outputLabel value="#{d.bono}" />
                     </p:column>
