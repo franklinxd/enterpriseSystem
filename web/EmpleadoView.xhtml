@@ -85,7 +85,7 @@ and open the template in the editor.
                                 <b:inputText value="#{empleadoBean.empleado.email}" placeholder="Email Empresarial" required="true" required-message="¡No olvide poner el correo del empleado!"/>
 
                                 <h:outputLabel value="Fecha de Nacimiento:" />
-                                <b:datepicker value="#{empleadoBean.empleado.fechaNacimiento}" mode="popup-icon" placeholder="mm-dd-aa" required="true" required-message="¡No olvide poner la fecha de nacimiento del empleado!"/>
+                                <b:datepicker value="#{empleadoBean.empleado.fechaNacimiento}" mode="popup" placeholder="mm-dd-aa" required="true" required-message="¡No olvide poner la fecha de nacimiento del empleado!" showButtonPanel="true" changeMonth="true" changeYear="true" firstDay="1"/>
                                 
                                 <h:outputLabel value="Cargo:" />
                                 <b:inputText  value="#{empleadoBean.empleado.cargo}" placeholder="Cargo del Empleado" required="true" required-message="¡No olvide seleccionar el cargo del empleado!"/>
