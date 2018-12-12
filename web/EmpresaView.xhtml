@@ -16,28 +16,29 @@ and open the template in the editor.
     <h:body>
         <div id="incluirPagina"/>
         <h:form style="margin: 20px" id="form">
+           <p:growl id="growl" showDetail="true"  life="3000" />
             <p:panel header="#{empresaBean.accion} Empresa" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
                     
                     <b:panel style="border: 0">
                     <h:outputLabel value="Nombre" />
-                    <b:inputText value="#{empresaBean.empresa.nombre}" placeholder="Nombre de la Empresa"/>
+                    <b:inputText value="#{empresaBean.empresa.nombre}" placeholder="Nombre de la Empresa" required="true" requiredMessage="No olvide poner el nombre de la empresa"/>
 
                     <h:outputLabel value="Nit Empresarial" />
-                    <b:inputText mask="9999-999999-999-9" value="#{empresaBean.empresa.nit}" placeholder="0000-000000-000-0"/>
+                    <b:inputText mask="9999-999999-999-9" value="#{empresaBean.empresa.nit}" placeholder="0000-000000-000-0" required="true" requiredMessage="No olvide poner el NIT de la empresa"/>
 
                     <h:outputLabel value="Direccion" />
-                    <b:inputText  value="#{empresaBean.empresa.direccion}" placeholder="Dirección Completa"/>
+                    <b:inputText  value="#{empresaBean.empresa.direccion}" placeholder="Dirección Completa" required="true" requiredMessage="No olvide poner la direccion de la empresa"/>
 
                     <h:outputLabel value="Telefono" />
-                    <b:inputText mask="9999-9999" value="#{empresaBean.empresa.telefono}" placeholder="Tel.: 0000-0000"/>
+                    <b:inputText mask="9999-9999" value="#{empresaBean.empresa.telefono}" placeholder="Tel.: 0000-0000" required="true" requiredMessage="No olvide poner el telefono de la empresa"/>
 
                     <h:outputLabel value="Email" />
-                    <b:inputText  value="#{empresaBean.empresa.email}" placeholder="Email Empresarial"/>
+                    <b:inputText  value="#{empresaBean.empresa.email}" placeholder="Email Empresarial" required="true" requiredMessage="No olvide poner el correo de la empresa"/>
 
                     <f:facet name="footer">
-                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{empresaBean.accionFormulario()}" update=":form" style="margin: 15px 15px;" icon="glyphicon glyphicon-floppy-disk"/>
-                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" tooltip="Guardar Informacion" actionListener="#{empresaBean.accionFormulario()}" update=":form" style="margin: 15px 15px;" icon="glyphicon glyphicon-floppy-disk"/>
+                        <b:commandButton styleClass="btn btn-danger" value="Cancelar"  actionListener="#{empresaBean.limpiarFormulario()}" tooltip="Cancelar Registro" style="margin: 15px 15px;" icon="glyphicon glyphicon-refresh"/>
                     </f:facet>
                     
                     </b:panel>
@@ -66,10 +67,10 @@ and open the template in the editor.
                         <p:outputLabel value="#{e.email}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{empresaBean.editar(e)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" tooltip="Editar esté empleado" actionListener="#{empresaBean.editar(e)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{empresaBean.borrar(e)}" update=":form"  icon="glyphicon glyphicon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" tooltip="Borrar esté empleado" actionListener="#{empresaBean.borrar(e)}" update=":form"  icon="glyphicon glyphicon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

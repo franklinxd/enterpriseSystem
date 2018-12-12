@@ -32,7 +32,7 @@ public class EmpresaBean {
         this.listaEmpresa = empresaDAO.buscarTodo();
         this.empresa = new Empresa();
         this.empresa.setIdempresa(0);
-        accion = "Registrar";
+        accion = "Registrar";       
     }
     
     public void accionFormulario(){
