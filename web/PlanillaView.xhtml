@@ -47,28 +47,31 @@ and open the template in the editor.
             <p:panel header="#{planillaBean.accion} Planilla" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="Fecha de Inicio:" />
-                    <p:calendar value="#{planillaBean.planilla.fechaInicio}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold" placeholder="dd/MM/yyyy"/>
+                    <b:panel style="border: 0">
 
-                    <p:outputLabel value="Fecha de Finalizacion:" />
-                    <p:calendar value="#{planillaBean.planilla.fechaFin}" mask="true" locale="es" pattern="dd/MM/yyyy" effect="fold" placeholder="dd/MM/yyyy"/>
+                    <h:outputLabel value="Fecha de Inicio:" />
+                    <b:datepicker value="#{planillaBean.planilla.fechaInicio}"  placeholder="dd/MM/yyyy" mode="popup-icon"/>
+
+                    <h:outputLabel value="Fecha de Finalizacion:" />
+                    <b:datepicker value="#{planillaBean.planilla.fechaFin}"  placeholder="dd/MM/yyyy" mode="popup-icon"/>
 
 
-                    <p:outputLabel value="Estado De Planilla:" />
-                    <p:selectOneMenu value="#{planillaBean.planilla.estado}" effect="fold" style="width:175px">
-                        <f:selectItem itemLabel="Seleccione un Estado" itemValue="" />
-                        <f:selectItem itemLabel="Aperturada" itemValue="Aperturada" />
-                        <f:selectItem itemLabel="Cerrada" itemValue="Cerrada" />
-                    </p:selectOneMenu>
+                    <h:outputLabel value="Estado De Planilla:" />
+                    <b:selectOneMenu value="#{planillaBean.planilla.estado}">
+                        <f:selectItem itemLabel="- Seleccione uno - " />
+                        <f:selectItem itemLabel="Aperturada" itemValue="Aperturada"/>
+                        <f:selectItem itemLabel="Cerrada" itemValue="Cerrada"/>
+                    </b:selectOneMenu>
 
-                    <p:outputLabel value="Tipo de Planilla:" />
-                    <p:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}" effect="fold" style="width:175px">
+                    <h:outputLabel value="Tipo de Planilla:" />
+                    <b:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}">
                         <f:selectItem itemLabel="Seleccione un Tipo de Planilla" itemValue="" />
                         <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
                         <f:selectItem itemLabel="Quinsenal" itemValue="Quinsenal" />
                         <f:selectItem itemLabel="Mensual" itemValue="Mensual" />
                         <f:selectItem itemLabel="Anual" itemValue="Anual" />
-                    </p:selectOneMenu>
+                    </b:selectOneMenu>
+                    </b:panel>
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>
@@ -96,10 +99,10 @@ and open the template in the editor.
                         <p:outputLabel value="#{e.tipoPlanilla}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{planillaBean.editar(e)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{planillaBean.editar(e)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{planillaBean.borrar(e)}" update=":form"  icon="ui-icon-trash"/>
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{planillaBean.borrar(e)}" update=":form"  icon="glyphicon glyphicon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
