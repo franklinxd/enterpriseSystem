@@ -4,7 +4,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
-
     <h:head>
         <title>Login</title>
         <link href="https://fonts.googleapis.com/css?family=Unlock" rel="stylesheet"/>
@@ -30,31 +29,16 @@
                 <p:panel  style="width: 360px; padding: 10px 10px;background:  rgba(255,255,255,0.6);">
                     <h3 style=" text-align: center; padding: 20px; font-family:  'Dekko', cursive !important; color: black !important;">Inicio de Sesión</h3>
                     <b:image name="user" value="https://images.vexels.com/media/users/3/135246/isolated/preview/df491bf444acfa945630c22389140d4a-icono-de-la-sombra-de-usuario-by-vexels.png"  tooltip="Iniciar Sesión" tooltipPosition="center" style="width:80%; padding: 0px;"/>
-                    
-                        
                         <b:panel style="border: 0; background:  rgba(255,255,255,0);">
                         <h:outputLabel for="username" value="Usuario: *"/>
-
                         <b:inputText id="username" value="#{loginBean.username}" required="true" required-message="¡Ha Olvidado Poner Su Usuario!"></b:inputText>
-
-                        
-
                         <p:message for="username">
-
                         </p:message>
-
                         <h:outputLabel for="password" value="Password: *"/>
-
                         <b:inputSecret id="password" value="#{loginBean.password}" required="true" required-message="¡Ha Olvidado Poner Su Contraseña!" ></b:inputSecret>
-
-                        
-
                         <p:message for="password"></p:message>
-
                         <b:commandButton styleClass="btn btn-primary" action="#{loginBean.validaLogin()}" value="Login" update=":loginform growl" ajax="true" icon="glyphicon glyphicon-log-in"/>
-                        </b:panel>
-                        
-                    
+                        </b:panel> 
                 </p:panel>
             </h:form>
         </h:body>
