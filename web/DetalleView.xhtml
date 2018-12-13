@@ -21,12 +21,17 @@ and open the template in the editor.
                 <h:panelGrid columns="2" cellpadding="5">
                     <b:container fluid="true">
                         <b:column span="3" style="border: 0">
-                            <h:outputLabel value="Planilla:" />
-                            <b:inputText value="#{detalleBean.detalle.idplanilla.idplanillas}" placeholder="ID Planilla"/>
 
-                            <h:outputLabel value="Empleado:" />
-                            <b:inputText  value="#{detalleBean.detalle.idempleado.idempleado}" placeholder="ID Empleado"/>
+                            <p:selectOneMenu id="Planilla"  value="#{detalleBean.detalle.idplanilla.idplanillas}" style="width: 97%" effect="fold">
+                                <f:selectItem itemValue="" itemLabel="Escoger Planilla:" />
+                                <f:selectItems value="#{detalleBean.listaPlanilla}" var="Pl" itemLabel="#{Pl.idplanillas}" itemValue="#{Pl.idplanillas}" />
+                            </p:selectOneMenu>
 
+                            <p:selectOneMenu id="Empleado"  value="#{detalleBean.detalle.idempleado.idempleado}" style="width: 97%" effect="fold">
+                                <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
+                                <f:selectItems value="#{detalleBean.listaEmpleado}" var="Em" itemLabel="#{Em.nombres}" itemValue="#{Em.nombres}" />
+                            </p:selectOneMenu>
+                            
                             <h:outputLabel value="Salario Base:" />
                             <b:inputText id="salarioBase" value="#{detalleBean.detalle.salarioBase}" placeholder="$000.00"/>                            
                         </b:column>

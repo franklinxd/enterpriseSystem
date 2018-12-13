@@ -6,6 +6,7 @@
 package com.enterprisesystem.beans;
 
 import com.enterprisesystem.dao.EmpleadoDAO;
+import com.enterprisesystem.dao.SucursalDAO;
 import com.enterprisesystem.modelo.Empleado;
 import com.enterprisesystem.modelo.Sucursal;
 import java.util.List;
@@ -21,14 +22,18 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class EmpleadoBean {
     private List<Empleado> listaEmpleado;
+    private List<Sucursal> listaSucursal;
     private EmpleadoDAO empleadoDAO;
+    private SucursalDAO sucursalDAO;
     private Empleado empleado;
     private String accion;
     
     @PostConstruct
     public void init(){
         empleadoDAO = new EmpleadoDAO();
+        sucursalDAO = new SucursalDAO();
         listaEmpleado = empleadoDAO.buscarTodo();
+        listaSucursal = sucursalDAO.buscarTodo();
         this.empleado=new Empleado();
         this.empleado.setIdsucursal(new Sucursal());
         this.empleado.setIdempleado(0);

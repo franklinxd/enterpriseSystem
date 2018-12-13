@@ -28,9 +28,10 @@
                     <h:outputLabel for="pwd2" value="Confirme su Contraseña: *" />
                     <p:password id="pwd2" value="#{usuarioBean.password2}" label="Confirme su Contraseña" required="true" placeholder="Ruiz"/>
 
-                    <h:outputLabel value="Empresa:" />
-                    <b:inputText  value="#{usuarioBean.usuario.idempresa.idempresa}" placeholder="ID Empresa"/>
-
+                    <p:selectOneMenu id="Empleado"  value="#{usuarioBean.usuario.idempresa.idempresa}" style="width: 97%" effect="fold">
+                        <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
+                        <f:selectItems value="#{usuarioBean.listaEmpresa}" var="Em" itemLabel="#{Em.nombre}" itemValue="#{Em.nombre}" />
+                    </p:selectOneMenu>
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
                         <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>

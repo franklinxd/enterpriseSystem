@@ -51,7 +51,7 @@ and open the template in the editor.
                     <b:row style="padding: 50px;">
                         <b:column span="3">
                             <b:panel>
-                                
+
                                 <h:outputLabel value="Estado:" />
                                 <b:selectOneMenu  value="#{empleadoBean.empleado.estado}" required="true" required-message="¡No olvide seleccionar el estado del empledo!">
                                     <f:selectItem itemLabel="- Seleccione uno - " />
@@ -77,30 +77,40 @@ and open the template in the editor.
                         <b:column span="3">
 
                             <b:panel>
-                                
+
                                 <h:outputLabel value="Telefono:" />
                                 <b:inputText mask="9999-9999" value="#{empleadoBean.empleado.telefono}" placeholder="Tel.: 0000-0000" required="true" required-message="¡No olvide poner el teléfono del empleado!"/>
-                                
+
                                 <h:outputLabel value="Email:" />
                                 <b:inputText value="#{empleadoBean.empleado.email}" placeholder="Email Empresarial" required="true" required-message="¡No olvide poner el correo del empleado!"/>
 
                                 <h:outputLabel value="Fecha de Nacimiento:" />
                                 <b:datepicker value="#{empleadoBean.empleado.fechaNacimiento}" mode="popup" placeholder="mm-dd-aa" required="true" required-message="¡No olvide poner la fecha de nacimiento del empleado!" showButtonPanel="true" changeMonth="true" changeYear="true" firstDay="1"/>
-                                
-                                <h:outputLabel value="Cargo:" />
-                                <b:inputText  value="#{empleadoBean.empleado.cargo}" placeholder="Cargo del Empleado" required="true" required-message="¡No olvide seleccionar el cargo del empleado!"/>
 
-                                
+                                <h:outputLabel value="Cargo:" /> 
+                                <b:selectOneMenu  value="#{empleadoBean.empleado.cargo}" required="true" required-message="¡No olvide seleccionar el estado civil del empleado!">
+                                    <f:selectItem itemLabel="- Seleccione uno - " />
+                                    <f:selectItem itemLabel="Gerente" itemValue="Gerente"/>
+                                    <f:selectItem itemLabel="SubGerente" itemValue="SubGerente"/>
+                                    <f:selectItem itemLabel="Vendedor" itemValue="Vendedor"/>
+                                    <f:selectItem itemLabel="Ordenanza" itemValue="Ordenanza"/>
+                                    <f:selectItem itemLabel="Cajero" itemValue="Cajero"/>
+                                    <f:selectItem itemLabel="Motorista" itemValue="Motorista"/>
+                                    <f:selectItem itemLabel="Auxiliador de Bodega" itemValue="Auxiliador de Bodega"/>
+                                    <f:selectItem itemLabel="Encargado de Bodega" itemValue="Encargado de Bodega"/>
+                                </b:selectOneMenu>
 
                             </b:panel>
                         </b:column>
-                        
+
                         <b:column span="3">
                             <b:panel>
-                                
-                                <h:outputLabel value="Sucursal:" />
-                                <b:inputText value="#{empleadoBean.empleado.idsucursal.idsucursal}" placeholder="ID Sucursal Asignada" required="true" required-message="¡No olvide seleccionar la sucural del empleado!"/>
-                                
+
+                                <p:selectOneMenu id="Empleado"  value="#{empleadoBean.empleado.idsucursal.idsucursal}" style="width: 97%" effect="fold">
+                                    <f:selectItem itemValue="" itemLabel="Escoger Sucursal:" />
+                                    <f:selectItems value="#{empleadoBean.listaEmpleado}" var="Em" itemLabel="#{Em.nombres}" itemValue="#{Em.nombres}" />
+                                </p:selectOneMenu>
+
                                 <h:outputLabel value="Salario:" />
                                 <b:inputText value="#{empleadoBean.empleado.salario}" placeholder="$000.00" required="true" required-message="¡No olvide poner el salario del empleado!"/>
 
@@ -110,7 +120,7 @@ and open the template in the editor.
                                     <f:selectItem itemLabel="Hombre" itemValue="Hombre"/>
                                     <f:selectItem itemLabel="Mujer" itemValue="Mujer"/>
                                 </b:selectOneMenu>
-                                
+
                                 <h:outputLabel value="Estado Civil:" /> 
                                 <b:selectOneMenu  value="#{empleadoBean.empleado.estadoCivil}" required="true" required-message="¡No olvide seleccionar el estado civil del empleado!">
                                     <f:selectItem itemLabel="- Seleccione uno - " />
@@ -118,10 +128,10 @@ and open the template in the editor.
                                     <f:selectItem itemLabel="Casad@" itemValue="Casad@"/>
                                     <f:selectItem itemLabel="Acompañad@" itemValue="Acompañad@"/>
                                 </b:selectOneMenu>
-                               
+
                             </b:panel>
                         </b:column>
-                        
+
                         <b:column span="3">
                             <b:panel>
                                 <h:outputLabel value="DUI:" />
