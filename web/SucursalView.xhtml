@@ -11,6 +11,7 @@
     <h:body>
         <div id="incluirPagina"/>
         <h:form style="margin: 20px" id="form">
+            <p:growl id="G"/>
             <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -26,10 +27,11 @@
 
                         <h:outputLabel value="Encargado:" />
                         <b:inputText value="#{sucursalBean.sucursal.encargado}" placeholder="ID del Encargado"/>
-
+                        
+                        <h:outputLabel value="Empresa:" />
                         <p:selectOneMenu id="Empleado"  value="#{sucursalBean.sucursal.idempresa.idempresa}" style="width: 97%" effect="fold">
-                            <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
-                            <f:selectItems value="#{sucursalBean.listaSucursal}" var="Su" itemLabel="#{Su.nombre}" itemValue="#{Su.nombre}" />
+                            <f:selectItem itemValue="" itemLabel="Escoger Emprersa:" />
+                            <f:selectItems value="#{sucursalBean.listaEmpresa}" var="Su" itemLabel="#{Su.nombre}" itemValue="#{Su.nombre}" />
                         </p:selectOneMenu>
                         
                         <f:facet name="footer">

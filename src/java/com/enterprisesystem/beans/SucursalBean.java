@@ -115,6 +115,22 @@ public class SucursalBean {
     public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
     }
+
+    public List<Empresa> getListaEmpresa() {
+        return listaEmpresa;
+    }
+
+    public void setListaEmpresa(List<Empresa> listaEmpresa) {
+        this.listaEmpresa = listaEmpresa;
+    }
+
+    public EmpresaDAO getEmpresaDAO() {
+        return empresaDAO;
+    }
+
+    public void setEmpresaDAO(EmpresaDAO empresaDAO) {
+        this.empresaDAO = empresaDAO;
+    }
     
     
 }
