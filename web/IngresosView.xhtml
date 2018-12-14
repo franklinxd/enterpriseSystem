@@ -15,28 +15,43 @@
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <b:panel style="border: 0">
-                    <h:outputLabel value="ID Sucursal:" />
-                    <b:inputText value="#{ingresosBean.ingreso.idsucursal.idsucursal}" placeholder="ID Sucursal"/>
 
-                    <h:outputLabel value="Mes:" />
-                    <b:inputText value="#{ingresosBean.ingreso.mes}" placeholder="Seleccione el Mes" />
+                        <p:selectOneMenu id="Empleado"  value="#{ingresosBean.ingreso.idsucursal.idsucursal}" style="width: 97%" effect="fold">
+                            <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
+                            <f:selectItems value="#{ingresosBean.listaIngres}" var="Em" itemLabel="#{Em.idsucursal.idsucursal}" itemValue="#{Em.idsucursal.idsucursal}" />
+                        </p:selectOneMenu>
 
-                    <h:outputLabel value="Año:" />
-                    <b:inputText value="#{ingresosBean.ingreso.anio}" placeholder="Seleccione el Año" />
+                        <h:outputLabel value="Cargo:" /> 
+                        <b:selectOneMenu  value="#{ingresosBean.ingreso.mes}" required="true" required-message="¡No olvide seleccionar el Mes!">
+                                    <f:selectItem itemLabel="- Seleccione uno - " />
+                                    <f:selectItem itemLabel="01" itemValue="01"/>
+                                    <f:selectItem itemLabel="02" itemValue="02"/>
+                                    <f:selectItem itemLabel="03" itemValue="03"/>
+                                    <f:selectItem itemLabel="04" itemValue="04"/>
+                                    <f:selectItem itemLabel="05" itemValue="05"/>
+                                    <f:selectItem itemLabel="06" itemValue="06"/>
+                                    <f:selectItem itemLabel="07" itemValue="07"/>
+                                    <f:selectItem itemLabel="08" itemValue="08"/>
+                                    <f:selectItem itemLabel="09" itemValue="09"/>
+                                    <f:selectItem itemLabel="10" itemValue="10"/>
+                                </b:selectOneMenu>
 
-                    <h:outputLabel value="Ingreso del mes:" />
-                    <b:inputText value="#{ingresosBean.ingreso.ingreso}" placeholder="El Ingreso del Mes" />
+                        <h:outputLabel value="Año:" />
+                        <b:inputText value="#{ingresosBean.ingreso.anio}" placeholder="Seleccione el Año" />
 
-                    <f:facet name="footer">
-                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{ingresosBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
-                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
-                    </f:facet>
+                        <h:outputLabel value="Ingreso del mes:" />
+                        <b:inputText value="#{ingresosBean.ingreso.ingreso}" placeholder="El Ingreso del Mes" />
+
+                        <f:facet name="footer">
+                            <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{ingresosBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                            <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                        </f:facet>
                     </b:panel>
                 </h:panelGrid>           
             </p:panel>
 
             <p:panel header="Lista de Ingresos" style="margin: 35px; padding: 10px 10px; text-align: center;" >
-                <p:dataTable value="#{ingresosBean.listaIngreso}" var="i" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                <p:dataTable value="#{ingresosBean.listaIngres}" var="i" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
 
                     <p:column headerText="ID Ingreso Mensual">

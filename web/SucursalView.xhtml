@@ -15,27 +15,27 @@
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <b:panel style="border: 0;">
-                    <h:outputLabel value="Nombre:" />
-                    <b:inputText  value="#{sucursalBean.sucursal.nombre}" placeholder="Nombre de la Sucursal"/>
+                        <h:outputLabel value="Nombre:" />
+                        <b:inputText  value="#{sucursalBean.sucursal.nombre}" placeholder="Nombre de la Sucursal"/>
 
-                    <h:outputLabel value="Direccion:" />
-                    <b:inputText  value="#{sucursalBean.sucursal.direccion}" placeholder="Dirección Completa"/>
+                        <h:outputLabel value="Direccion:" />
+                        <b:inputText  value="#{sucursalBean.sucursal.direccion}" placeholder="Dirección Completa"/>
 
-                    <h:outputLabel value="Telefono:" />
-                    <b:inputText mask="9999-9999" value="#{sucursalBean.sucursal.telefono}" placeholder="Tel.: 0000-0000"/>
+                        <h:outputLabel value="Telefono:" />
+                        <b:inputText mask="9999-9999" value="#{sucursalBean.sucursal.telefono}" placeholder="Tel.: 0000-0000"/>
 
-                    <h:outputLabel value="Encargado:" />
-                    <b:inputText value="#{sucursalBean.sucursal.encargado}" placeholder="ID del Encargado"/>
+                        <h:outputLabel value="Encargado:" />
+                        <b:inputText value="#{sucursalBean.sucursal.encargado}" placeholder="ID del Encargado"/>
 
-                    <h:outputLabel value="Empresa:" />
-                    <b:inputText  value="#{sucursalBean.sucursal.idempresa.idempresa}" placeholder="ID de la Empresa"/>
-                    
-                    
-                    
-                    <f:facet name="footer">
-                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
-                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
-                    </f:facet>
+                        <p:selectOneMenu id="Empleado"  value="#{sucursalBean.sucursal.idempresa.idempresa}" style="width: 97%" effect="fold">
+                            <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
+                            <f:selectItems value="#{sucursalBean.listaSucursal}" var="Su" itemLabel="#{Su.nombre}" itemValue="#{Su.nombre}" />
+                        </p:selectOneMenu>
+                        
+                        <f:facet name="footer">
+                            <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                            <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                        </f:facet>
                     </b:panel>
                 </h:panelGrid>           
             </p:panel>

@@ -1,15 +1,13 @@
 package com.enterprisesystem.beans;
 
+import com.enterprisesystem.dao.EmpresaDAO;
 import com.enterprisesystem.dao.UsuarioDAO;
 import com.enterprisesystem.modelo.Empresa;
 import com.enterprisesystem.modelo.Usuario;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import static org.apache.tomcat.jni.User.username;
 
 /**
  *
@@ -20,7 +18,9 @@ import static org.apache.tomcat.jni.User.username;
 @ViewScoped
 public class UsuarioBean {
     private List<Usuario> listaUsuario;
+    private List<Empresa> listaEmpresa;
     private UsuarioDAO usuarioDAO;
+    private EmpresaDAO empresaDAO;
     private Usuario usuario;
     private String accion;
     private String username;
@@ -65,7 +65,9 @@ public class UsuarioBean {
     @PostConstruct
     public void init(){
         usuarioDAO = new UsuarioDAO();
+        empresaDAO = new EmpresaDAO();
         listaUsuario = usuarioDAO.buscarTodo();
+        listaEmpresa = empresaDAO.buscarTodo();
         this.usuario = new Usuario();
         this.usuario.setIdempresa(new Empresa());
         this.usuario.setIdusuario(0);
@@ -145,21 +147,20 @@ public class UsuarioBean {
     public void setAccion(String accion) {
         this.accion = accion;
     }
-    
-  
-//        public void login(String username, Object password) {
-//        FacesMessage message = null;
-//        boolean loggedIn = false;
-//         
-//        if(username != null && username.equals("admin") && password != null && password.equals("admin")) {
-//            loggedIn = true;
-//            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
-//        } else {
-//            loggedIn = false;
-//            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
-//        }
-//         
-//        FacesContext.getCurrentInstance().addMessage(null, message);
-//        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
-//    }   
+
+    public List<Empresa> getListaEmpresa() {
+        return listaEmpresa;
+    }
+
+    public void setListaEmpresa(List<Empresa> listaEmpresa) {
+        this.listaEmpresa = listaEmpresa;
+    }
+
+    public EmpresaDAO getEmpresaDAO() {
+        return empresaDAO;
+    }
+
+    public void setEmpresaDAO(EmpresaDAO empresaDAO) {
+        this.empresaDAO = empresaDAO;
+    }
 }

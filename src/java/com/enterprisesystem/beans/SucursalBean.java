@@ -5,6 +5,7 @@
  */
 package com.enterprisesystem.beans;
 
+import com.enterprisesystem.dao.EmpresaDAO;
 import com.enterprisesystem.dao.SucursalDAO;
 import com.enterprisesystem.modelo.Empresa;
 import com.enterprisesystem.modelo.Sucursal;
@@ -12,6 +13,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import net.bootsfaces.render.A;
 
 /**
  *
@@ -22,14 +24,18 @@ import javax.faces.bean.ViewScoped;
 public class SucursalBean {
 
     private List<Sucursal> listaSucursal;
+    private List<Empresa> listaEmpresa;
     private SucursalDAO sucursalDAO;
+    private EmpresaDAO empresaDAO;
     private Sucursal sucursal;
     private String accion;
 
     @PostConstruct
     public void init() {
         sucursalDAO = new SucursalDAO();
+        empresaDAO = new EmpresaDAO();
         listaSucursal = sucursalDAO.buscarTodo();
+        listaEmpresa = empresaDAO.buscarTodo();
         this.sucursal = new Sucursal();
         this.sucursal.setIdempresa(new Empresa());
         this.sucursal.setIdsucursal(0);

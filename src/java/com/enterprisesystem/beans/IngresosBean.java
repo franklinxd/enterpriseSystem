@@ -6,6 +6,7 @@
 package com.enterprisesystem.beans;
 
 import com.enterprisesystem.dao.IngresoDAO;
+import com.enterprisesystem.dao.SucursalDAO;
 import com.enterprisesystem.modelo.IngresoMensual;
 import com.enterprisesystem.modelo.Sucursal;
 import java.util.List;
@@ -16,63 +17,68 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class IngresosBean {
-    private List<IngresoMensual> listaIngreso;
+
+    private List<IngresoMensual> listaIngres;
+    private List<Sucursal> listaSucursal;
     private IngresoDAO ingresoDAO;
+    private SucursalDAO sucursalDAO;
     private IngresoMensual ingreso;
     private String accion;
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         ingresoDAO = new IngresoDAO();
-        listaIngreso = ingresoDAO.buscarTodo();
+        sucursalDAO = new SucursalDAO();
+        listaIngres = ingresoDAO.buscarTodo();
+        listaSucursal = sucursalDAO.buscarTodo();
         this.ingreso = new IngresoMensual();
         this.ingreso.setIdsucursal(new Sucursal());
         this.ingreso.setIdingresomensual(0);
-        accion = "Registrar";        
+        accion = "Registrar";
     }
-    
-    public void limpiarFormulario(){
-        this.listaIngreso = ingresoDAO.buscarTodo();
+
+    public void limpiarFormulario() {
+        this.listaIngres = ingresoDAO.buscarTodo();
         this.ingreso = new IngresoMensual();
         ingreso.setIdsucursal(new Sucursal());
         this.ingreso.setIdingresomensual(0);
         accion = "Registrar";
     }
-    
-    public void accionFormulario(){
-        if(accion.equals("Registrar")){
+
+    public void accionFormulario() {
+        if (accion.equals("Registrar")) {
             ingresoDAO.insertar(this.ingreso);
-        }else if(accion.equals("Editar")){
+        } else if (accion.equals("Editar")) {
             ingresoDAO.actualizar(this.ingreso);
         }
         limpiarFormulario();
     }
-    
-    public void editar(IngresoMensual ingreso){
+
+    public void editar(IngresoMensual ingreso) {
         System.out.println("Editando . . .");
         this.ingreso = ingreso;
         accion = "Editar";
     }
-    
-    public void borrar(IngresoMensual ingreso){
+
+    public void borrar(IngresoMensual ingreso) {
         ingresoDAO.borrar(ingreso);
-        this.listaIngreso = ingresoDAO.buscarTodo();
+        this.listaIngres = ingresoDAO.buscarTodo();
     }
-    
-    private void insertar(){
+
+    private void insertar() {
         ingresoDAO.insertar(this.ingreso);
     }
-    
-    private void actualizar(){
+
+    private void actualizar() {
         ingresoDAO.actualizar(this.ingreso);
     }
 
-    public List<IngresoMensual> getListaIngreso() {
-        return listaIngreso;
+    public List<IngresoMensual> getListaIngres() {
+        return listaIngres;
     }
 
-    public void setListaIngreso(List<IngresoMensual> listaIngreso) {
-        this.listaIngreso = listaIngreso;
+    public void setListaIngres(List<IngresoMensual> listaIngres) {
+        this.listaIngres = listaIngres;
     }
 
     public IngresoDAO getIngresoDAO() {
@@ -98,5 +104,21 @@ public class IngresosBean {
     public void setAccion(String accion) {
         this.accion = accion;
     }
-    
+
+    public List<Sucursal> getListaSucursal() {
+        return listaSucursal;
+    }
+
+    public void setListaSucursal(List<Sucursal> listaSucursal) {
+        this.listaSucursal = listaSucursal;
+    }
+
+    public SucursalDAO getSucursalDAO() {
+        return sucursalDAO;
+    }
+
+    public void setSucursalDAO(SucursalDAO sucursalDAO) {
+        this.sucursalDAO = sucursalDAO;
+    }
+
 }
