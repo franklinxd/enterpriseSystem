@@ -26,7 +26,10 @@ public class Sucursal implements Serializable {
     private String direccion;
     private String telefono;
     private Integer encargado;
-    private String giro;
+    private String latitud;
+    private String longitud;
+    private byte[] image;
+    
     @ManyToOne
     @JoinColumn(name = "idempresa")
     private Empresa idempresa;
@@ -40,16 +43,20 @@ public class Sucursal implements Serializable {
         this.idsucursal = idsucursal;
     }
 
-    public Sucursal(Integer idsucursal, String nombre, String direccion, String telefono, Integer encargado, String giro, Empresa idempresa) {
+    public Sucursal(Integer idsucursal, String nombre, String direccion, String telefono, Integer encargado, String latitud, String longitud, byte[] image, Empresa idempresa) {
         super();
         this.idsucursal = idsucursal;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.encargado = encargado;
-        this.giro = giro;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.image = image;
         this.idempresa = idempresa;
     }
+
+    
 
     public Integer getIdsucursal() {
         return idsucursal;
@@ -91,14 +98,6 @@ public class Sucursal implements Serializable {
         this.encargado = encargado;
     }
 
-    public String getGiro() {
-        return giro;
-    }
-
-    public void setGiro(String giro) {
-        this.giro = giro;
-    }
-
     public Empresa getIdempresa() {
         return idempresa;
     }
@@ -107,4 +106,28 @@ public class Sucursal implements Serializable {
         this.idempresa = idempresa;
     }
 
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+    
 }
