@@ -20,17 +20,19 @@ and open the template in the editor.
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <b:container fluid="true">
-                        <b:column span="3" style="border: 0">
+                        <b:column span="3" style="border: 0;">
 
-                            <p:selectOneMenu id="Planilla"  value="#{detalleBean.detalle.idplanilla.idplanillas}" style="width: 97%" effect="fold">
-                                <f:selectItem itemValue="" itemLabel="Escoger Planilla:" />
+                            <h:outputLabel value="ID Planilla: "/>
+                            <b:selectOneMenu id="Planilla"  value="#{detalleBean.detalle.idplanilla.idplanillas}" style="width: 97%">
+                                <f:selectItem itemValue="" itemLabel="Seleccione el ID de la Planilla" />
                                 <f:selectItems value="#{detalleBean.listaPlanilla}" var="Pl" itemLabel="#{Pl.idplanillas}" itemValue="#{Pl.idplanillas}" />
-                            </p:selectOneMenu>
-
-                            <p:selectOneMenu id="Empleado"  value="#{detalleBean.detalle.idempleado.idempleado}" style="width: 97%" effect="fold">
-                                <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
+                            </b:selectOneMenu>
+                            
+                            <h:outputLabel value="Empleado: "/>
+                            <b:selectOneMenu id="Empleado"  value="#{detalleBean.detalle.idempleado.idempleado}" style="width: 97%;">
+                                <f:selectItem itemValue="" itemLabel="Seleccione un Empleado:" />
                                 <f:selectItems value="#{detalleBean.listaEmpleado}" var="Em" itemLabel="#{Em.nombres}" itemValue="#{Em.nombres}" />
-                            </p:selectOneMenu>
+                            </b:selectOneMenu>
                             
                             <h:outputLabel value="Salario Base:" />
                             <b:inputText id="salarioBase" value="#{detalleBean.detalle.salarioBase}" placeholder="$000.00"/>                            
