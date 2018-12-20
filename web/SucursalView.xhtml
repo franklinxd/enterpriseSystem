@@ -28,6 +28,12 @@
                         <h:outputLabel value="Encargado:" />
                         <b:inputText value="#{sucursalBean.sucursal.encargado}" placeholder="ID del Encargado"/>
                         
+                        <h:outputLabel value="Latitud:" />
+                        <b:inputText value="#{sucursalBean.sucursal.latitud}" placeholder="Latitud" />
+                        
+                        <h:outputLabel value="Longitud:" />
+                        <b:inputText value="#{sucursalBean.sucursal.longitud}" placeholder="Longitud" />
+                        
                         <h:outputLabel value="Empresa:" />
                         <p:selectOneMenu id="Empleado"  value="#{sucursalBean.sucursal.idempresa.idempresa}" style="width: 97%" effect="fold">
                             <f:selectItem itemValue="" itemLabel="Escoger Emprersa:" />
@@ -41,6 +47,13 @@
                     </b:panel>
                 </h:panelGrid>           
             </p:panel>
+            
+            <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+            
+            <p:commandButton value="Mapa" type="button" onclick="PF('mapa').show()" />
+            <p:dialog header="Mapa" widgetVar="mapa" modal="true" height="400" width="600">
+                <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%; height:400px" />
+            </p:dialog>
 
             <p:panel header="Lista de Sucursales" style="margin: 35px; padding: 10px 10px; text-align: center;" >
                 <p:dataTable value="#{sucursalBean.listaSucursal}" var="s" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
