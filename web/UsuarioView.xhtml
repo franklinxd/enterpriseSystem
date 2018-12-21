@@ -60,6 +60,9 @@
                     <p:column headerText="Empresa">
                         <p:outputLabel value="#{u.idempresa.nombre}" />
                     </p:column>
+                    <p:column headerText="Empresa">
+                        <p:outputLabel value="#{u.idempresa.nombre}" />
+                    </p:column>
                     <p:column headerText="Editar">
                         <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil" immediate="true"/>
                     </p:column>
