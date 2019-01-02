@@ -15,7 +15,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<staticText>
 				<reportElement x="200" y="20" width="100" height="30" uuid="e10655d5-5877-4111-9c35-81b0c248b95a"/>
 				<text><![CDATA[Enterprise System]]></text>
@@ -30,7 +30,7 @@
 			</textField>
 			<staticText>
 				<reportElement x="152" y="10" width="100" height="30" uuid="83545a74-fa11-40fb-b004-ab879ccd1234"/>
-				<text><![CDATA[Impreso por: ]]></text>
+				<text><![CDATA[Impreso Por: ]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
