@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Sucursales</title>
+    </h:head>
+    <h:body>
+        <div id="incluirPagina"/>
+        <h:form style="margin: 20px" id="form">
+            <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align: center;">
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Nombre:" />
+                    <p:inputText  value="#{sucursalBean.sucursal.nombre}" placeholder="Nombre de la Sucursal"/>
+
+                    <p:outputLabel value="Direccion:" />
+                    <p:inputText  value="#{sucursalBean.sucursal.direccion}" placeholder="Dirección Completa"/>
+
+                    <p:outputLabel value="Telefono:" />
+                    <p:inputMask mask="9999-9999" value="#{sucursalBean.sucursal.telefono}" placeholder="Tel.: 0000-0000"/>
+
+                    <p:outputLabel value="Encargado:" />
+                    <p:inputText value="#{sucursalBean.sucursal.encargado}" placeholder="ID del Encargado"/>
+
+                    <p:outputLabel value="Empresa:" />
+                    <p:inputText  value="#{sucursalBean.sucursal.idempresa.idempresa}" placeholder="ID de la Empresa"/>
+
+                    <f:facet name="footer">
+                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                    </f:facet>
+                </h:panelGrid>           
+            </p:panel>
+
+            <p:panel header="Lista de Sucursales" style="margin: 35px; padding: 10px 10px; text-align: center;" >
+                <p:dataTable value="#{sucursalBean.listaSucursal}" var="s" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{s.idsucursal}" />
+                    </p:column>
+                    <p:column headerText="Nombre" filterBy="#{s.nombre}" filterMatchMode="contains">
+                        <p:outputLabel value="#{s.nombre}" />
+                    </p:column>
+                    <p:column headerText="Direccion">
+                        <p:outputLabel value="#{s.direccion}" />
+                    </p:column>
+                    <p:column headerText="Telefono">
+                        <p:outputLabel value="#{s.telefono}" />
+                    </p:column>
+                    <p:column headerText="Encargado">
+                        <p:outputLabel value="#{s.encargado}" />
+                    </p:column>
+                    <p:column headerText="Empresa" filterBy="#{s.idempresa.nombre}" filterMatchMode="contains">
+                        <p:outputLabel value="#{s.idempresa.nombre}" />
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{sucursalBean.editar(s)}" update=":form"  icon="ui-icon-pencil"/>
+                    </p:column>
+                    <p:column headerText="Borrar">
+                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{sucursalBean.borrar(s)}" update=":form"  icon="ui-icon-trash"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("Menu.xhtml");
+            });
+        </script>
+    </h:body>
+</html>
+

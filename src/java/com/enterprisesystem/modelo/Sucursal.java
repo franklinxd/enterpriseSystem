@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -19,6 +20,7 @@ public class Sucursal implements Serializable {
     private Integer encargado;
     private String latitud;
     private String longitud;
+    @Lob
     private byte[] image;
     
     @ManyToOne
