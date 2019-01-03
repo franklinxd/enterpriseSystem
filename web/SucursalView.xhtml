@@ -11,7 +11,7 @@
     <h:body>
         <div id="incluirPagina"/>
         <h:form style="margin: 20px" id="form">
-            <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align: center;">
+            <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align:left;">
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Nombre:" />
@@ -24,10 +24,14 @@
                     <p:inputMask mask="9999-9999" value="#{sucursalBean.sucursal.telefono}" placeholder="Tel.: 0000-0000"/>
 
                     <p:outputLabel value="Encargado:" />
-                    <p:inputText value="#{sucursalBean.sucursal.encargado}" placeholder="ID del Encargado"/>
+                    <p:selectOneMenu  value="#{sucursalBean.sucursal.encargado.idempleado}">
+                        <f:selectItems value="#{sucursalBean.listaEmpleado}" var="encargado" itemLabel="#{encargado.nombres}" itemValue="#{encargado.idempleado}" />
+                    </p:selectOneMenu>
 
                     <p:outputLabel value="Empresa:" />
-                    <p:inputText  value="#{sucursalBean.sucursal.idempresa.idempresa}" placeholder="ID de la Empresa"/>
+                    <p:selectOneMenu value="#{sucursalBean.sucursal.idempresa.idempresa}">
+                        <f:selectItems value="#{sucursalBean.listaEmpresa}" var="empresa" itemLabel="#{empresa.nombre}" itemValue="#{empresa.idempresa}" />
+                    </p:selectOneMenu>
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
@@ -52,7 +56,7 @@
                         <p:outputLabel value="#{s.telefono}" />
                     </p:column>
                     <p:column headerText="Encargado">
-                        <p:outputLabel value="#{s.encargado}" />
+                        <p:outputLabel value="#{s.encargado.nombres}  #{s.encargado.apellidos}" />
                     </p:column>
                     <p:column headerText="Empresa" filterBy="#{s.idempresa.nombre}" filterMatchMode="contains">
                         <p:outputLabel value="#{s.idempresa.nombre}" />

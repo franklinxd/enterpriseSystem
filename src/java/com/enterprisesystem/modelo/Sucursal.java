@@ -19,7 +19,7 @@ public class Sucursal implements Serializable {
     private String telefono;
     
     @ManyToOne
-    @JoinColumn(name = "idempleado")
+    @JoinColumn(name = "encargado")
     private Empleado encargado;
     
     @ManyToOne

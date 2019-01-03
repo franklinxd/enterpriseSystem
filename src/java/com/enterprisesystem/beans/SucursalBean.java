@@ -1,7 +1,9 @@
 package com.enterprisesystem.beans;
 
+import com.enterprisesystem.dao.EmpleadoDAO;
 import com.enterprisesystem.dao.EmpresaDAO;
 import com.enterprisesystem.dao.SucursalDAO;
+import com.enterprisesystem.modelo.Empleado;
 import com.enterprisesystem.modelo.Empresa;
 import com.enterprisesystem.modelo.Sucursal;
 import java.util.List;
@@ -15,8 +17,12 @@ public class SucursalBean {
 
     private List<Sucursal> listaSucursal;
     private List<Empresa> listaEmpresa;
+    private List<Empleado> listaEmpleado;
+    
     private SucursalDAO sucursalDAO;
     private EmpresaDAO empresaDAO;
+    private EmpleadoDAO empleadoDAO;
+    
     private Sucursal sucursal;
     private String accion;
 
@@ -24,10 +30,13 @@ public class SucursalBean {
     public void init() {
         sucursalDAO = new SucursalDAO();
         empresaDAO = new EmpresaDAO();
+        empleadoDAO = new EmpleadoDAO();
         listaSucursal = sucursalDAO.buscarTodo();
         listaEmpresa = empresaDAO.buscarTodo();
+        listaEmpleado = empleadoDAO.buscarTodo();
         this.sucursal = new Sucursal();
         this.sucursal.setIdempresa(new Empresa());
+        this.sucursal.setEncargado(new Empleado());
         this.sucursal.setIdsucursal(0);
         accion = "Registrar";
         
@@ -37,6 +46,7 @@ public class SucursalBean {
         this.listaSucursal = sucursalDAO.buscarTodo();
         this.sucursal = new Sucursal();
         sucursal.setIdempresa(new Empresa());
+        sucursal.setEncargado(new Empleado());
         this.sucursal.setIdsucursal(0);
         accion = "Registrar";
     }
@@ -80,6 +90,22 @@ public class SucursalBean {
 
     public void setListaSucursal(List<Sucursal> listaSucursal) {
         this.listaSucursal = listaSucursal;
+    }
+
+    public List<Empleado> getListaEmpleado() {
+        return listaEmpleado;
+    }
+
+    public void setListaEmpleado(List<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
+    }
+
+    public EmpleadoDAO getEmpleadoDAO() {
+        return empleadoDAO;
+    }
+
+    public void setEmpleadoDAO(EmpleadoDAO empleadoDAO) {
+        this.empleadoDAO = empleadoDAO;
     }
 
     public SucursalDAO getSucursalDAO() {
