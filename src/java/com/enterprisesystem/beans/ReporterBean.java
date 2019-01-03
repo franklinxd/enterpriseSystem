@@ -1,6 +1,10 @@
 package com.enterprisesystem.beans;
 
+import com.enterprisesystem.dao.EmpresaDAO;
+import com.enterprisesystem.dao.PlanillaDAO;
 import com.enterprisesystem.dao.UsuarioDAO;
+import com.enterprisesystem.modelo.Empresa;
+import com.enterprisesystem.modelo.Planilla;
 import com.enterprisesystem.modelo.Usuario;
 import com.enterprisesystem.util.Reporter;
 import java.io.IOException;
@@ -18,6 +22,10 @@ import net.sf.jasperreports.engine.JRException;
 public class ReporterBean {    
     private List<Usuario> listaUsuario;
     private UsuarioDAO usuarioDAO;
+    private List<Planilla> listaPlanilla;
+    private PlanillaDAO planillaDAO;
+    private List<Empresa> listaEmpresa;
+    private EmpresaDAO empresaDAO;
     private Reporter reporter;
     Map<String, Object> parametros;
 
@@ -25,6 +33,10 @@ public class ReporterBean {
     public void init(){
         usuarioDAO = new UsuarioDAO();
         listaUsuario = usuarioDAO.buscarTodo();
+        planillaDAO = new PlanillaDAO();
+        listaPlanilla = planillaDAO.buscarTodo();
+        empresaDAO = new EmpresaDAO();
+        listaEmpresa = empresaDAO.buscarTodo();
         reporter = new Reporter();
         
         parametros = new HashMap<>();
@@ -39,6 +51,14 @@ public class ReporterBean {
     
     public void viewReportPdf(){
         reporter.getReport(listaUsuario, parametros, "/reportes/usuario.jasper","Reporte_de_Usuarios", Reporter.VIEW_PDF);
+    }
+    
+    public void viewReportPdfs(){
+        reporter.getReport(listaPlanilla, parametros, "/reportes/planilla.jasper","Reporte_de_Planilla", Reporter.VIEW_PDF);
+    }
+    
+    public void viewReportPdfss(){
+        reporter.getReport(listaEmpresa, parametros, "/reportes/Empresa.jasper","Reporte_de_Empresa", Reporter.VIEW_PDF);
     }
     
     public void downloadReportPdf(){
