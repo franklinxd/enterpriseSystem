@@ -17,15 +17,21 @@ public class Sucursal implements Serializable {
     private String nombre;
     private String direccion;
     private String telefono;
-    private Integer encargado;
-    private String latitud;
-    private String longitud;
-    @Lob
-    private byte[] image;
+    
+    @ManyToOne
+    @JoinColumn(name = "idempleado")
+    private Empleado encargado;
     
     @ManyToOne
     @JoinColumn(name = "idempresa")
     private Empresa idempresa;
+    
+    private double latitud;
+    private double longitud;
+    
+    @Lob
+    private byte[] image;
+    
 
     public Sucursal() {
         super();
@@ -35,21 +41,6 @@ public class Sucursal implements Serializable {
         super();
         this.idsucursal = idsucursal;
     }
-
-    public Sucursal(Integer idsucursal, String nombre, String direccion, String telefono, Integer encargado, String latitud, String longitud, byte[] image, Empresa idempresa) {
-        super();
-        this.idsucursal = idsucursal;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.encargado = encargado;
-        this.latitud = latitud;
-        this.longitud = longitud;
-        this.image = image;
-        this.idempresa = idempresa;
-    }
-
-    
 
     public Integer getIdsucursal() {
         return idsucursal;
@@ -83,11 +74,11 @@ public class Sucursal implements Serializable {
         this.telefono = telefono;
     }
 
-    public Integer getEncargado() {
+    public Empleado getEncargado() {
         return encargado;
     }
 
-    public void setEncargado(Integer encargado) {
+    public void setEncargado(Empleado encargado) {
         this.encargado = encargado;
     }
 
@@ -99,19 +90,19 @@ public class Sucursal implements Serializable {
         this.idempresa = idempresa;
     }
 
-    public String getLatitud() {
+    public double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(String latitud) {
+    public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
 
-    public String getLongitud() {
+    public double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(String longitud) {
+    public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
 
@@ -122,5 +113,4 @@ public class Sucursal implements Serializable {
     public void setImage(byte[] image) {
         this.image = image;
     }
-    
 }
