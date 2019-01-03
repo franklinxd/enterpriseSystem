@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.event.map.PointSelectEvent;
 
 @ManagedBean
 @ViewScoped
@@ -40,6 +41,11 @@ public class SucursalBean {
         this.sucursal.setIdsucursal(0);
         accion = "Registrar";
         
+    }
+    
+    public void onPointSelect(PointSelectEvent event){
+        sucursal.setLatitud(event.getLatLng().getLat());
+        sucursal.setLongitud(event.getLatLng().getLng());
     }
     
     public void limpiarFormulario(){

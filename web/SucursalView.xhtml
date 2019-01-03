@@ -10,6 +10,14 @@
     </h:head>
     <h:body>
         <div id="incluirPagina"/>
+        
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+        <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
+            <p:gmap id="gmap" center="13.7,-89.2" zoom="15" type="HYBRID" style="width:100%; height: 400px">
+                <p:ajax event="pointSelect" listener="#{sucursalBean.onPointSelect}" update="form" />
+            </p:gmap>
+        </p:dialog>
+        
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align:left;">
 
@@ -32,6 +40,15 @@
                     <p:selectOneMenu value="#{sucursalBean.sucursal.idempresa.idempresa}">
                         <f:selectItems value="#{sucursalBean.listaEmpresa}" var="empresa" itemLabel="#{empresa.nombre}" itemValue="#{empresa.idempresa}" />
                     </p:selectOneMenu>
+                    
+                    <p:outputLabel value="Latitud:" />
+                    <p:inputText value="#{sucursalBean.sucursal.latitud}" placeholder="Latitud" />
+                    
+                    <p:outputLabel value="Longitud:" />
+                    <p:inputText value="#{sucursalBean.sucursal.longitud}" placeholder="Longitud" />
+                    
+                    <p:outputLabel value="Mapa" />
+                    <p:commandButton id="btn" type="button" icon="pi pi-globe" value="Mapa" onclick="PF('dlg').show();" />
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
