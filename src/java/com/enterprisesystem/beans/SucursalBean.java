@@ -6,11 +6,14 @@ import com.enterprisesystem.dao.SucursalDAO;
 import com.enterprisesystem.modelo.Empleado;
 import com.enterprisesystem.modelo.Empresa;
 import com.enterprisesystem.modelo.Sucursal;
+import java.io.IOException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.apache.commons.io.IOUtils;
 import org.primefaces.event.map.PointSelectEvent;
+import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @ViewScoped
@@ -26,6 +29,8 @@ public class SucursalBean {
     
     private Sucursal sucursal;
     private String accion;
+    
+    private UploadedFile file;
 
     @PostConstruct
     public void init() {
@@ -58,6 +63,20 @@ public class SucursalBean {
     }
     
     public void accionFormulario(){
+        
+        try {
+            if((IOUtils.toByteArray(file.getInputstream())).length > 0){
+                this.sucursal.setImage(IOUtils.toByteArray(file.getInputstream()));
+            }
+            
+            System.out.println("IMG: " + IOUtils.toString(file.getInputstream()));
+            System.out.println("Longitud: " + (IOUtils.toByteArray(file.getInputstream())).length);
+            
+        } catch(IOException e){
+            System.out.println("Error de imagen: " + e.getMessage());
+        }
+        
+        
         if(accion.equals("Registrar")){
             sucursalDAO.insertar(this.sucursal);
         }else if(accion.equals("Editar")){
@@ -153,6 +172,12 @@ public class SucursalBean {
     public void setEmpresaDAO(EmpresaDAO empresaDAO) {
         this.empresaDAO = empresaDAO;
     }
-    
-    
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
 }

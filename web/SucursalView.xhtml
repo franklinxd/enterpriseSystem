@@ -18,7 +18,7 @@
             </p:gmap>
         </p:dialog>
         
-        <h:form style="margin: 20px" id="form">
+        <h:form style="margin: 20px" id="form" enctype="multipart/form-data">
             <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align:left;">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -49,6 +49,9 @@
                     
                     <p:outputLabel value="Mapa" />
                     <p:commandButton id="btn" type="button" icon="pi pi-globe" value="Mapa" onclick="PF('dlg').show();" />
+                    
+                    <p:outputLabel value="Imagen" />
+                    <p:fileUpload value="#{sucursalBean.file}" mode="simple" />
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
