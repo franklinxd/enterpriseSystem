@@ -14,6 +14,10 @@ import javax.faces.bean.ViewScoped;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.model.UploadedFile;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
 
 @ManagedBean
 @ViewScoped
@@ -22,16 +26,16 @@ public class SucursalBean {
     private List<Sucursal> listaSucursal;
     private List<Empresa> listaEmpresa;
     private List<Empleado> listaEmpleado;
-    
     private SucursalDAO sucursalDAO;
     private EmpresaDAO empresaDAO;
     private EmpleadoDAO empleadoDAO;
-    
     private Sucursal sucursal;
     private String accion;
-    
     private UploadedFile file;
-
+    private MapModel model;
+  
+    
+    
     @PostConstruct
     public void init() {
         sucursalDAO = new SucursalDAO();
@@ -45,6 +49,17 @@ public class SucursalBean {
         this.sucursal.setEncargado(new Empleado());
         this.sucursal.setIdsucursal(0);
         accion = "Registrar";
+        
+        
+        model = new DefaultMapModel();
+        for(Sucursal sucursal :listaSucursal){
+            LatLng coord = new LatLng(sucursal.getLatitud(), sucursal.getLongitud());
+            model.addOverlay(new Marker(coord,sucursal.getNombre()));
+            
+        }
+        
+        
+        
         
     }
     
@@ -180,4 +195,16 @@ public class SucursalBean {
     public void setFile(UploadedFile file) {
         this.file = file;
     }
+
+    public MapModel getModel() {
+        return model;
+    }
+
+    public void setModel(MapModel model) {
+        this.model = model;
+    }
+    
+    
 }
+
+
