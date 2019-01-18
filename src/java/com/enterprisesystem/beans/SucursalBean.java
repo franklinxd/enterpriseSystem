@@ -9,8 +9,10 @@ import com.enterprisesystem.modelo.Sucursal;
 import java.io.IOException;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.model.UploadedFile;
@@ -22,14 +24,14 @@ public class SucursalBean {
     private List<Sucursal> listaSucursal;
     private List<Empresa> listaEmpresa;
     private List<Empleado> listaEmpleado;
-    
+
     private SucursalDAO sucursalDAO;
     private EmpresaDAO empresaDAO;
     private EmpleadoDAO empleadoDAO;
-    
+
     private Sucursal sucursal;
     private String accion;
-    
+
     private UploadedFile file;
 
     @PostConstruct
@@ -40,69 +42,87 @@ public class SucursalBean {
         listaSucursal = sucursalDAO.buscarTodo();
         listaEmpresa = empresaDAO.buscarTodo();
         listaEmpleado = empleadoDAO.buscarTodo();
-        this.sucursal = new Sucursal();
-        this.sucursal.setIdempresa(new Empresa());
-        this.sucursal.setEncargado(new Empleado());
-        this.sucursal.setIdsucursal(0);
+        sucursal = new Sucursal();
+        sucursal.setIdempresa(new Empresa());
+        sucursal.setEncargado(new Empleado());
+        sucursal.setIdsucursal(0);
         accion = "Registrar";
-        
     }
-    
-    public void onPointSelect(PointSelectEvent event){
+
+    public void onPointSelect(PointSelectEvent event) {
         sucursal.setLatitud(event.getLatLng().getLat());
         sucursal.setLongitud(event.getLatLng().getLng());
     }
-    
-    public void limpiarFormulario(){
-        this.listaSucursal = sucursalDAO.buscarTodo();
-        this.sucursal = new Sucursal();
+
+    public void limpiarFormulario() {
+        listaSucursal = sucursalDAO.buscarTodo();
+        sucursal = new Sucursal();
         sucursal.setIdempresa(new Empresa());
         sucursal.setEncargado(new Empleado());
         this.sucursal.setIdsucursal(0);
         accion = "Registrar";
     }
-    
-    public void accionFormulario(){
-        
+
+    public void accionFormulario() {
         try {
-            if((IOUtils.toByteArray(file.getInputstream())).length > 0){
+            if ((IOUtils.toByteArray(file.getInputstream())).length > 0) {
                 this.sucursal.setImage(IOUtils.toByteArray(file.getInputstream()));
             }
-            
             System.out.println("IMG: " + IOUtils.toString(file.getInputstream()));
             System.out.println("Longitud: " + (IOUtils.toByteArray(file.getInputstream())).length);
-            
-        } catch(IOException e){
+
+        } catch (IOException e) {
             System.out.println("Error de imagen: " + e.getMessage());
         }
-        
-        
-        if(accion.equals("Registrar")){
-            sucursalDAO.insertar(this.sucursal);
-        }else if(accion.equals("Editar")){
-            sucursalDAO.actualizar(this.sucursal);
+        if (accion == "Registrar") {
+            insertar();
+        } else {
+            actualizar();
         }
-        limpiarFormulario();
     }
-    
-    public void editar(Sucursal sucursal){
+
+    public void editar(Sucursal sucursal) {
         System.out.println("Editando..");
         this.sucursal = sucursal;
         accion = "Editar";
     }
-    
 
     public void borrar(Sucursal sucursal) {
-        sucursalDAO.borrar(sucursal);
+        boolean flag = sucursalDAO.borrar(sucursal);
+        if (flag) {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO", "Su Sucursal fué Borrada Exitosamente.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Su Sucursal NO fué Borrada.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        }
         listaSucursal = sucursalDAO.buscarTodo();
     }
-    
-    private void insertar(){
-        sucursalDAO.insertar(this.sucursal);
+
+    private void insertar() {
+        boolean flag = sucursalDAO.insertar(sucursal);
+        if (flag) {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO", "Su Sucursal fué Guardada Exitosamente.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Su Sucursal NO fué Guardada.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        }
+        listaSucursal = sucursalDAO.buscarTodo();
+        limpiarFormulario();
     }
-    
-    private void actualñizar(){
-        sucursalDAO.actualizar(this.sucursal);
+
+    private void actualizar() {
+        boolean flag = sucursalDAO.actualizar(sucursal);
+        if (flag) {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO", "Su Sucursal fué Actualizada Exitosamente");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Su Sucursal NO fué Actualizada.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        }
+        listaSucursal = sucursalDAO.buscarTodo();
+        limpiarFormulario();
     }
 
     public SucursalBean() {
@@ -140,12 +160,12 @@ public class SucursalBean {
     public void setSucursalDAO(SucursalDAO sucursalDAO) {
         this.sucursalDAO = sucursalDAO;
     }
-    
-    public String getAccion(){
+
+    public String getAccion() {
         return accion;
     }
-    
-    public void setAccion(String accion){
+
+    public void setAccion(String accion) {
         this.accion = accion;
     }
 
