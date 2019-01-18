@@ -10,6 +10,7 @@
     </h:head>
     <h:body>
         <div id="incluirPagina"/>
+        <p:growl autoUpdate="true" showDetail="true" id="msg"/>
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{usuarioBean.accion} Usuario" style="margin: 35px; padding: 10px 10px; text-align: center;">
                 <h:panelGrid columns="2" cellpadding="5">
@@ -22,19 +23,21 @@
                     <h:outputLabel value="Username:" />
                     <b:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>             
 
-                    <h:outputLabel for="pwd1" value="Contraseña: *" />
-                    <p:password id="pwd1" value="#{usuarioBean.usuario.password}" match="pwd2" label="Ingrese su Contraseña" required="true" placeholder="Ruiz" />
+                    <h:outputLabel value="Contraseña: *" />
+                    <p:password value="#{usuarioBean.usuario.password}" label="Ingrese su Contraseña" placeholder="Escriba su Contraseña" />
 
-                    <h:outputLabel for="pwd2" value="Confirme su Contraseña: *" />
-                    <p:password id="pwd2" value="#{usuarioBean.password2}" label="Confirme su Contraseña" required="true" placeholder="Ruiz"/>
+                    <h:outputLabel value="Confirmación de Contraseña: *" />
+                    <p:password value="#{usuarioBean.usuario.password2}" label="Confirme su Contraseña" placeholder="Confirme su Contraseña"/>
 
-                    <p:selectOneMenu id="Empleado"  value="#{usuarioBean.usuario.idempresa.idempresa}" style="width: 97%" effect="fold">
-                        <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
-                        <f:selectItems value="#{usuarioBean.listaEmpresa}" var="Em" itemLabel="#{Em.nombre}" itemValue="#{Em.nombre}" />
-                    </p:selectOneMenu>
+                    <p:outputLabel value="ID de la Empresa: "/>
+                    <b:selectOneMenu value="#{usuarioBean.usuario.idempresa.idempresa}" style="width: 98%;">
+                        <f:selectItem itemValue="" itemLabel="Seleccione un Empleado:" />
+                        <f:selectItems value="#{usuarioBean.listaEmpresa}" var="Em" itemLabel="#{Em.idempresa} - #{Em.nombre}" itemValue="#{Em.idempresa}" />
+                    </b:selectOneMenu>
+
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{usuarioBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
-                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" actionListener="#{usuarioBean.limpiarFormulario()}" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
@@ -58,13 +61,10 @@
                         <p:outputLabel value="#{u.password}" />
                     </p:column>
                     <p:column headerText="Empresa">
-                        <p:outputLabel value="#{u.idempresa.nombre}" />
-                    </p:column>
-                    <p:column headerText="Empresa">
-                        <p:outputLabel value="#{u.idempresa.nombre}" />
+                        <p:outputLabel value="#{u.idempresa.idempresa} - #{u.idempresa.nombre}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil" immediate="true"/>
+                        <b:commandButton styleClass="btn btn-warning" value="Editar" actionListener="#{usuarioBean.editar(u)}" update=":form"  icon="ui-icon-pencil" immediate="true"/>
                     </p:column>
                     <p:column headerText="Borrar">
                         <b:commandButton styleClass="btn btn-danger" value="Borrar" actionListener="#{usuarioBean.borrar(u)}" update=":form"  icon="ui-icon-trash" immediate="true"/>

@@ -13,37 +13,66 @@ import javax.persistence.TypedQuery;
  * @author franklin.ramos
  */
 public class UsuarioDAO {
-    
-    public List<Usuario> buscarTodo(){
+
+    public List<Usuario> buscarTodo() {
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
         TypedQuery consulta = em.createQuery("Select u from Usuario u", Usuario.class);
         List<Usuario> listaUsuario = consulta.getResultList();
         return listaUsuario;
     }
-    
-    public void borrar(Usuario usuario){
+
+    public boolean borrar(Usuario usuario) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.remove(em.merge(usuario));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.remove(em.merge(usuario));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-    
-    public void insertar(Usuario usuario){
+
+    public boolean insertar(Usuario usuario) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(em.merge(usuario));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.persist(em.merge(usuario));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-    
-    public void actualizar(Usuario usuario){
+
+    public boolean actualizar(Usuario usuario) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.merge(em.merge(usuario));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.merge(em.merge(usuario));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-    
 }
