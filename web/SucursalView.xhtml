@@ -7,34 +7,30 @@
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <script>
-                   setInterval(function(){
-                   $("*").each(function() {
-                   if ($(this).css("zIndex") == 100) {
-                   $(this).css("zIndex", "-100");
-                   }
-                   })}
-                   , 10);
-       </script>
-        
+            setInterval(function () {
+                $("*").each(function () {
+                    if ($(this).css("zIndex") == 100) {
+                        $(this).css("zIndex", "-100");
+                    }
+                })
+            }
+            , 10);
+        </script>
         <title>Sucursales</title>
     </h:head>
     <h:body>
         <div id="incluirPagina"/>
-        
-       <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
         <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
             <p:gmap id="gmap" center="13.7,-89.2" zoom="15" type="HYBRID" style="width:100%; height: 400px">
                 <p:ajax event="pointSelect" listener="#{sucursalBean.onPointSelect}" update="form" />
             </p:gmap>
         </p:dialog>
-       
-       
-         <center>
-             <p:gmap model="#{sucursalBean.model}" id="gmapi" center="13.80,-89.16" zoom="9" type="HYBRID" style="width:70%;height:500px" streetView="true"/>
-             </center> 
-       
+        <center>
+            <p:gmap model="#{sucursalBean.model}" id="gmapi" center="13.80,-89.16" zoom="9" type="HYBRID" style="width:70%;height:500px" streetView="true"/>
+        </center> 
+        <p:growl autoUpdate="true" showDetail="true" id="msg"/>
         <h:form style="margin: 20px" id="form" enctype="multipart/form-data">
-      
             <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align:left;">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -56,16 +52,16 @@
                     <b:selectOneMenu value="#{sucursalBean.sucursal.idempresa.idempresa}">
                         <f:selectItems value="#{sucursalBean.listaEmpresa}" var="empresa" itemLabel="#{empresa.nombre}" itemValue="#{empresa.idempresa}" />
                     </b:selectOneMenu>
-                    
+
                     <p:outputLabel value="Latitud:" />
                     <b:inputText value="#{sucursalBean.sucursal.latitud}" placeholder="Latitud" />
-                    
+
                     <p:outputLabel value="Longitud:" />
                     <b:inputText value="#{sucursalBean.sucursal.longitud}" placeholder="Longitud" />
-                    
+
                     <p:outputLabel value="Mapa" />
                     <b:commandButton id="btn" type="button" icon="pi pi-globe" value="Mapa" onclick="PF('dlg').show();" />
-                    
+
                     <p:outputLabel value="Imagen" />
                     <p:fileUpload value="#{sucursalBean.file}" mode="simple" />
 
@@ -106,8 +102,7 @@
                 </p:dataTable> 
             </p:panel>
         </h:form>
-       
-       <script type="text/javascript">
+        <script type="text/javascript">
             $(function () {
                 // menu.html
                 $("#incluirPagina").load("Menu.xhtml");

@@ -10,11 +10,17 @@ import javax.persistence.TypedQuery;
 public class SucursalDAO {
 
     public List<Sucursal> buscarTodo() {
+        List<Sucursal> lista = null;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
         TypedQuery consulta = em.createQuery("Select u from Sucursal u", Sucursal.class);
-        List<Sucursal> listaSucursal = consulta.getResultList();
-        return listaSucursal;
+        try {
+            lista = consulta.getResultList();
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            return null;
+        }
+        return lista;
     }
 
     public boolean borrar(Sucursal sucursal) {

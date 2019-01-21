@@ -35,9 +35,7 @@ public class SucursalBean {
     private String accion;
     private UploadedFile file;
     private MapModel model;
-  
-    
-    
+
     @PostConstruct
     public void init() {
         sucursalDAO = new SucursalDAO();
@@ -51,18 +49,13 @@ public class SucursalBean {
         sucursal.setEncargado(new Empleado());
         sucursal.setIdsucursal(0);
         accion = "Registrar";
-        
-        
+
         model = new DefaultMapModel();
-        for(Sucursal sucursal :listaSucursal){
+        for (Sucursal sucursal : listaSucursal) {
             LatLng coord = new LatLng(sucursal.getLatitud(), sucursal.getLongitud());
-            model.addOverlay(new Marker(coord,sucursal.getNombre()));
-            
+            model.addOverlay(new Marker(coord, sucursal.getNombre()));
         }
-        
-        
-        
-        
+
     }
 
     public void onPointSelect(PointSelectEvent event) {
@@ -75,7 +68,7 @@ public class SucursalBean {
         sucursal = new Sucursal();
         sucursal.setIdempresa(new Empresa());
         sucursal.setEncargado(new Empleado());
-        this.sucursal.setIdsucursal(0);
+        sucursal.setIdsucursal(0);
         accion = "Registrar";
     }
 
@@ -224,8 +217,5 @@ public class SucursalBean {
     public void setModel(MapModel model) {
         this.model = model;
     }
-    
-    
+
 }
-
-
