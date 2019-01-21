@@ -34,6 +34,16 @@
             <p:panel header="#{sucursalBean.accion} Sucursal" style="margin: 35px; padding: 10px 10px; text-align:left;">
 
                 <h:panelGrid columns="2" cellpadding="5">
+                    
+                    <p:outputLabel value="Latitud:" />
+                    <b:inputText value="#{sucursalBean.sucursal.latitud}" placeholder="Latitud" />
+
+                    <p:outputLabel value="Longitud:" />
+                    <b:inputText value="#{sucursalBean.sucursal.longitud}" placeholder="Longitud" />
+
+                    <p:outputLabel value="Mapa" />
+                    <b:commandButton id="btn" type="button" icon="pi pi-globe" value="Mapa" onclick="PF('dlg').show();" />
+                    
                     <p:outputLabel value="Nombre:" />
                     <b:inputText  value="#{sucursalBean.sucursal.nombre}" placeholder="Nombre de la Sucursal"/>
 
@@ -51,16 +61,7 @@
                     <p:outputLabel value="Empresa:" />
                     <b:selectOneMenu value="#{sucursalBean.sucursal.idempresa.idempresa}">
                         <f:selectItems value="#{sucursalBean.listaEmpresa}" var="empresa" itemLabel="#{empresa.nombre}" itemValue="#{empresa.idempresa}" />
-                    </b:selectOneMenu>
-
-                    <p:outputLabel value="Latitud:" />
-                    <b:inputText value="#{sucursalBean.sucursal.latitud}" placeholder="Latitud" />
-
-                    <p:outputLabel value="Longitud:" />
-                    <b:inputText value="#{sucursalBean.sucursal.longitud}" placeholder="Longitud" />
-
-                    <p:outputLabel value="Mapa" />
-                    <b:commandButton id="btn" type="button" icon="pi pi-globe" value="Mapa" onclick="PF('dlg').show();" />
+                    </b:selectOneMenu>                   
 
                     <p:outputLabel value="Imagen" />
                     <p:fileUpload value="#{sucursalBean.file}" mode="simple" />

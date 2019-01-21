@@ -19,35 +19,71 @@ import javax.persistence.TypedQuery;
 public class EmpleadoDAO {
 
     public List<Empleado> buscarTodo() {
+        List<Empleado> lista = null;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
         TypedQuery consulta = em.createQuery("Select e from Empleado e", Empleado.class);
-        List<Empleado> listaEmpleado = consulta.getResultList();
-        return listaEmpleado;
+        try {
+            lista = consulta.getResultList();
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception);
+        } finally {
+            em.close();
+        }
+        return lista;
     }
 
-    public void borrar(Empleado empleado) {
+    public boolean borrar(Empleado empleado) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.remove(em.merge(empleado));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.remove(em.merge(empleado));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
 
-    public void insertar(Empleado empleado) {
+    public boolean insertar(Empleado empleado) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(em.merge(empleado));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.persist(em.merge(empleado));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
 
-    public void actualizar(Empleado empleado) {
+    public boolean actualizar(Empleado empleado) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(em.merge(empleado));
-        em.getTransaction().commit();
-
+        try {
+            em.getTransaction().begin();
+            em.persist(em.merge(empleado));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
 }
