@@ -14,18 +14,26 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Jacqueline.BarreraUS
+ * @author Jacqueline.BarreraUS && Todos
  */
 public class LoginDAO {
 
     public Usuario validarUsuario(String username, String password) {
+        Usuario user = null;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
         TypedQuery consulta = em.createQuery("SELECT u FROM Usuario u Where u.username=:username AND u.password=:password", Usuario.class);
         consulta.setParameter("username", username);
         consulta.setParameter("password", password);
-        Usuario listaU = (Usuario)consulta.getSingleResult();
-        return listaU;
+        try {
+            user = (Usuario)consulta.getSingleResult();
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            return null;
+        } finally {
+            em.close();
+        }
+        return user;
     }
 
 }

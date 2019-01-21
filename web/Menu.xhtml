@@ -52,16 +52,19 @@ and open the template in the editor.
         </style>
     </h:head>
     <h:body styleClass="contenido">
-        <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
-            <b:link href="Menu.xhtml"><h1 style="text-align: center">Menú</h1></b:link>            
-            <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Detalle"/>
-            <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Empleado"/>
-            <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Empresa"/>
-            <p:button href="IngresosView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Ingresos"/>
-            <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Planilla"/>
-            <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Sucursal"/>
-            <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Usuario"/>
-        </p:sidebar>
-        <p:commandButton id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
+        <p:growl autoUpdate="true" sticky="true" showDetail="true" id="msg"/>
+        <h:form id="menuForm">
+            <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+                <b:link href="Menu.xhtml"><h1 style="text-align: center">Menú</h1></b:link>            
+                <p:button href="DetalleView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Detalle"/>
+                <p:button href="EmpleadoView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Empleado"/>
+                <p:button href="EmpresaView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Empresa"/>
+                <p:button href="IngresosView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Ingresos"/>
+                <p:button href="PlanillaView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Planilla"/>
+                <p:button href="SucursalView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Sucursal"/>
+                <p:button href="UsuarioView.xhtml" styleClass="Btn" style="width: 100%; margin: 10px 10px;" value="Usuario"/>
+            </p:sidebar>
+            <p:commandButton update=":menuForm" id="menu" icon="ui-icon-home" styleClass="Main" oncomplete="PF('sidebar1').show()" style="margin: 10px 10px; padding: 12px 12px;"/>
+        </h:form>        
     </h:body>
 </html>

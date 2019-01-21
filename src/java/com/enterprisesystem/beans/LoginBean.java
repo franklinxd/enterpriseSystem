@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-
 /**
  *
  * @author Jacqueline.BarreraUS
@@ -84,30 +83,24 @@ public class LoginBean {
     }
 
     public String validaLogin() throws Exception {
-
         LoginDAO user = new LoginDAO();
         Usuario u = user.validarUsuario(username, password);
-         String adv = "";
+        String adv = "";
         try {
             if (u != null) {
-                isLogged = true;
-
-                FacesContext.getCurrentInstance().getExternalContext().redirect("Menu.xhtml");
-                
-                return "Menu";
+                //isLogged = true;
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Menu.xhtml");                
+                return "Menu.xhtml";
             } else {
-                isLogged = false;
-                adv="¡Los datos no son correctos!";
-                FacesMessage msg = new FacesMessage(adv); 
+                //isLogged = false;
+                adv = "¡Su Usuario es INCORRECTO!, Si Tiene Problemas con su Contraseña o Usuario, Por favor Contactar con Servicio Técnico.";
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "INVALIDO", adv);
                 FacesContext.getCurrentInstance().addMessage(null, msg);
-                return "login";
-
+                return "login.xhtml";
             }
-        } catch (Exception e) {
-            System.out.println("Error"+e);
+        } catch (Exception exception) {
+            System.out.println("Error" + exception.getMessage());
             return null;
         }
-
     }
-
 }

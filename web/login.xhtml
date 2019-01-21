@@ -23,13 +23,13 @@
             }
         </style> 
         <h:body class="padre"> 
-            <h:form id="loginform">
-                <p:growl id="growl" showDetail="true"  life="3000" />
+            <p:growl showDetail="true" autoUpdate="true" id="msg"/>
+            <h:form id="loginform">                
                 <h1 style=" text-align: center; padding: 30px; color: white">CORPORATION S.A. de C.V.</h1>
                 <p:panel  style="width: 360px; padding: 10px 10px;background:  rgba(255,255,255,0.6);">
                     <h3 style=" text-align: center; padding: 20px; font-family:  'Dekko', cursive !important; color: black !important;">Inicio de Sesión</h3>
                     <b:image name="user" value="https://images.vexels.com/media/users/3/135246/isolated/preview/df491bf444acfa945630c22389140d4a-icono-de-la-sombra-de-usuario-by-vexels.png"  tooltip="Iniciar Sesión" tooltipPosition="center" style="width:80%; padding: 0px;"/>
-                        <b:panel style="border: 0; background:  rgba(255,255,255,0);">
+                    <b:panel style="border: 0; background:  rgba(255,255,255,0);">
                         <h:outputLabel for="username" value="Usuario: *"/>
                         <b:inputText id="username" value="#{loginBean.username}" required="true" required-message="¡Ha Olvidado Poner Su Usuario!"></b:inputText>
                         <p:message for="username">
@@ -37,8 +37,8 @@
                         <h:outputLabel for="password" value="Password: *"/>
                         <b:inputSecret id="password" value="#{loginBean.password}" required="true" required-message="¡Ha Olvidado Poner Su Contraseña!" ></b:inputSecret>
                         <p:message for="password"></p:message>
-                        <b:commandButton styleClass="btn btn-primary" action="#{loginBean.validaLogin()}" value="Login" update=":loginform growl" ajax="true" icon="glyphicon glyphicon-log-in"/>
-                        </b:panel> 
+                        <b:commandButton styleClass="btn btn-primary" action="#{loginBean.validaLogin()}" value="Login" update=":loginform" ajax="true" icon="glyphicon glyphicon-log-in"/>
+                    </b:panel> 
                 </p:panel>
             </h:form>
         </h:body>
