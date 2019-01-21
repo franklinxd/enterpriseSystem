@@ -12,35 +12,73 @@ import javax.persistence.TypedQuery;
  * @author gerson.ruizusam
  */
 public class DetalleDAO {
-    
-     public List<DetallePlanilla> buscarTodo(){
+
+    public List<DetallePlanilla> buscarTodo() {
+        List<DetallePlanilla> lista = null;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
         TypedQuery consulta = em.createQuery("Select u from DetallePlanilla u", DetallePlanilla.class);
-        List<DetallePlanilla> listaDetalle= consulta.getResultList();
-        return listaDetalle;
+        try {
+            lista = consulta.getResultList();
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception);
+            return null;
+        } finally {
+            em.close();
+        }
+        return lista;
     }
-     public void borrar(DetallePlanilla Detalle){
+
+    public boolean borrar(DetallePlanilla Detalle) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.remove(em.merge(Detalle));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.remove(em.merge(Detalle));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-     public void insertar(DetallePlanilla Detalle){
+
+    public boolean insertar(DetallePlanilla Detalle) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(em.merge(Detalle));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.persist(em.merge(Detalle));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-      public void actualizar(DetallePlanilla Detalle){
+
+    public boolean actualizar(DetallePlanilla Detalle) {
+        boolean flag = false;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.merge(em.merge(Detalle));
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.merge(em.merge(Detalle));
+            em.getTransaction().commit();
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-      //Error
-      //error
 }

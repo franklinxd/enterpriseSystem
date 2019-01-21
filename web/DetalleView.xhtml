@@ -27,13 +27,13 @@ and open the template in the editor.
                                 <f:selectItem itemValue="" itemLabel="Seleccione el ID de la Planilla" />
                                 <f:selectItems value="#{detalleBean.listaPlanilla}" var="Pl" itemLabel="#{Pl.idplanillas}" itemValue="#{Pl.idplanillas}" />
                             </b:selectOneMenu>
-                            
+
                             <h:outputLabel value="Empleado: "/>
                             <b:selectOneMenu id="Empleado"  value="#{detalleBean.detalle.idempleado.idempleado}" style="width: 97%;">
                                 <f:selectItem itemValue="" itemLabel="Seleccione un Empleado:" />
-                                <f:selectItems value="#{detalleBean.listaEmpleado}" var="Em" itemLabel="#{Em.nombres}" itemValue="#{Em.nombres}" />
+                                <f:selectItems value="#{detalleBean.listaEmpleado}" var="Em" itemLabel="#{Em.nombres}" itemValue="#{Em.idempleado}" />
                             </b:selectOneMenu>
-                            
+
                             <h:outputLabel value="Salario Base:" />
                             <b:inputText id="salarioBase" value="#{detalleBean.detalle.salarioBase}" placeholder="$000.00"/>                            
                         </b:column>
@@ -71,7 +71,7 @@ and open the template in the editor.
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{detalleBean.accionFormulario()}" update=":form" style="margin: 15px 15px;" icon="glyphicon glyphicon-floppy-disk"/>
-                        <b:commandButton value="Cancelar" ajax="true" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
@@ -79,13 +79,16 @@ and open the template in the editor.
             <p:panel header="Lista de Detalle Planilla" style="margin: 35px; padding: 10px 10px; text-align: center;" >
                 <p:dataTable value="#{detalleBean.listaDetalle}" var="d"  paginator="true" rows="5" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15" style="text-align: center;" emptyMessage="No Hay Registros." styleClass="table table-hover">
-                    <p:column headerText="Estado de Planilla: ">
-                        <p:outputLabel value="#{d.idplanilla.estado}" />
+                    
+                    <p:column headerText="ID Detalle">                        
+                        <p:outputLabel value="#{d.iddetalle}" />
+                    </p:column>
+                    <p:column headerText="ID Planilla">
+                        <p:outputLabel value="#{d.idplanilla.idplanillas}"/>
                     </p:column>
                     <p:column headerText="ID Empleado" filterBy="#{d.idempleado.nombres}" filterMatchMode="contains">
                         <p:outputLabel value="#{d.idempleado.nombres}" />
                     </p:column>
-
                     <p:column headerText="Bonos">
                         <p:outputLabel value="#{d.bono}" />
                     </p:column>
@@ -97,10 +100,7 @@ and open the template in the editor.
                     </p:column>
                     <p:column headerText="AFP">
                         <p:outputLabel value="#{d.afp}" />
-                    </p:column>
-                    <p:column headerText="Salario Neto">
-                        <p:outputLabel value="#{d.salarioNeto}" />
-                    </p:column>
+                    </p:column>                    
                     <p:column headerText="Aguinaldo">
                         <p:outputLabel value="#{d.aguinaldo}" />
                     </p:column>
@@ -110,12 +110,16 @@ and open the template in the editor.
                     <p:column headerText="Anticipos">
                         <p:outputLabel value="#{d.anticipos}" />
                     </p:column>
+                    <p:column headerText="Salario Neto">
+                        <p:outputLabel value="#{d.salarioNeto}" />
+                    </p:column>
                     <p:column headerText="Editar">
                         <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{detalleBean.editar(d)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
                         <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{detalleBean.borrar(d)}" update=":form"  icon="glyphicon glyphicon-trash"/>
                     </p:column>
+                    
                 </p:dataTable>
             </p:panel>
         </h:form>
