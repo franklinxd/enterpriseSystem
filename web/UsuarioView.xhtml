@@ -24,14 +24,11 @@
                     <b:inputText  value="#{usuarioBean.usuario.username}" placeholder="ej.: UserName123"/>             
 
                     <h:outputLabel value="Contraseña: *" />
-                    <p:password value="#{usuarioBean.usuario.password}" label="Ingrese su Contraseña" placeholder="Escriba su Contraseña" />
-
-                    <h:outputLabel value="Confirmación de Contraseña: *" />
-                    <p:password value="#{usuarioBean.usuario.password2}" label="Confirme su Contraseña" placeholder="Confirme su Contraseña"/>
-
+                    <b:inputSecret value="#{usuarioBean.usuario.password}" placeholder="Escriba su Contraseña" />
+                   
                     <p:outputLabel value="ID de la Empresa: "/>
                     <b:selectOneMenu value="#{usuarioBean.usuario.idempresa.idempresa}" style="width: 98%;">
-                        <f:selectItem itemValue="" itemLabel="Seleccione un Empleado:" />
+                        <f:selectItem itemValue="" itemLabel="Seleccione una Empresa" />
                         <f:selectItems value="#{usuarioBean.listaEmpresa}" var="Em" itemLabel="#{Em.idempresa} - #{Em.nombre}" itemValue="#{Em.idempresa}" />
                     </b:selectOneMenu>
 

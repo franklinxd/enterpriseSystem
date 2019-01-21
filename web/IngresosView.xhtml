@@ -18,7 +18,7 @@
 
                         <p:selectOneMenu id="Empleado"  value="#{ingresosBean.ingreso.idsucursal.idsucursal}" style="width: 97%" effect="fold">
                             <f:selectItem itemValue="" itemLabel="Escoger Empleado:" />
-                            <f:selectItems value="#{ingresosBean.listaIngres}" var="Em" itemLabel="#{Em.idsucursal.idsucursal}" itemValue="#{Em.idsucursal.idsucursal}" />
+                            <f:selectItems value="#{ingresosBean.listaIngres}" var="Em" itemLabel="#{Em.idsucursal.nombre}" itemValue="#{Em.idsucursal.idsucursal}" />
                         </p:selectOneMenu>
 
                         <h:outputLabel value="Cargo:" /> 
@@ -34,6 +34,7 @@
                                     <f:selectItem itemLabel="08" itemValue="08"/>
                                     <f:selectItem itemLabel="09" itemValue="09"/>
                                     <f:selectItem itemLabel="10" itemValue="10"/>
+                                    
                                 </b:selectOneMenu>
 
                         <h:outputLabel value="Año:" />

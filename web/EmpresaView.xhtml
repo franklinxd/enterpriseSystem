@@ -67,10 +67,10 @@ and open the template in the editor.
                         <p:outputLabel value="#{e.email}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" tooltip="Editar esté empleado" actionListener="#{empresaBean.editar(e)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
+                        <b:commandButton immediate="true" styleClass="btn btn-warning" ajax="true" value="Editar" tooltip="Editar esté empleado" actionListener="#{empresaBean.editar(e)}" update=":form"  icon="glyphicon glyphicon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
-                        <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" tooltip="Borrar esté empleado" actionListener="#{empresaBean.borrar(e)}" update=":form"  icon="glyphicon glyphicon-trash"/>
+                        <b:commandButton immediate="true" styleClass="btn btn-danger" ajax="true" value="Borrar" tooltip="Borrar esté empleado" actionListener="#{empresaBean.borrar(e)}" update=":form"  icon="glyphicon glyphicon-trash"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>
