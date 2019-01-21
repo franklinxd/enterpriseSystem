@@ -43,39 +43,40 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <div id="incluirPagina"/>
+        <p:growl showDetail="true" autoUpdate="true" id="msg"/>
         <h:form style="margin: 20px" id="form">
             <p:panel header="#{planillaBean.accion} Planilla" style="margin: 35px; padding: 10px 10px; text-align: center;">
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <b:panel style="border: 0">
 
-                    <h:outputLabel value="Fecha de Inicio:" />
-                    <b:datepicker value="#{planillaBean.planilla.fechaInicio}"  placeholder="dd-mm-yy" mode="popup-icon" showButtonPanel="true" changeMonth="true" changeYear="true"/>
+                        <h:outputLabel value="Fecha de Inicio:" />
+                        <b:datepicker value="#{planillaBean.planilla.fechaInicio}"  placeholder="dd-mm-yy" mode="popup-icon" showButtonPanel="true" changeMonth="true" changeYear="true"/>
 
-                    <h:outputLabel value="Fecha de Finalizacion:" />
-                    <b:datepicker value="#{planillaBean.planilla.fechaFin}"  placeholder="dd-mm-yy" mode="popup-icon" showButtonPanel="true" changeMonth="true" changeYear="true"/>
+                        <h:outputLabel value="Fecha de Finalizacion:" />
+                        <b:datepicker value="#{planillaBean.planilla.fechaFin}"  placeholder="dd-mm-yy" mode="popup-icon" showButtonPanel="true" changeMonth="true" changeYear="true"/>
 
 
-                    <h:outputLabel value="Estado De Planilla:" />
-                    <b:selectOneMenu value="#{planillaBean.planilla.estado}">
-                        <f:selectItem itemLabel="- Seleccione uno - " />
-                        <f:selectItem itemLabel="Aperturada" itemValue="Aperturada"/>
-                        <f:selectItem itemLabel="Cerrada" itemValue="Cerrada"/>
-                    </b:selectOneMenu>
+                        <h:outputLabel value="Estado De Planilla:" />
+                        <b:selectOneMenu value="#{planillaBean.planilla.estado}">
+                            <f:selectItem itemLabel="- Seleccione uno - " itemValue="" />
+                            <f:selectItem itemLabel="Aperturada" itemValue="Aperturada"/>
+                            <f:selectItem itemLabel="Cerrada" itemValue="Cerrada"/>
+                        </b:selectOneMenu>
 
-                    <h:outputLabel value="Tipo de Planilla:" />
-                    <b:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}">
-                        <f:selectItem itemLabel="Seleccione un Tipo de Planilla" itemValue="" />
-                        <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
-                        <f:selectItem itemLabel="Quinsenal" itemValue="Quinsenal" />
-                        <f:selectItem itemLabel="Mensual" itemValue="Mensual" />
-                        <f:selectItem itemLabel="Anual" itemValue="Anual" />
-                    </b:selectOneMenu>
+                        <h:outputLabel value="Tipo de Planilla:" />
+                        <b:selectOneMenu value="#{planillaBean.planilla.tipoPlanilla}">
+                            <f:selectItem itemLabel="Seleccione un Tipo de Planilla" itemValue="" />
+                            <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
+                            <f:selectItem itemLabel="Quinsenal" itemValue="Quinsenal" />
+                            <f:selectItem itemLabel="Mensual" itemValue="Mensual" />
+                            <f:selectItem itemLabel="Anual" itemValue="Anual" />
+                        </b:selectOneMenu>
                     </b:panel>
 
                     <f:facet name="footer">
-                        <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>
-                        <b:commandButton value="Cancelar" style="margin: 15px 15px;"/>
+                        <b:commandButton styleClass="btn btn-primary" value="Guardar" actionListener="#{planillaBean.acctionFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" actionListener="#{planillaBean.limpiarFormulario()}" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
