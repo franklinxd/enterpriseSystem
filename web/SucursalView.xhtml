@@ -39,39 +39,39 @@
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Nombre:" />
-                    <p:inputText  value="#{sucursalBean.sucursal.nombre}" placeholder="Nombre de la Sucursal"/>
+                    <b:inputText  value="#{sucursalBean.sucursal.nombre}" placeholder="Nombre de la Sucursal"/>
 
                     <p:outputLabel value="Direccion:" />
-                    <p:inputText  value="#{sucursalBean.sucursal.direccion}" placeholder="Dirección Completa"/>
+                    <b:inputText  value="#{sucursalBean.sucursal.direccion}" placeholder="Dirección Completa"/>
 
                     <p:outputLabel value="Telefono:" />
-                    <p:inputMask mask="9999-9999" value="#{sucursalBean.sucursal.telefono}" placeholder="Tel.: 0000-0000"/>
+                    <b:inputText value="#{sucursalBean.sucursal.telefono}" placeholder="Tel.: 0000-0000"/>
 
                     <p:outputLabel value="Encargado:" />
-                    <p:selectOneMenu  value="#{sucursalBean.sucursal.encargado.idempleado}">
+                    <b:selectOneMenu  value="#{sucursalBean.sucursal.encargado.idempleado}">
                         <f:selectItems value="#{sucursalBean.listaEmpleado}" var="encargado" itemLabel="#{encargado.nombres}" itemValue="#{encargado.idempleado}" />
-                    </p:selectOneMenu>
+                    </b:selectOneMenu>
 
                     <p:outputLabel value="Empresa:" />
-                    <p:selectOneMenu value="#{sucursalBean.sucursal.idempresa.idempresa}">
+                    <b:selectOneMenu value="#{sucursalBean.sucursal.idempresa.idempresa}">
                         <f:selectItems value="#{sucursalBean.listaEmpresa}" var="empresa" itemLabel="#{empresa.nombre}" itemValue="#{empresa.idempresa}" />
-                    </p:selectOneMenu>
+                    </b:selectOneMenu>
                     
                     <p:outputLabel value="Latitud:" />
-                    <p:inputText value="#{sucursalBean.sucursal.latitud}" placeholder="Latitud" />
+                    <b:inputText value="#{sucursalBean.sucursal.latitud}" placeholder="Latitud" />
                     
                     <p:outputLabel value="Longitud:" />
-                    <p:inputText value="#{sucursalBean.sucursal.longitud}" placeholder="Longitud" />
+                    <b:inputText value="#{sucursalBean.sucursal.longitud}" placeholder="Longitud" />
                     
                     <p:outputLabel value="Mapa" />
-                    <p:commandButton id="btn" type="button" icon="pi pi-globe" value="Mapa" onclick="PF('dlg').show();" />
+                    <b:commandButton id="btn" type="button" icon="pi pi-globe" value="Mapa" onclick="PF('dlg').show();" />
                     
                     <p:outputLabel value="Imagen" />
                     <p:fileUpload value="#{sucursalBean.file}" mode="simple" />
 
                     <f:facet name="footer">
                         <b:commandButton styleClass="btn btn-primary" ajax="true" value="Guardar" actionListener="#{sucursalBean.accionFormulario()}" update=":form" style="margin: 15px 15px;"/>
-                        <b:commandButton styleClass="btn btn-success" ajax="true" value="Cancelar" actionListener="#{sucursalBean.limpiarFormulario()}" update=":form" style="margin: 15px 15px;"/>
+                        <b:commandButton value="Cancelar" actionListener="#{sucursalBean.limpiarFormulario()}" update=":form" style="margin: 15px 15px;"/>
                     </f:facet>
                 </h:panelGrid>           
             </p:panel>
@@ -98,7 +98,7 @@
                         <p:outputLabel value="#{s.idempresa.nombre}" />
                     </p:column>
                     <p:column headerText="Editar">
-                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{sucursalBean.editar(s)}" update=":form"  icon="ui-icon-pencil"/>
+                        <b:commandButton styleClass="btn btn-warning" ajax="true" value="Editar" actionListener="#{sucursalBean.editar(s)}" update="@form"  icon="ui-icon-pencil"/>
                     </p:column>
                     <p:column headerText="Borrar">
                         <b:commandButton styleClass="btn btn-danger" ajax="true" value="Borrar" actionListener="#{sucursalBean.borrar(s)}" update=":form"  icon="ui-icon-trash"/>

@@ -9,8 +9,10 @@ import com.enterprisesystem.dao.PlanillaDAO;
 import com.enterprisesystem.modelo.Planilla;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -19,46 +21,76 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class PlanillaBean {
-    private List<Planilla>listaPlanilla;
+
+    private List<Planilla> listaPlanilla;
     private PlanillaDAO planillaDAO;
     private Planilla planilla;
     private String accion;
-    
+
     @PostConstruct
-    public void init(){
-        planillaDAO=new PlanillaDAO();
-        listaPlanilla=planillaDAO.buscarTodo();
+    public void init() {
+        planillaDAO = new PlanillaDAO();
+        listaPlanilla = planillaDAO.buscarTodo();
+        planilla = new Planilla();
+        planilla.setIdplanillas(0);
+        accion = "Registrar";
+    }
+
+    public void limpiarFormulario() {
         this.planilla = new Planilla();
         this.planilla.setIdplanillas(0);
-        accion="Registrar";
+        accion = "Registrar";
     }
-    public void limpiarFormulario(){
-        this.listaPlanilla=planillaDAO.buscarTodo();
-        this.planilla=new Planilla();
-        this.planilla.setIdplanillas(0);
-        accion ="Registrar";
-    }
-    public void acctionFormulario(){
-        if(accion.equals("Registrar")){
-            planillaDAO.insertar(this.planilla);
-        }else if(accion.equals("Editar")){
-            planillaDAO.actualizar(this.planilla);
+
+    public void acctionFormulario() {
+        if (accion == "Registrar") {
+            insertar();
+        } else {
+            actualizar();
         }
+    }
+
+    public void editar(Planilla planilla) {
+        this.planilla = planilla;
+        accion = "Editar";
+    }
+
+    public void borrar(Planilla planilla) {
+        boolean flag = planillaDAO.borrar(planilla);
+        if (flag) {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO", "Su Planilla fué Borrada Exitosamente.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Su Planilla NO fué Borrada.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        }
+        listaPlanilla = planillaDAO.buscarTodo();
+    }
+
+    private void insertar() {
+        boolean flag = planillaDAO.insertar(planilla);
+        if (flag) {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO", "Su Planilla fué Guardada Exitosamente.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Su Planilla NO fué Guardada.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        }
+        listaPlanilla = planillaDAO.buscarTodo();
         limpiarFormulario();
     }
-    public void editar(Planilla planilla){
-        this.planilla=planilla;
-        accion="Editar";
-    }
-    public void borrar (Planilla planilla){
-        planillaDAO.borrar(planilla);
-        listaPlanilla=planillaDAO.buscarTodo();
-    }
-    private void insertar(){
-        planillaDAO.insertar(this.planilla);
-    }
-    private void actualizar(){
-        planillaDAO.actualizar(this.planilla);
+
+    private void actualizar() {
+        boolean flag = planillaDAO.actualizar(planilla);
+        if (flag) {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO", "Su Planilla fué Actualizado Correctamente.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Su Planilla NO fué Actualizada.");
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        }
+        listaPlanilla = planillaDAO.buscarTodo();
+        limpiarFormulario();
     }
 
     public PlanillaBean() {
@@ -96,6 +128,5 @@ public class PlanillaBean {
     public void setAccion(String accion) {
         this.accion = accion;
     }
-    
-    
+
 }

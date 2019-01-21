@@ -17,33 +17,74 @@ import javax.persistence.TypedQuery;
  * @author gerson.ruizusam
  */
 public class PlanillaDAO {
-    
-    public List<Planilla> buscarTodo(){
+
+    public List<Planilla> buscarTodo() {
+        List<Planilla> lista = null;
         EntityManagerFactory emf = JPAUtil.getJPAFactory();
-        EntityManager em= emf.createEntityManager();
-        TypedQuery consulta = em.createQuery("Select p from Planilla p",Planilla.class);
-        List<Planilla> listaPlanilla = consulta.getResultList();
-        return listaPlanilla;
+        EntityManager em = emf.createEntityManager();
+        TypedQuery consulta = em.createQuery("Select p from Planilla p", Planilla.class);
+        try {
+            lista = consulta.getResultList();
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            return null;
+        } finally {
+            em.close();
+        }
+        return lista;
     }
-    public void borrar(Planilla planilla){
-        EntityManagerFactory emf =JPAUtil.getJPAFactory();
-        EntityManager em= emf.createEntityManager();
-        em.getTransaction().begin();
-        em.remove(em.merge(planilla));
-        em.getTransaction().commit();
+
+    public boolean borrar(Planilla planilla) {
+        boolean flag = false;
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(em.merge(planilla));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-    public void insertar(Planilla planilla){
-        EntityManagerFactory emf =JPAUtil.getJPAFactory();
-        EntityManager em= emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(em.merge(planilla));
-        em.getTransaction().commit();
+
+    public boolean insertar(Planilla planilla) {
+        boolean flag = false;
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(em.merge(planilla));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
-    public void actualizar(Planilla planilla){
-        EntityManagerFactory emf =JPAUtil.getJPAFactory();
-        EntityManager em= emf.createEntityManager();
-        em.getTransaction().begin();
-        em.merge(em.merge(planilla));
-        em.getTransaction().commit();
+
+    public boolean actualizar(Planilla planilla) {
+        boolean flag = false;
+        EntityManagerFactory emf = JPAUtil.getJPAFactory();
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(em.merge(planilla));
+            em.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            System.out.println("ERROR " + exception.getMessage());
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return flag;
     }
 }
